@@ -10,36 +10,24 @@ void ofApp::setup(){
   ursp = {0, 0, 0};
   pnt_x = {0, 0, 0};
   pnt_y = {0, 0, 0};
-
   ray_n = {1, 0, 0};
   ray_pos = {0,0,0};
-
   ray_mir_l = 600;
-
-
   mirror_n_ = {-1, 1, 0};
   mirror_pos = {300, 0, 0};
   mirror_n = {-1, 1, 0};
-
   mirror_le = 60;
   mirror_n_le = 90;
-
   ray_o_l = 400;
   image_dis = {0, 550, 0};
   image_le = {192, 0, 144};
-
   cout << "mirror_n_ " << mirror_n_ << endl;
   cout << "mirror_n " << mirror_n << endl;
-
   mirror_n = normalize(mirror_n);
   mirror_n_ = normalize(mirror_n_);
   float angle_mir = orientedAngle((mirror_n_), (mirror_n), {1,0,0});
-
   cout << "angle mir " << angle_mir << endl;
-
   ray_n = normalize(ray_n);
-
-
 
   bool inters = false;
   inters = glm::intersectRayPlane(ray_pos, ray_n, mirror_pos, mirror_n, intersectionDis);
@@ -48,64 +36,53 @@ void ofApp::setup(){
   }
 
 
-//computations for all other variables
-ray_s[0] = ray_pos[0];
-ray_s[1] = ray_pos[1];
-ray_s[2] = ray_pos[2];
-
-//ray_e[0] = ray_s[0]+ray_n[0]*ray_mir_l;
-//ray_e[1] = ray_s[1]+ray_n[1]*ray_mir_l;
-ray_e = ray_s +ray_n*float(dist_b_m);
-
-mirror_n = normalize(mirror_n);
-mirror_re = v_r_90cw(mirror_n);
-//mirror_re = (mirror_n);
-cout << "mirror_n rot"<< mirror_re<< endl;
-mirror_l_norm = sqrt(mirror_re[0]*mirror_re[0]+mirror_re[1]*mirror_re[1]);
-cout << "mirror_l_norm "<< mirror_l_norm<< endl;
-mirror_re = mirror_re*mirror_le/2+ray_e;
-mirror_li = v_r_90ccw(mirror_n)*mirror_le/2+ray_e;
-//mirror_li = (mirror_n)*mirror_le/2+ray_e;
-cout << "mirror_li "<< mirror_li<< endl;
-cout << "mirror_re "<< mirror_re<< endl;
-mirror_n_draw = mirror_n*mirror_n_le+ray_e;
-
-
-image_dis = float(dist_m_p)+ray_e;
-image_plane_s = image_dis-image_le/2;
-image_plane_e = image_dis+image_le/2;
-
-
-bool intersection = false;
-vec3 plane_normal = {0, -1, 0};
-intersection = glm::intersectRayPlane(ray_e, normalize(reflect(ray_n, mirror_n)), image_plane_s, plane_normal, intersectionDistance);
-if (intersection == true){
-    cout<< "intersection was true  " << intersection << " idstance is "<< intersectionDistance<< endl;
-  }
-
-ray_o = normalize(reflect(ray_n, mirror_n))*intersectionDistance+ray_e; //*ray_o_l;
-
-float d = 500; //distance mirror plane in cm
-float x = 10; //distance von punkt zu lotrechter auf plane
-float alpha_r = atan( x, d);
-cout <<"This is alphar :  " << alpha_r<< endl;
-float alpha_d = alpha_r * (180.0/3.141592653589793238463);
-cout <<"This is alphad :  " << alpha_d<< endl;
-
-vec3 testrot = {120, 20, 0};
-cout << testrot << endl;
-vec3 testnorm = {0, 0,  1 };
-testrot = rotate(testrot , 1.5708f , testnorm);
-cout << testrot << endl;
-
-
-
+// //computations for all other variables
+// ray_s[0] = ray_pos[0];
+// ray_s[1] = ray_pos[1];
+// ray_s[2] = ray_pos[2];
+// //ray_e[0] = ray_s[0]+ray_n[0]*ray_mir_l;
+// //ray_e[1] = ray_s[1]+ray_n[1]*ray_mir_l;
+// ray_e = ray_s +ray_n*float(dist_b_m);
+// mirror_n = normalize(mirror_n);
+// mirror_re = v_r_90cw(mirror_n);
+// //mirror_re = (mirror_n);
+// cout << "mirror_n rot"<< mirror_re<< endl;
+// mirror_l_norm = sqrt(mirror_re[0]*mirror_re[0]+mirror_re[1]*mirror_re[1]);
+// cout << "mirror_l_norm "<< mirror_l_norm<< endl;
+// mirror_re = mirror_re*mirror_le/2+ray_e;
+// mirror_li = v_r_90ccw(mirror_n)*mirror_le/2+ray_e;
+// //mirror_li = (mirror_n)*mirror_le/2+ray_e;
+// cout << "mirror_li "<< mirror_li<< endl;
+// cout << "mirror_re "<< mirror_re<< endl;
+// mirror_n_draw = mirror_n*mirror_n_le+ray_e;
+// image_dis = float(dist_m_p)+ray_e;
+// image_plane_s = image_dis-image_le/2;
+// image_plane_e = image_dis+image_le/2;
+//
+//
+// bool intersection = false;
+// vec3 plane_normal = {0, -1, 0};
+// intersection = glm::intersectRayPlane(ray_e, normalize(reflect(ray_n, mirror_n)), image_plane_s, plane_normal, intersectionDistance);
+// if (intersection == true){
+//     cout<< "intersection was true  " << intersection << " idstance is "<< intersectionDistance<< endl;
+//   }
+//
+// ray_o = normalize(reflect(ray_n, mirror_n))*intersectionDistance+ray_e; //*ray_o_l;
+//
+// float d = 500; //distance mirror plane in cm
+// float x = 10; //distance von punkt zu lotrechter auf plane
+// float alpha_r = atan( x, d);
+// float alpha_d = alpha_r * (180.0/3.141592653589793238463);
+// vec3 testrot = {120, 20, 0};
+// cout << testrot << endl;
+// vec3 testnorm = {0, 0,  1 };
+// testrot = rotate(testrot , 1.5708f , testnorm);
+// cout << testrot << endl;
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
   //computations for all other variables
   ray_s[0] = ray_pos[0];
   ray_s[1] = ray_pos[1];
@@ -191,14 +168,11 @@ void ofApp::draw(){
     krds[1] = drw_pln[2];
     ofDrawBitmapString(ofToString(krds), drw_pln[0]-plane_w/2-55, drw_pln[1]-5);
 
-
     float xx = (float(sim_sp_x) / float(sim_img_w)-0.5f)*float(plane_w);
     float yy = (float(sim_sp_y) / float(sim_img_h)-0.5f)*float(plane_h);
-
-  smple_ray = drw_pln;
-  smple_ray[0] = xx;
-  smple_ray[2] = yy;
-
+    smple_ray = drw_pln;
+    smple_ray[0] = xx;
+    smple_ray[2] = yy;
     ofSetColor(255, 128, 0);
     ofDrawLine(ursp, smple_ray);
     krds[0] = smple_ray[0]+plane_w/2;
@@ -207,8 +181,6 @@ void ofApp::draw(){
     nme_r[0] = xx-55;
     nme_r[2] = yy-5;
     ofDrawBitmapString(ofToString(krds), smple_ray);
-
-
     krds[0] = int(drw_pln[0]+plane_w/2);
     krds[1] = drw_pln[2];
     ofDrawBitmapString(ofToString(krds), drw_pln[0]-plane_w/2-55, drw_pln[1]-5);
@@ -219,19 +191,13 @@ void ofApp::draw(){
     ofSetColor(0,0,0);
     ofSetColor(125, 125, 0);
     ofDrawBox({0,0,0}, plane_w, 1, plane_h);
-
   ofEndShape();
-
   ofSetColor(255);
  // ofDrawBitmapString(ofToString(shrd->mouse_x), ofGetWidth() - 200, 40);
  // ofDrawBitmapString(ofToString(shrd->mouse_y), ofGetWidth() - 200, 60);
- cout << "------------------------------- "<<  endl;
 
   vec2 compangl = compute_angle_sampleray(smple_ray);
-  cout<< "compangl   is:"<<  compangl << "------------------------------- "<<  endl;
-
- cout << "------------------------------- "<<  endl;
-
+  cout<< "Angle of x;  y;  is:    "<<  compangl <<  endl;
 
 
 }
@@ -319,31 +285,23 @@ vec3 ofApp::v_r_90ccw(vec3 v_in){
 
 void ofApp::setup_gui(){
 
-    // circleResolution.addListener(this, &ofApp::circleResolutionChanged);
-  	// ringButton.addListener(this, &ofApp::ringButtonPressed);
-
   	gui.setup(); // most of the time you don't need a name
-  	gui.add(angle_a.setup("angle", 140, 10, 300));
+  	gui.add(angle_a.setup("angle", 0, 10, 300));
   	gui.add(plane.setup("Plane coords", {500, 500, 0}, {0, 0, 0}, {800, 900, 600}));
     gui.add(dist_b_m.setup("Distance Beamer mirror", 300, 100, 900));
     gui.add(dist_m_p.setup("Plane distance in cm", 600, 150, 900));
-    gui.add(plane_w.setup("Plane width in cm ", 600, 0, 800));
-    gui.add(plane_h.setup("Plane height in cm", 600, 0, 800));
-
+    gui.add(plane_w.setup("Plane width in cm ", 70, 0, 800));
+    gui.add(plane_h.setup("Plane height in cm", 70, 0, 800));
     //simulation
     gui.add(sim_img_w.setup("sim_img width", 500, 0, 6000));
     gui.add(sim_img_h.setup("sim_img height", 500, 0, 6000));
     gui.add(sim_sp_x.setup("sim_sp x", 500, 0, 6000));
     gui.add(sim_sp_y.setup("sim_sp y", 500, 0, 6000));
-    gui.add(mirr_w.setup("mirr width", 500, 0, 1000));
-    gui.add(mirr_h.setup("mirr height", 500, 0, 1000));
-    gui.add(sim_mir_pos_x.setup("sim_mir pos x", 500, 0, 1000));
-    gui.add(sim_mir_pos_y.setup("sim_mir pos y", 500, 0, 1000));
+    gui.add(mirr_w.setup("mirr width", 0, 0, 1000));
+    gui.add(mirr_h.setup("mirr height", 0, 0, 1000));
+    gui.add(sim_mir_pos_x.setup("sim_mir pos x", 0, 0, 1000));
+    gui.add(sim_mir_pos_y.setup("sim_mir pos y", 0, 0, 1000));
 
-
-
-  	//gui.add(twoCircles.setup("two circles"));
-  	//gui.add(ringButton.setup("ring"));
   	gui.add(screenSize.setup("screen size", ofToString(ofGetWidth())+"x"+ofToString(ofGetHeight())));
     gui.setPosition(50, 50);
 
