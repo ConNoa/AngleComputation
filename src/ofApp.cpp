@@ -110,20 +110,13 @@ void ofApp::update(){
   ray_s[0] = ray_pos[0];
   ray_s[1] = ray_pos[1];
   ray_s[2] = ray_pos[2];
-
-  //ray_e[0] = ray_s[0]+ray_n[0]*ray_mir_l;
-  //ray_e[1] = ray_s[1]+ray_n[1]*ray_mir_l;
   ray_e = ray_s +ray_n*float(dist_b_m);
 
   mirror_n = normalize(mirror_n);
   mirror_re = v_r_90cw(mirror_n);
-  // cout << "mirror_n rot"<< mirror_re<< endl;
   mirror_l_norm = sqrt(mirror_re[0]*mirror_re[0]+mirror_re[1]*mirror_re[1]);
-  // cout << "mirror_l_norm "<< mirror_l_norm<< endl;
   mirror_re = mirror_re*mirror_le/2;
   mirror_li = v_r_90ccw(mirror_n)*mirror_le/2;
-  // cout << "mirror_li "<< mirror_li<< endl;
-  // cout << "mirror_re "<< mirror_re<< endl;
   mirror_n_draw = mirror_n*mirror_n_le;
 
 
@@ -131,14 +124,11 @@ void ofApp::update(){
   image_plane_s = image_dis-image_le/2;
   image_plane_e = image_dis+image_le/2;
 
-
-
   ray_o = normalize(reflect(ray_n, mirror_n))*intersectionDistance; //*ray_o_l;
 
   drw_pln[0] = 0;
   drw_pln[1] = dist_m_p;
   drw_pln[2] = 0;
-
 
   bool intersection = false;
   vec3 plane_normal = {0, -1, 0};
@@ -146,7 +136,6 @@ void ofApp::update(){
   if (intersection == true){
     //  cout<< "intersection was true  " << intersection << " idstance is "<< intersectionDistance<< endl;
     }
-
 
   if(sim_sp_x > sim_img_w){sim_sp_x=int(sim_img_w);}
   if(sim_sp_y > sim_img_h){sim_sp_y=int(sim_img_h);}
@@ -219,14 +208,7 @@ void ofApp::draw(){
     nme_r[2] = yy-5;
     ofDrawBitmapString(ofToString(krds), smple_ray);
 
-  //  cout << "samplingray:  " << smple_ray << endl;
-  // vec3 mulx = {1,1,0};
-  // vec3 sp_r_x = smple_ray*mulx;
-  // vec3 muly = {0,1,1};
-  // vec3 sp_r_y = smple_ray*muly;
-  // cout << "sp_r_x:  " << sp_r_x << endl;
 
-    //max tilt min pan
     krds[0] = int(drw_pln[0]+plane_w/2);
     krds[1] = drw_pln[2];
     ofDrawBitmapString(ofToString(krds), drw_pln[0]-plane_w/2-55, drw_pln[1]-5);
@@ -244,32 +226,9 @@ void ofApp::draw(){
  // ofDrawBitmapString(ofToString(shrd->mouse_x), ofGetWidth() - 200, 40);
  // ofDrawBitmapString(ofToString(shrd->mouse_y), ofGetWidth() - 200, 60);
  cout << "------------------------------- "<<  endl;
- //
- // pnt_x = ray_o;
- // pnt_x[0] = ray_o[0]-plane_w/2;
- //
- //
- //
- // pnt_x = normalize(sp_r_x);
- // rAm_v = normalize(reflect(ray_n, mirror_n));
- // cout<<"rAm_v is:"<< rAm_v <<endl;
- //
- // rAm_rotref = {1,0,0};
- // float rayAngle_x = orientedAngle(pnt_x, rAm_v, rAm_rotref)* (180.0/3.141592653589793238463);
- // float mirrAngle_x = rayAngle_x/2;
- // cout << "MirrorAngle x for ray: "<< mirrAngle_x<< endl;
- // pnt_y[2] = ray_o[2]-plane_h/2;
- // pnt_y = normalize(sp_r_y);
- // rAm_v = normalize(reflect(ray_n, mirror_n));
- // rAm_rotref = {1,0,0};
- // float rayAngle_y = orientedAngle(pnt_y, rAm_v, rAm_rotref)* (180.0/3.141592653589793238463);
- // float mirrAngle_y = rayAngle_y/2;
- // cout << "MirrorAngle y for ray: "<< mirrAngle_y<< endl;
- // cout << "------------------------------- "<<  endl;
- // cout << "------------------------------- "<<  endl;
- // cout << "------------------------------- "<<  endl;
+
   vec2 compangl = compute_angle_sampleray(smple_ray);
-cout<< "compangl   is:"<<  compangl << "------------------------------- "<<  endl;
+  cout<< "compangl   is:"<<  compangl << "------------------------------- "<<  endl;
 
  cout << "------------------------------- "<<  endl;
 
