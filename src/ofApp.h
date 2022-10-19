@@ -10,7 +10,10 @@
 #include "Mirror.hpp"
 #include "Beam.hpp"
 #include <glm/gtx/intersect.hpp>
+#include "LensApp.hpp"
 
+
+// #include "attributes.hpp"
 using namespace glm;
 
 
@@ -18,14 +21,15 @@ class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
+		void setup_gui();
+		void setup_lensfield();
 		void update();
 		void draw();
-
+		void draw_lensfield();
 		void vector_reflect();
 		vec3 v_r_90cw(vec3 v_in);
 		vec3 v_r_90ccw(vec3 v_in);
 
-		void setup_gui();
 
 		vec2 compute_angle_sampleray(vec3 s_ray_in);
 
@@ -42,32 +46,41 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 
-		//vorgaben:
-		vec3 beamer_pos;
-	  vec3 beamer_size;
-		vec3 ray_n;	//ausrichtung des strahls
-		vec3 ray_pos;
-		float ray_mir_l;// laenge des strahls bevor er auf den Mirror Trifft
-		vec3 mirror_n_;
-		vec3 mirror_pos;
-		vec3 mirror_n;
-		vec3 mirror_n_draw;
-		float  mirror_le;  //length
-		float mirror_n_le;
-		vec3 mirror_li;
-		vec3 mirror_re;
-		float		mirror_l_norm;		//length of normalized
-		vec3 image_plane_s;
-		vec3 image_plane_e;
-		vec3 image_le;
-		vec3 image_dis;
-		//errechnen sich:
-		vec3 ray_s;//raystart
-		vec3 ray_e; //rayend
-		vec3 drw_pln;
-		vec3 ursp;
 
-		vec3 smple_ray;
+
+
+
+		//vorgaben:
+		vec3 		beamer_pos;
+	  vec3 		beamer_size;
+
+		vec3 		mirror_n_;
+		vec3 		mirror_pos;
+		vec3 		mirror_n;
+		vec3 		mirror_n_draw;
+		float  	mirror_le;  //length
+		float 	mirror_n_le;
+		vec3 		mirror_li;
+		vec3 		mirror_re;
+		float		mirror_l_norm;		//length of normalized
+
+		vec3 		image_plane_s;
+		vec3 		image_plane_e;
+		vec3 		image_le;
+		vec3 		image_dis;
+
+		vec3 		ray_n;	//ausrichtung des strahls
+		vec3 		ray_pos;
+		float 	ray_mir_l;// laenge des strahls bevor er auf den Mirror Trifft
+		vec3 		smple_ray;
+
+		//errechnen sich:
+		vec3 		ray_s;//raystart
+		vec3 		ray_e; //rayend
+		vec3 		drw_pln;
+
+		vec3 		ursp;
+
 
 		vec2 krds;
 		vec3 pnt_x;
@@ -86,6 +99,7 @@ class ofApp : public ofBaseApp{
 
 //------------------------------------------------
 
+		ofxPanel gui;
 
 		ofxFloatSlider angle_a;
 		ofxVec3Slider plane;
@@ -102,17 +116,10 @@ class ofApp : public ofBaseApp{
 		ofxIntSlider mirr_h;
 		ofxIntSlider sim_mir_pos_x;
 		ofxIntSlider sim_mir_pos_y;
-
-
-
-		ofxButton twoCircles;
-		ofxButton ringButton;
 		ofxLabel screenSize;
 
-		ofxPanel gui;
 
-
-
+		shared_ptr<LensApp> lenses;
 
 
 

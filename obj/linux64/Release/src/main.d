@@ -520,7 +520,7 @@ obj/linux64/Release/src/main.o: \
  /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/LensApp.hpp \
  /home/pixel/OF/addons/ofxGui/src/ofxGui.h \
  /home/pixel/OF/addons/ofxGui/src/ofxToggle.h \
  /home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h \
@@ -677,7 +677,9 @@ obj/linux64/Release/src/main.o: \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h
 
 /home/pixel/OF/libs/openFrameworks/ofMain.h:
 
@@ -1753,7 +1755,7 @@ obj/linux64/Release/src/main.o: \
 
 /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/LensApp.hpp:
 
 /home/pixel/OF/addons/ofxGui/src/ofxGui.h:
 
@@ -2068,3 +2070,7 @@ obj/linux64/Release/src/main.o: \
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h:
