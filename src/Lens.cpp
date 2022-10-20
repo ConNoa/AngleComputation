@@ -138,15 +138,17 @@ float Lens::compute_lens_angle(float radius_ , float diameter_lens_){
   l_edge.y = diameter_lens_/2;
   vec3 refx = vec3{1,0,0};
 
-  std::cout << "compute lens"<< std::endl;
-  std::cout << l_ursp<< std::endl;
-  std::cout << l_edge<< std::endl;
-  std::cout<<"--------------"<<std::endl;
-  l_ursp = normalize(l_ursp);
-  l_edge = normalize(l_edge);
-	float angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
-  std::cout << "compute angle"<< std::endl;
-  std::cout << angle_<< std::endl;
+// DEBUG Couts
+
+  // std::cout << "compute lens"<< std::endl;
+  // std::cout << l_ursp<< std::endl;
+  // std::cout << l_edge<< std::endl;
+  // std::cout<<"--------------"<<std::endl;
+        l_ursp = normalize(l_ursp);
+        l_edge = normalize(l_edge);
+ float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
+  // std::cout << "compute angle"<< std::endl;
+  // std::cout << angle_<< std::endl;
 
   return angle_;
 

@@ -19,6 +19,19 @@
   m_min {min},
   m_max {max} {}
 
+  // Constructor for LensSystem
+  Lensbox::Lensbox(glm::vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
+  Shape {"Lensbox",{}},
+  m_min {0.0f, 0.0f, 0.0f},
+  m_max {1.0f, 1.0f, 1.0f},
+  m_orig {orig},
+  m_diameter {diameter},
+  m_width {width},
+  m_r1 {r1},
+  m_r2 {r2},
+  m_n {n}{}
+
+
   // Custom 3
   Lensbox::Lensbox(std::string const& name, std::shared_ptr<Material> mat, glm::vec3 const& min, glm::vec3 const& max) :
   Shape {name, mat},
@@ -67,7 +80,21 @@
 
     << "Maximum: (" << m_max.x << ", "
     << m_max.y << ", "
-    << m_max.z << ")" << std::endl;
+    << m_max.z << ")" << "\n"
+
+    << "Origin: (" << m_orig.x << ", "
+    << m_orig.y << ", "
+    << m_orig.z << ")" << "\n"
+
+    << "Diameter: (" << m_diameter<< ")" << "\n"
+
+    << "Width: (" << m_width<< ")" << "\n"
+
+    << "R1: (" << m_r1<< ")" << "\n"
+
+    << "R2: (" << m_r2<< ")" << "\n"
+
+    << "Brechungsindex: (" << m_n << ")" << std::endl;
 
     return os;
   }

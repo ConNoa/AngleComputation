@@ -60,9 +60,27 @@ lens2 = Lens(600, 200, 0 ,  200,  175, 160, 1.46f,   10);
     lens2.setup();
     test_lens.print();
 
-//    test_lens.setup();
 
 
+vec3    orig_in{33.0f, 66.0f, 99.0f};
+float   dia_in = 150.0f;
+float   width_in = 5.0f;
+float   r1_in   = 400.0f;
+float   r2_in   = 500.0f;
+float   n_in    = 1.3456789f;
+
+
+
+std::shared_ptr<Shape> new_lens_box = std::make_shared<Lensbox>(orig_in, dia_in, width_in, r1_in, r2_in, n_in);
+
+// tmpcomp.insert(std::pair<std::string, shape_pointer>(box->name(), box));
+
+
+//m_composite->add(new_lens_box);
+
+std::cout<< "This is the new created LensBox: [ "<< endl;
+new_lens_box->print(std::cout);
+std::cout<< " ]. " <<std::endl;
 
 
 }
@@ -84,9 +102,50 @@ void LensApp::draw(){
   lens2.draw();
   //test_lens.print();
 
-
-
-
-
 return;
 }
+
+
+
+
+//initialize:
+
+//
+//
+//
+// Scene scene;
+// std::map<std::string, std::shared_ptr<Shape>> tmpcomp;
+//
+//
+//
+//
+//
+// else if(firstWord == "shape")//##############-Shape
+// {
+//     ss>>firstWord;
+//     std::cout << "Shape: ";
+//
+//     if(firstWord == "box") //##############-Box
+//     {
+//         std::cout << "Box\n";
+//         std::string boxname;
+//         glm::vec3 min;
+//         glm::vec3 max;
+//         std::string materialname;
+//
+//         ss >> boxname;
+//         ss >> min.x;
+//         ss >> min.y;
+//         ss >> min.z;
+//
+//         ss >> max.x;
+//         ss >> max.y;
+//         ss >> max.z;
+//
+//         ss >> materialname;
+//
+//         //Einspeichern
+//         std::shared_ptr<Material> material=(scene.m_materials.find(materialname)->second);
+//
+//         std::shared_ptr<Shape> box = std::make_shared<Box>(boxname, material, min, max);
+//         tmpcomp.insert(std::pair<std::string, std::shared_ptr<Shape>>(box->name(), box));
