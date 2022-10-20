@@ -679,6 +679,7 @@ obj/linux64/Release/src/main.o: \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h
 
 /home/pixel/OF/libs/openFrameworks/ofMain.h:
@@ -2072,5 +2073,7 @@ obj/linux64/Release/src/main.o: \
 /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h:

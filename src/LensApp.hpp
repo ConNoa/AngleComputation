@@ -12,6 +12,8 @@
 #include <glm/gtx/intersect.hpp>
 
 #include "lensefield.hpp"
+#include "Lens.hpp"
+
 
 using namespace glm;
 
@@ -28,4 +30,13 @@ public:
 
 	ofParameter<ofColor> color;
 	ofxPanel gui;
+
+	ofPath path;
+	ofPath path2;
+	ofPath path3;
+
+
+	Lens test_lens;
+	Lens lens2;
+
 };

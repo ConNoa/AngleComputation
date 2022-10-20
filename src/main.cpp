@@ -5,6 +5,7 @@
 #include "LensApp.hpp"
 #include "ofAppGLFWWindow.h"
 #include "ofApp.h"
+#include "Lens.hpp"
 
 //========================================================================
 int main( ){
@@ -16,7 +17,7 @@ int main( ){
 		settings.resizable = true;
 		shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
-		settings.setSize(800, 1000);
+		settings.setSize(1550, 1000);
 		settings.setPosition(glm::vec2(1200,1000));
 		settings.resizable = false;
 		shared_ptr<ofAppBaseWindow> lensWindow = ofCreateWindow(settings);
