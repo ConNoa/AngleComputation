@@ -10,7 +10,7 @@
 #include "Mirror.hpp"
 #include "Beam.hpp"
 #include <glm/gtx/intersect.hpp>
-#include "hit.hpp"
+#include "Composition.hpp"
 #include "lensefield.hpp"
 #include "Lens.hpp"
 

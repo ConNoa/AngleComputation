@@ -24,5 +24,5 @@ struct Hit
     double m_distance;
     glm::vec3 m_point;
     glm::vec3 m_normal;
-    Shape* m_shape; //Soll RAW-Pointer sein, damit this funktioniert und und... vlt noch const setzen?
+    const Shape* m_shape; //Soll RAW-Pointer sein, damit this funktioniert und und... vlt noch const setzen?
 };
