@@ -45,6 +45,7 @@ public:
   void draw_construction() const;
 
   void update() override;
+  void update_path();
 
   void scale(float faktor) override;
   void translate(glm::vec3 const& vec) override;
@@ -54,13 +55,11 @@ public:
   float compute_lens_angle(float radius_ , float diameter_lens_);
 
 
-private:
-  glm::vec3 m_min;
-  glm::vec3 m_max;
-
   glm::vec3 m_orig;       //Origin -  Mittelpunkt der Linse
   float m_diameter;       //Real-Durchmesser der Linse
   float m_width;          //Breite des Glaskörpers zwischen geschliffenen Linsenseiten
+
+  float m_rot_z;          //Rotation der Linse um die Z-Achse
 
   float m_r1;             //Radius der theoretischen Kugel der vorderen Linsenseite
   float m_r2;             //Radius der theoretischen Kugel der hinteren Linsenseite
@@ -77,7 +76,7 @@ private:
   glm::vec3 m_f2;         //vorderer Brennpunkt
 
 
-  //variables for draw and visualisation
+  // variables for draw and visualisation
   ofPath lens;
 
   glm::vec3 m_O_d1;       //Top Point for outerLensediameter  für Mittelachse
@@ -95,5 +94,13 @@ private:
   int     m_type_r1;
   int     m_type_r2;
 
+  bool    m_show_constr_lines = false;
+
+  bool    m_act_manipulated = false;
+
+
+private:
+  glm::vec3 m_min;
+  glm::vec3 m_max;
 
 };

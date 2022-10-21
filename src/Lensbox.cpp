@@ -27,6 +27,7 @@
   m_orig {orig},
   m_diameter {diameter},
   m_width {width},
+  m_rot_z {0},
   m_type_r1 {1},
   m_r1 {r1},
   m_type_r2 {1},
@@ -41,6 +42,7 @@
   m_orig {orig},
   m_diameter {diameter},
   m_width {width},
+  m_rot_z {0},
   m_type_r1 {t_r1},
   m_r1 {r1},
   m_type_r2 {t_r2},
@@ -131,8 +133,7 @@
   minimal-ray-tracer-rendering
   -simple-shapes/ray-box-intersection
    */
-  Hit Lensbox::intersect(Ray ray) const
-  {
+  Hit Lensbox::intersect(Ray ray) const{
     Hit boxhit;
 
     double t1 = (m_min.x - ray.m_origin.x)*ray.m_inv_direction.x;
@@ -191,7 +192,9 @@
   void Lensbox::draw() const
   {
     lens.draw();
-    draw_construction();
+    if(m_show_constr_lines == true || m_act_manipulated == true){
+      draw_construction();
+    }
     return;
   }
 
@@ -214,6 +217,13 @@
       ofSetColor(255,0,0);
       ofDrawCircle(m_f2, 3);
       ofDrawCircle(m_f2, m_r2);
+
+      ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
+      ofSetColor(40,40,40);
+      ofDrawRectangle(m_orig, m_width, m_diameter);
+      ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
+
+
     ofEndShape(false);
 
   }
@@ -238,6 +248,13 @@
     m_f2 = NULLPUNKT+m_orig+m_trans_vec;
     m_f2.x = m_f2.x + m_ankat_r2 + m_width/2;
 
+    return;
+  }
+
+  void Lensbox::update_path(){
+
+    lens.clear();
+
     m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
     float r1_a1 = -180  - m_ankat_angle_r1;
     float r1_a2 = -180  + m_ankat_angle_r1;
@@ -245,6 +262,7 @@
     m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
     float r2_a1 = -0    - m_ankat_angle_r2;
     float r2_a2 = -0    + m_ankat_angle_r2;
+
 
     lens.arc(m_f1, m_r1, m_r1 ,r1_a1, r1_a2);
     lens.close();
@@ -260,11 +278,8 @@
     lens.setStrokeColor(ofColor::black);
     lens.setFillColor(ofColor::grey);
     lens.close();
-
-    //relevant!
-
-    return;
   }
+
 
   void Lensbox::scale(float faktor)
   {

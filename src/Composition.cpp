@@ -50,7 +50,7 @@
 	}
 
 
-	void Composite::update()
+	void Composite::update() 
 	{
 		return;
 	}

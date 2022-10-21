@@ -29,33 +29,29 @@ public:
 	void update();
 	void draw();
 
-//---------------------------------------------
-	// ofxPanel gui;
-	//
-	// ofxFloatSlider angle_a;
-	// ofxVec3Slider plane;
-	// ofxIntSlider dist_b_m;
-	// ofxIntSlider dist_m_p;
-	// ofxIntSlider plane_w;
-	// ofxIntSlider plane_h;
-	//
-	// ofxIntSlider sim_img_w;
-	// ofxIntSlider sim_img_h;
-	// ofxIntSlider sim_sp_x;
-	// ofxIntSlider sim_sp_y;
-	// ofxIntSlider mirr_w;
-	// ofxIntSlider mirr_h;
-	// ofxIntSlider sim_mir_pos_x;
-	// ofxIntSlider sim_mir_pos_y;
-	// ofxLabel screenSize;
-	//
-	//
-	// ofParameterGroup parameters;
-  // ofParameter<float> r1;
-  // ofParameter<float> r2;
-	//
-	// ofParameter<ofColor> color;
-	// ofxPanel gui;
+	void setup_gui();
+	void setup_lens();
+
+	void load_lens_parameters(int lens_nmbr);
+	void change_lens_parameters(std::string label_in);
+
+
+	void onToggleEvent(ofxDatGuiToggleEvent e);
+	void onSliderEvent(ofxDatGuiSliderEvent e);
+	void onButtonEvent(ofxDatGuiButtonEvent e);
+
+
+	void keyPressed(int key);
+	void keyReleased(int key);
+	void mouseMoved(int x, int y );
+	void mouseDragged(int x, int y, int button);
+	void mousePressed(int x, int y, int button);
+	void mouseReleased(int x, int y, int button);
+	void mouseEntered(int x, int y);
+	void mouseExited(int x, int y);
+	void windowResized(int w, int h);
+	void dragEvent(ofDragInfo dragInfo);
+	void gotMessage(ofMessage msg);
 
 
 	//-----Information holding struct----------------------------------------
@@ -66,7 +62,7 @@ public:
 	//------Containers for lenses---------------------------------------
 
 	std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
-	std::vector<std::shared_ptr<Shape>> m_lens_shapes;
+	std::vector<std::shared_ptr<Lensbox>> m_lens_shapes;
 
 
 };

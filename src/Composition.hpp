@@ -28,7 +28,7 @@ class Composite : public Shape
 
     void draw() const override;
 
-    void update() override;
+    void update()  override;
 
     /*
     void translate(glm::vec3 const& distance) override;
