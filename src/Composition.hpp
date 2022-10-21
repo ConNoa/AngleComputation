@@ -25,6 +25,11 @@ class Composite : public Shape
 
     //FUNKTIONEN-------------------------------------------------------------------------
     Hit intersect(Ray ray) const;
+
+    void draw() const override;
+
+    void update() override;
+
     /*
     void translate(glm::vec3 const& distance) override;
     void rotate(double angle, glm::vec3 const& point) override;
@@ -37,7 +42,7 @@ class Composite : public Shape
     void translate(glm::vec3 const& vec) override;
 
 
+    std::vector<std::shared_ptr<Shape>> m_shapes;
  private:
     std::string m_name;
-    std::vector<std::shared_ptr<Shape>> m_shapes;
 };

@@ -47,6 +47,7 @@ public:
 
 
 	std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
+	std::vector<std::shared_ptr<Shape>> m_lens_shapes;
 
 
 };

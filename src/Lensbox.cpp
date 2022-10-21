@@ -172,6 +172,85 @@
     return boxhit;
   }
   //
+
+  void Lensbox::draw() const
+  {
+    lens.draw();
+    draw_construction();
+    return;
+  }
+
+
+  void Lensbox::draw_construction() const {
+    ofBeginShape();
+
+      ofSetColor(0, 0, 255);
+      ofFill();
+      // ofDrawCircle(o_x, o_y, o_z, 3);
+      ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+      ofDrawLine(m_O_d1, m_O_d2);
+
+      ofSetCircleResolution(720);
+      ofNoFill();
+      ofSetColor(0,0, 250);
+      ofDrawCircle(m_f1, 3);
+      ofDrawCircle(m_f1, m_r1);
+      //ofDrawCircle(f1, r1_);
+      ofSetColor(255,0,0);
+      ofDrawCircle(m_f2, 3);
+      ofDrawCircle(m_f2, m_r2);
+    ofEndShape(false);
+
+  }
+
+  void Lensbox::update()
+  {
+
+    //relevant?
+    //Top and BottomPoints von äußerem Linsendiameter
+    m_O_d1 = NULLPUNKT+m_orig+m_trans_vec;
+    m_O_d1.y = m_O_d1.y+ m_diameter/2;
+
+    m_O_d2 = NULLPUNKT+m_orig+m_trans_vec;
+    m_O_d2.y = m_O_d2.y- m_diameter/2;
+
+    m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
+    //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
+    m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
+
+    m_f1 = NULLPUNKT+m_orig+m_trans_vec;
+    m_f1.x = m_f1.x + m_ankat_r1 - m_width/2;
+    m_f2 = NULLPUNKT+m_orig+m_trans_vec;
+    m_f2.x = m_f2.x + m_ankat_r2 + m_width/2;
+
+    m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
+    float r1_a1 = -180  - m_ankat_angle_r1;
+    float r1_a2 = -180  + m_ankat_angle_r1;
+
+    m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
+    float r2_a1 = -0    - m_ankat_angle_r2;
+    float r2_a2 = -0    + m_ankat_angle_r2;
+
+    lens.arc(m_f1, m_r1, m_r1 ,r1_a1, r1_a2);
+    lens.close();
+    lens.arc(m_f2, m_r2, m_r2, r2_a1, r2_a2);
+    lens.close();
+
+    glm::vec3 pos_lrect = NULLPUNKT+m_orig+m_trans_vec;     //Position des Rechtecks (dicker Glasteil in der Linse)
+    pos_lrect.x = pos_lrect.x-m_width/2;
+    pos_lrect.y = pos_lrect.y-m_diameter/2;
+    lens.rectangle(pos_lrect.x, pos_lrect.y, m_width, m_diameter);
+    lens.setCircleResolution(720);
+    lens.setStrokeWidth(1);
+    lens.setStrokeColor(ofColor::black);
+    lens.setFillColor(ofColor::grey);
+    lens.close();
+
+    //relevant!
+
+    return;
+  }
+
   void Lensbox::scale(float faktor)
   {
     //Skaliere von min ausgehend!
@@ -182,11 +261,33 @@
 
   void Lensbox::translate(glm::vec3 const& vec)
     {
-      m_min+=vec;
-      m_max+=vec;
+      m_trans_vec = vec;
+      //update();
+
     }
 
   void Lensbox::rotate(float angle,glm::vec3 const& vec)
   {
     //NOT YET IMPLEMENTED
+  }
+
+
+  float Lensbox::compute_lens_angle(float radius_ , float diameter_lens_){
+    float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
+    glm::vec3 f_ursp = glm::vec3{0,0,0};
+    glm::vec3 l_ursp = f_ursp;
+    l_ursp.x = radius_;
+
+    glm::vec3 l_edge = f_ursp;
+    l_edge.x = lr_x_atd;
+    l_edge.y = diameter_lens_/2;
+    glm::vec3 refx = glm::vec3{1,0,0};
+
+    l_ursp = normalize(l_ursp);
+    l_edge = normalize(l_edge);
+    float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
+    // std::cout << "compute angle"<< std::endl;
+    // std::cout << angle_<< std::endl;
+
+    return angle_;
   }

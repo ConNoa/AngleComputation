@@ -20,13 +20,15 @@ public:
   virtual ~Shape();
 
   //FUNKTIONEN------------------------------------------------------------------------
-
-  virtual std::ostream& print(std::ostream& os) const;
-  virtual Hit intersect(Ray ray) const = 0;
-
   std::string name() const;
   std::shared_ptr<Material> material() const;
 
+  virtual std::ostream& print(std::ostream& os) const;
+  virtual Hit intersect(Ray ray) const = 0;
+  virtual void draw() const = 0;
+
+
+  virtual void update() = 0;
 
   virtual void scale(float faktor) = 0;
   virtual void rotate(float angle,glm::vec3 const& vec) = 0;

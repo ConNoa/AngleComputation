@@ -44,6 +44,18 @@
 		return hit;
 	}
 
+	void Composite::draw() const
+	{
+		return;
+	}
+
+
+	void Composite::update()
+	{
+		return;
+	}
+
+
 	void Composite::scale(float faktor)
 	  {
 	    for( auto &i : m_shapes)

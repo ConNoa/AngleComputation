@@ -62,8 +62,8 @@ lens2 = Lens(600, 200, 0 ,  200,  175, 160, 1.46f,   10);
 
 
 
-vec3    orig_in{33.0f, 66.0f, 99.0f};
-float   dia_in = 150.0f;
+vec3    orig_in{500.0f, 500.0f, 0.0f};
+float   dia_in = 350.0f;
 float   width_in = 5.0f;
 float   r1_in   = 400.0f;
 float   r2_in   = 500.0f;
@@ -72,25 +72,34 @@ float   n_in    = 1.3456789f;
 
 
 std::shared_ptr<Shape> new_lens_box = std::make_shared<Lensbox>(orig_in, dia_in, width_in, r1_in, r2_in, n_in);
-
-// tmpcomp.insert(std::pair<std::string, shape_pointer>(box->name(), box));
-
-m_composite= std::make_shared<Composite>("my_Lens_composition");
-
-
 std::cout<< "This is the new created LensBox: [ "<< endl;
 new_lens_box->print(std::cout);
 std::cout<< " ]. " <<std::endl;
 
-// m_composite->add(new_lens_box);
+
+m_composite= std::make_shared<Composite>("my_Lens_composition");
 m_composite->add(new_lens_box);
+std::cout<< "Composite added" <<std::endl;
+
+vec3    movevec{400.0f, 000.0f, 0.0f};
+new_lens_box->translate(movevec);
 
 
-std::cout<< "composit added" <<std::endl;
+m_lens_shapes.push_back(new_lens_box);
+
+std::cout<< "Shape added to Vector of Lensshapes" <<std::endl;
+
+
+for(auto it : m_lens_shapes){
+  //    it->print(std::cout);
+     it->update();
+}
+
 }
 
 
 void LensApp::update(){
+
 
 
 return;
@@ -100,10 +109,15 @@ return;
 
 void LensApp::draw(){
 
+  for(auto it : m_lens_shapes){
+    //    it->print(std::cout);
+       it->draw();
+  }
+
+  // test_lens.draw();
+  // lens2.draw();
 
 
-  test_lens.draw();
-  lens2.draw();
   //test_lens.print();
 
 return;
