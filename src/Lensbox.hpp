@@ -11,11 +11,27 @@
 #include "hit.hpp"
 
 class Lensbox : public Shape{
+
+// Erläuterungen:
+// Linsen sind unterschiedlich geschliffenen.
+// 1 konvex
+// 2 konkav
+// 3 plan
+//
+//
+//
+
+
+
+
+
+
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lensbox();
   Lensbox(glm::vec3 const& min, glm::vec3 const& max);
   Lensbox(glm::vec3 const& orig, float diameter, float width, float r1, float r2, float n);
+  Lensbox(glm::vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n);
   Lensbox(std::string const& name, std::shared_ptr<Material> mat, glm::vec3 const& min, glm::vec3 const& max);
   ~Lensbox()override;
 
@@ -81,6 +97,9 @@ private:
 
   glm::vec3 NULLPUNKT {0, 0, 0};
   glm::vec3 m_trans_vec {0, 0, 0};
+
+  int     m_type_r1;
+  int     m_type_r2;
 
 
 };

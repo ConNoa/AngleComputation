@@ -64,9 +64,9 @@ lens2 = Lens(600, 200, 0 ,  200,  175, 160, 1.46f,   10);
 
 vec3    orig_in{500.0f, 500.0f, 0.0f};
 float   dia_in = 350.0f;
-float   width_in = 5.0f;
-float   r1_in   = 400.0f;
-float   r2_in   = 500.0f;
+float   width_in = 250.0f;
+float   r1_in   =  200.0f;
+float   r2_in   = 200.0f;
 float   n_in    = 1.3456789f;
 
 

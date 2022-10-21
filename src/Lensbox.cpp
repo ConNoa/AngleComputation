@@ -27,10 +27,25 @@
   m_orig {orig},
   m_diameter {diameter},
   m_width {width},
+  m_type_r1 {1},
   m_r1 {r1},
+  m_type_r2 {1},
   m_r2 {r2},
   m_n {n}{}
 
+  // Constructor for LensSystem
+  Lensbox::Lensbox(glm::vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
+  Shape {"Lensbox",{}},
+  m_min {0.0f, 0.0f, 0.0f},
+  m_max {1.0f, 1.0f, 1.0f},
+  m_orig {orig},
+  m_diameter {diameter},
+  m_width {width},
+  m_type_r1 {t_r1},
+  m_r1 {r1},
+  m_type_r2 {t_r2},
+  m_r2 {r2},
+  m_n {n}{}
 
   // Custom 3
   Lensbox::Lensbox(std::string const& name, std::shared_ptr<Material> mat, glm::vec3 const& min, glm::vec3 const& max) :
