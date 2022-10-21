@@ -11,6 +11,7 @@
 #include "Beam.hpp"
 #include <glm/gtx/intersect.hpp>
 #include "LensApp.hpp"
+#include "State.hpp"
 
 
 // #include "attributes.hpp"
@@ -121,6 +122,7 @@ class ofApp : public ofBaseApp{
 
 		shared_ptr<LensApp> lenses;
 
+		shared_ptr<State> shrd;
 
 
 

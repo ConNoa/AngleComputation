@@ -20,12 +20,6 @@ class Lensbox : public Shape{
 //
 //
 //
-
-
-
-
-
-
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lensbox();
