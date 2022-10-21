@@ -55,10 +55,10 @@ test_lens = Lens(600, 600, 0 ,  300,  175, 160, 1.46f,   50);
 lens2 = Lens(600, 200, 0 ,  200,  175, 160, 1.46f,   10);
 
 
-    test_lens.print();
+    // test_lens.print();
     test_lens.setup();
     lens2.setup();
-    test_lens.print();
+    // test_lens.print();
 
 
 
@@ -75,14 +75,18 @@ std::shared_ptr<Shape> new_lens_box = std::make_shared<Lensbox>(orig_in, dia_in,
 
 // tmpcomp.insert(std::pair<std::string, shape_pointer>(box->name(), box));
 
+m_composite= std::make_shared<Composite>("my_Lens_composition");
 
-//m_composite->add(new_lens_box);
 
 std::cout<< "This is the new created LensBox: [ "<< endl;
 new_lens_box->print(std::cout);
 std::cout<< " ]. " <<std::endl;
 
+// m_composite->add(new_lens_box);
+m_composite->add(new_lens_box);
 
+
+std::cout<< "composit added" <<std::endl;
 }
 
 

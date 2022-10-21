@@ -2,10 +2,10 @@
 
 
 Lens::Lens() {
-    std::cout << "Lens is being created" << std::endl;
+    // std::cout << "Lens is being created" << std::endl;
 }
 Lens::~Lens() {
-    std::cout << "Lens is being deleted" << std::endl;
+    // std::cout << "Lens is being deleted" << std::endl;
 }
 Lens::Lens(int orig_inx, int orig_iny, int orig_inz, float d_in, float r1_in, float r2_in, float n_in, float breite_in):
         o_x(orig_inx),

@@ -21,18 +21,18 @@ void ofApp::setup(){
   ray_o_l = 400;
   image_dis = {0, 550, 0};
   image_le = {192, 0, 144};
-  cout << "mirror_n_ " << mirror_n_ << endl;
-  cout << "mirror_n " << mirror_n << endl;
+  // cout << "mirror_n_ " << mirror_n_ << endl;
+  // cout << "mirror_n " << mirror_n << endl;
   mirror_n = normalize(mirror_n);
   mirror_n_ = normalize(mirror_n_);
   float angle_mir = orientedAngle((mirror_n_), (mirror_n), {1,0,0});
-  cout << "angle mir " << angle_mir << endl;
+  // cout << "angle mir " << angle_mir << endl;
   ray_n = normalize(ray_n);
 
   bool inters = false;
   inters = glm::intersectRayPlane(ray_pos, ray_n, mirror_pos, mirror_n, intersectionDis);
   if (inters == true){
-    cout<< "intersection was true  " << inters << " idstance is "<< intersectionDis<< endl;
+    // cout<< "intersection was true  " << inters << " idstance is "<< intersectionDis<< endl;
   }
 
 
@@ -50,14 +50,14 @@ ray_e = ray_s +ray_n*float(dist_b_m);//
 mirror_n = normalize(mirror_n);
 mirror_re = v_r_90cw(mirror_n);
 //mirror_re = (mirror_n);
-cout << "mirror_n rot"<< mirror_re<< endl;
+// cout << "mirror_n rot"<< mirror_re<< endl;
 mirror_l_norm = sqrt(mirror_re[0]*mirror_re[0]+mirror_re[1]*mirror_re[1]);
-cout << "mirror_l_norm "<< mirror_l_norm<< endl;
+// cout << "mirror_l_norm "<< mirror_l_norm<< endl;
 mirror_re = mirror_re*mirror_le/2+ray_e;
 mirror_li = v_r_90ccw(mirror_n)*mirror_le/2+ray_e;
 //mirror_li = (mirror_n)*mirror_le/2+ray_e;
-cout << "mirror_li "<< mirror_li<< endl;
-cout << "mirror_re "<< mirror_re<< endl;
+// cout << "mirror_li "<< mirror_li<< endl;
+// cout << "mirror_re "<< mirror_re<< endl;
 mirror_n_draw = mirror_n*mirror_n_le+ray_e;
 image_dis = float(dist_m_p)+ray_e;
 image_plane_s = image_dis-image_le/2;
@@ -68,7 +68,7 @@ bool intersection = false;
 vec3 plane_normal = {0, -1, 0};
 intersection = glm::intersectRayPlane(ray_e, normalize(reflect(ray_n, mirror_n)), image_plane_s, plane_normal, intersectionDistance);
 if (intersection == true){
-    cout<< "intersection was true  " << intersection << " idstance is "<< intersectionDistance<< endl;
+    // cout<< "intersection was true  " << intersection << " idstance is "<< intersectionDistance<< endl;
   }
 
 ray_o = normalize(reflect(ray_n, mirror_n))*intersectionDistance+ray_e; //*ray_o_l;

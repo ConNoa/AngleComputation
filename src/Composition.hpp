@@ -1,14 +1,15 @@
 #pragma once
 
 #include <cmath>
-// #include <catch.hpp>
+#include <catch.hpp>
 #include <algorithm>
 #include <memory>
 #include <string>
 #include <vector>
-
+#include "shape.hpp"
 #include "Lensbox.hpp"
 // #include "sphere.hpp"
+
 #include "ray.hpp"
 #include "hit.hpp"
 
