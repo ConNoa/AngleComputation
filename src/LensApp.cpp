@@ -64,9 +64,9 @@ void LensApp::setup_gui(){
     shrd->s_type_r2.set("s_type_r2", 1, 1, 3);
     shrd->s_r2.set("s_r2", 94.36, 0, 2000);
     shrd->s_n.set("s_n", 1.3456789f, 1, 3);
-    shrd->s_show_constr_lines.set(false);
-    shrd->show_rays.set(false);
-    shrd->show_focus_etc.set(false);
+    shrd->s_show_constr_lines.set(true);
+    shrd->show_rays.set(true);
+    shrd->show_focus_etc.set(true);
     shrd->select_lens.set("Select Lens", 0, 0, 5);
     shrd->store_lens.set(false);
 

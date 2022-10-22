@@ -107,10 +107,10 @@ public:
   float   m_D2;
 
 
-  bool    m_show_constr_lines = false;
+  bool    m_show_constr_lines = true;
   bool    m_act_manipulated = false;
 
-  bool    m_draw_normals = false;
+  bool    m_draw_normals = true;
 private:
   vec3 m_min;
   vec3 m_max;

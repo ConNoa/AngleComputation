@@ -164,7 +164,7 @@
 
    */
   Hit Lensbox::intersect(Ray const &ray_in) const{
-    std::cout<< "Lensbox::intersect exec. "<< std::endl;
+    //std::cout<< "Lensbox::intersect exec. "<< std::endl;
 
     Hit l_hit;
 
@@ -182,7 +182,7 @@
 
     if(l_hit.m_hit == true) {
 
-      // std::cout<< "Lenshit! with ray_in "<< ray_in.m_orig << std::endl;
+      std::cout<< "Lenshit! with ray_in "<< ray_in.m_orig << std::endl;
       // std::cout << " At Pos 1 :"<< intsctPos1<< std::endl;
       // std::cout << " with Intersection-normal 1 :"<< intsctNrml1<< std::endl;
       // std::cout << " At Pos 2 :"<< intsctPos2<< std::endl;
