@@ -6,21 +6,6 @@ void LensApp::setup(){
 
     setup_gui();
 
-
-    // vec3    orig_in{500.0f, 500.0f, 0.0f};
-    // float   dia_in = 350.0f;
-    // float   width_in = 250.0f;
-    // float   r1_in   =  200.0f;
-    // float   r2_in   = 200.0f;
-    // float   n_in    = 1.3456789f;
-    //
-    //
-    //
-    // std::shared_ptr<Shape> new_lens_box = std::make_shared<Lensbox>(orig_in, dia_in, width_in, r1_in, r2_in, n_in);
-    // std::cout<< "This is the new created LensBox: [ "<< endl;
-    // new_lens_box->print(std::cout);
-    // std::cout<< " ]. " <<std::endl;
-    //
     //
     // m_composite= std::make_shared<Composite>("my_Lens_composition");
     // m_composite->add(new_lens_box);
@@ -29,23 +14,15 @@ void LensApp::setup(){
     // vec3    movevec{0.0f, 000.0f, 0.0f};
     // new_lens_box->translate(movevec);
     //
-    //
-    // m_lens_shapes.push_back(new_lens_box);
-    //
-    // std::cout<< "Shape added to Vector of Lensshapes" <<std::endl;
-    //
-    //
-    // for(auto it : m_lens_shapes){
-    //   //    it->print(std::cout);
-    //      it->update();
-    // }
+
+
     setup_lens();
     load_lens_parameters(shrd->select_lens);
-    for(auto it : m_lens_shapes){
-      //    it->print(std::cout);
-        it->update_path();
-    }
-    m_mems.update();
+    for(auto it : m_lens_shapes){it->update_path();}
+
+    m_mems.setup();
+
+
 
 }
 
@@ -63,13 +40,20 @@ void LensApp::draw(){
   }
   m_mems.draw();
 
+std::cout <<"---------------------------------------------"<< std::endl;
+  for(auto lens_it : m_lens_shapes){
+    for(auto ray_it : m_mems.m_mems_rays){
+      Hit temp_hit;
+      temp_hit = lens_it->intersect(ray_it);
+    }
+  }
   return;
 }
 
 void LensApp::setup_gui(){
     //-------------GÚI INTERFACE------------------------------------------------
     shrd->s_orig_x.set("s_orig_x", 800, 0, 1000);
-    shrd->s_orig_y.set("s_orig_y", 700, 0, 1000);
+    shrd->s_orig_y.set("s_orig_y", 700, 500, 900);
     shrd->s_orig_z.set("s_orig_z", 0, 0, 0);
     shrd->s_rot_z.set("s_rot_z", 0, 0, 360);
 
@@ -119,20 +103,6 @@ void LensApp::setup_gui(){
 }
 
 void LensApp::setup_lens(){
-  // vec3    orig_in{800.0f, 500.0f, 0.0f};
-  // float   dia_in = 350.0f;
-  // float   width_in = 0.0f;
-  // float   r1_in   =  200.0f;
-  // float   r2_in   = 200.0f;
-  // float   n_in    = 1.3456789f;
-  //
-  //
-  // std::shared_ptr<Lensbox> new_lens_box = std::make_shared<Lensbox>(orig_in, dia_in, width_in, r1_in, r2_in, n_in);
-  //    std::cout<< "This is the new created LensBox: [ "<< endl;
-  //    new_lens_box->print(std::cout);
-  //    std::cout<< " ]. " <<std::endl;
-  // new_lens_box->update();
-  // m_lens_shapes.push_back(new_lens_box);
 
   vec3 orig_pos;
   orig_pos.x = shrd->s_orig_x;

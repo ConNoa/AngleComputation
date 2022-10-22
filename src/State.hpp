@@ -3,8 +3,8 @@
 
 
 #include "ofMain.h"
-#include "ofxDatGui.h"
 #include "ofxGui.h"
+// #include "ofxDatGui.h"
 
 #include <memory>
 
@@ -33,11 +33,11 @@ ofParameter<float> s_r1;
 ofParameter<int> s_type_r2;
 ofParameter<float> s_r2;
 ofParameter<float> s_n;
-ofParameter<bool> s_show_constr_lines = false;
-ofParameter<bool> show_rays = false;
-ofParameter<bool> show_focus_etc = false;
+ofParameter<bool> s_show_constr_lines;
+ofParameter<bool> show_rays;
+ofParameter<bool> show_focus_etc;
 ofParameter<int> select_lens;
-ofParameter<bool> store_lens = false;
+ofParameter<bool> store_lens;
 
 /*
 >s_orig_x;
@@ -60,9 +60,9 @@ ofParameter<bool> store_lens = false;
 
 
 
-
-ofxLabel dim_monitor1;
-ofxLabel label;
+//
+// ofxLabel dim_monitor1;
+// ofxLabel label;
 
 //---------------------------------------------
 	// ofxPanel gui;

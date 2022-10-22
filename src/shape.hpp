@@ -24,7 +24,7 @@ public:
   std::shared_ptr<Material> material() const;
 
   virtual std::ostream& print(std::ostream& os) const;
-  virtual Hit intersect(Ray ray) const = 0;
+  virtual Hit intersect(Ray const &ray_in) const = 0;
   virtual void draw() const = 0;
 
 
