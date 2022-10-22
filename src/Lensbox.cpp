@@ -136,18 +136,18 @@
   Hit Lensbox::intersect(Ray ray) const{
     Hit boxhit;
 
-    double t1 = (m_min.x - ray.m_origin.x)*ray.m_inv_direction.x;
-    double t2 = (m_max.x - ray.m_origin.x)*ray.m_inv_direction.x;
+    double t1 = (m_min.x - ray.m_orig.x)*ray.m_inv_direction.x;
+    double t2 = (m_max.x - ray.m_orig.x)*ray.m_inv_direction.x;
     double tmin = std::min(t1, t2);
     double tmax = std::max(t1, t2);
 
-    t1 = (m_min.y - ray.m_origin.y)*ray.m_inv_direction.y;
-    t2 = (m_max.y - ray.m_origin.y)*ray.m_inv_direction.y;
+    t1 = (m_min.y - ray.m_orig.y)*ray.m_inv_direction.y;
+    t2 = (m_max.y - ray.m_orig.y)*ray.m_inv_direction.y;
     tmin = std::max(tmin, std::min(t1, t2));
     tmax = std::min(tmax, std::max(t1, t2));
 
-    t1 = (m_min.z - ray.m_origin.z)*ray.m_inv_direction.z;
-    t2 = (m_max.z - ray.m_origin.z)*ray.m_inv_direction.z;
+    t1 = (m_min.z - ray.m_orig.z)*ray.m_inv_direction.z;
+    t2 = (m_max.z - ray.m_orig.z)*ray.m_inv_direction.z;
     tmin = std::max(tmin, std::min(t1, t2));
     tmax = std::min(tmax, std::max(t1, t2));
 
@@ -163,7 +163,7 @@
 
         boxhit.m_point =
         glm::vec3{tmin*ray.m_direction.x, tmin*ray.m_direction.y, tmin*ray.m_direction.z}
-        +ray.m_origin;
+        +ray.m_orig;
 
         if ((boxhit.m_point.x)==Approx(m_max.x))
         {
@@ -228,8 +228,7 @@
 
   }
 
-  void Lensbox::update()
-  {
+  void Lensbox::update(){
 
     //relevant?
     //Top and BottomPoints von äußerem Linsendiameter

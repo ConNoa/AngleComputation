@@ -45,6 +45,7 @@ void LensApp::setup(){
       //    it->print(std::cout);
         it->update_path();
     }
+    m_mems.update();
 
 }
 

@@ -18,6 +18,7 @@
 #include "State.hpp"
 #include "lensefield.hpp"
 #include "Lens.hpp"
+#include "Mems.hpp"
 
 
 
@@ -58,6 +59,9 @@ public:
 
 
 	shared_ptr<State> shrd;
+
+
+	Mems m_mems;
 
 	//------Containers for lenses---------------------------------------
 
