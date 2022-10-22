@@ -43,6 +43,10 @@ public:
   std::ostream& print(std::ostream& os) const override;
   Hit intersect(Ray const &ray_in) const override;
 
+  float snells_law(float alpha_i, float n_i, float n_t) const;
+
+  vec3 compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in) const;
+
   void draw() const override;
   void draw_construction() const;
   void draw_focalpoint() const;
@@ -70,7 +74,7 @@ public:
   float m_r2;             //Radius der theoretischen Kugel der hinteren Linsenseite
 
   float m_n;              //Brechungsindex der Linse
-  float m_n_air;
+  float m_n_air = 1.000292f;
 
   vec3 m_center_d0;  //vorderer Scheitelpunkt der Linse
   vec3 m_center_d1;  //Linsendurchmesser vollständig vordere Linsenseite (manchmal auch H1 ?  Hauptpunkt)

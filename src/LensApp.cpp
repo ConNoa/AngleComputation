@@ -52,18 +52,18 @@ std::cout <<"---------------------------------------------"<< std::endl;
 
 void LensApp::setup_gui(){
     //-------------GÚI INTERFACE------------------------------------------------
-    shrd->s_orig_x.set("s_orig_x", 590, 0, 1000);
-    shrd->s_orig_y.set("s_orig_y", 684, 500, 900);
-    shrd->s_orig_z.set("s_orig_z", 0, 0, 0);
+    shrd->s_orig_x.set("s_orig_x", 680, 0, 1000);
+    shrd->s_orig_y.set("s_orig_y", 634, 500, 800);
+    shrd->s_orig_z.set("s_orig_z", 0, -600, 600);
     shrd->s_rot_z.set("s_rot_z", 0, 0, 360);
 
-    shrd->s_diameter.set("s_diameter", 182.66, 1, 600);
-    shrd->s_width.set("s_width", 0, 0, 25);
+    shrd->s_diameter.set("s_diameter", 521.44, 1, 600);
+    shrd->s_width.set("s_width", 50, 0, 100);
     shrd->s_type_r1.set("s_type_r1", 1, 1, 3);
-    shrd->s_r1.set("s_r1", 98.36, 0, 2000);
+    shrd->s_r1.set("s_r1", 459.02, 0, 1000);
     shrd->s_type_r2.set("s_type_r2", 1, 1, 3);
-    shrd->s_r2.set("s_r2", 94.36, 0, 2000);
-    shrd->s_n.set("s_n", 1.3456789f, 1, 3);
+    shrd->s_r2.set("s_r2", 442.62, 0, 1000);
+    shrd->s_n.set("s_n", 2.0f, 1, 3);
     shrd->s_show_constr_lines.set(true);
     shrd->show_rays.set(true);
     shrd->show_focus_etc.set(true);
@@ -77,7 +77,7 @@ void LensApp::setup_gui(){
 
     shrd->lens_attr_gui->addSlider(shrd-> s_orig_x);
     shrd->lens_attr_gui->addSlider(shrd-> s_orig_y);
-    //shrd->lens_attr_gui->addSlider(shrd-> s_orig_z);
+    shrd->lens_attr_gui->addSlider(shrd-> s_orig_z);
     shrd->lens_attr_gui->addSlider(shrd-> s_rot_z);
 
     shrd->lens_attr_gui->addSlider(shrd-> s_diameter);

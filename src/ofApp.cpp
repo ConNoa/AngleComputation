@@ -158,18 +158,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-
-
-
 	gui.draw();
-
-  // lf.draw();
-
-
   ofPushMatrix();
   ofNoFill();
-
     ofBeginShape();  //Beamer
       ofSetColor(255,255,255);
       ofDrawRectangle(beamer_pos[0], beamer_pos[1], beamer_size[0], beamer_size[1]*2);
@@ -182,7 +173,6 @@ void ofApp::draw(){
       ofDrawLine(ray_s, ray_e);
     ofEndShape();
 
-  //  ofTranslate(ray_e[0]-ray_s[0],ray_e[1]-ray_s[1], 0 );
     ofTranslate(ray_e-ray_s);
 
     ofBeginShape();   //Mirror + normal
@@ -236,23 +226,13 @@ void ofApp::draw(){
       ofDrawBox({0,0,0}, plane_w, 1, plane_h);
     ofEndShape();
 
-
-
-
   ofSetColor(255, 128 , 0);
   vec2 compangl = compute_angle_sampleray(smple_ray);
   ofDrawBitmapString(ofToString("Angle"), ofGetWidth(), 40);
   ofDrawBitmapString(ofToString(compangl), 0, 60);
-
   ofPopMatrix();
 
-
-
 }
-
-
-
-
 
 void ofApp::vector_reflect(){
   //Beam firstBeam = Beam((0,0,0),(0,0,1));

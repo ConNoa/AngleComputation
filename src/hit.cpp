@@ -31,11 +31,20 @@
 //FUNKTIOENNE----------------------------------------------------------------
 		void Hit::draw() const{
 
+
 			ofBeginShape();
-			ofSetColor(ofColor::black);
-			ofDrawLine(m_point-vec3{50, 0, 0}, m_point+vec3{50, 0, 0});
+
+			//Drawing horizontal Black Lines
+			// ofSetColor(ofColor::black);
+			// ofDrawLine(m_point-vec3{50, 0, 0}, m_point+vec3{50, 0, 0});
+			ofSetLineWidth(2);
+			//Drawing Normals
 			ofSetColor(75, 196, 213);
 			ofDrawArrow(m_point, m_point+m_normal*300, 3);
+			// ofSetColor(146, 21, 37);
+
+			ofDrawArrow(m_point, m_point-m_normal*300, 3);
+
 			ofEndShape();
 
 

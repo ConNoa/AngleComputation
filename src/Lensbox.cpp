@@ -182,11 +182,12 @@
 
     if(l_hit.m_hit == true) {
 
-      std::cout<< "Lenshit! with ray_in "<< ray_in.m_orig << std::endl;
-      // std::cout << " At Pos 1 :"<< intsctPos1<< std::endl;
-      // std::cout << " with Intersection-normal 1 :"<< intsctNrml1<< std::endl;
+      std::cout<< "Lenshit! with ray from [" << ray_in.m_orig << "]"<<std::endl;
+      std::cout << " At Pos 1 :"<< intsctPos1<< std::endl;
+      std::cout << " with Intersection-normal 1 :"<< intsctNrml1<< std::endl;
       // std::cout << " At Pos 2 :"<< intsctPos2<< std::endl;
       // std::cout << " with Intersection-normal 2 :"<< intsctNrml2<< std::endl;
+
 
       l_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
         intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
@@ -207,14 +208,91 @@
           l_hit.draw();
         }
       }
+      //Winkel zwischen eintreffendem Strahl und der Normalen der Oberfläche
+      float angle_ri_n = angle(-normalize(l_hit.m_normal), normalize(ray_in.m_direction))* (180.0/3.141592653589793238463);
+      std::cout << "Winkel rayincoming /  normale-hitpoint: " << angle_ri_n<< std::endl;
+      vec3 angle_i = compute_angle_sampleray(-ray_in.m_direction, l_hit.m_normal );
+      float angle_t_x = snells_law(angle_i.x, m_n_air, m_n);
+      float angle_t_z = snells_law(angle_i.z, m_n_air, m_n);
 
+      fmat4 transform_matrix = glm::rotate(angle_t_x, fvec3{1.0f, 0.0f, 0.0f});
+      //cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<endl;
+      // transform_matrix = glm::rotate(transform_matrix,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
+      // cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<endl;
+      fmat3 rot_mat_shrinked = fmat3(transform_matrix);
+      //cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<endl;
+      vec3 new_ray = (rot_mat_shrinked*-l_hit.m_normal);
+      ofBeginShape();
+
+      //Drawing horizontal Black Lines
+      // ofSetColor(ofColor::black);
+      // ofDrawLine(m_point-vec3{50, 0, 0}, m_point+vec3{50, 0, 0});
+      ofSetLineWidth(2);
+      //Drawing Normals
+      ofSetColor(227, 227, 80);
+      ofDrawArrow(l_hit.m_point, l_hit.m_point+new_ray*300, 3);
+      // ofSetColor(146, 21, 37);
+
+    //  ofDrawArrow(l_hit.m_point, l_hit.m_point-m_normal*300, 3);
+
+      ofEndShape();
+
+      cout<< "------------  [ "<< " ]  ------------------------------------------"<<endl;
     }
-
-
-
-
     return l_hit;
   }
+
+  float Lensbox::snells_law(float alpha_i, float n_i, float n_t)const {
+
+    float alpha_t = asin(sin(alpha_i)*n_i/n_t);
+    cout<<" Angle t ou is : "<< alpha_t << endl;
+    return alpha_t;
+  }
+
+
+
+
+  vec3 Lensbox::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
+
+    cout<< "::  compute_angle_sampleray() : "  <<endl;
+
+
+    vec3 angles;
+    vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
+    vec3 muly_vec = {0,1,1};
+//extra
+    vec3 mulz_vec = {1,0,1};
+
+    vec3 sr_x = normalize(ray_in*mulx_vec);
+    vec3 sr_y = normalize(ray_in*muly_vec);
+//extra
+    vec3 sr_z = normalize(ray_in*mulz_vec);
+
+
+    vec3 ray_v_normale = {1,0,0};
+
+    vec3 rotrefy = {1,0,0};
+    vec3 rotrefx = {0,0,1};
+    vec3 rotrefz = {0,1,0};
+
+
+    float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
+    float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
+    float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
+
+
+    angles[0] = r_angle_x* 180.0/3.141592653589793238463;
+    angles[1] = r_angle_y* 180.0/3.141592653589793238463;
+    angles[2] = r_angle_z* 180.0/3.141592653589793238463;
+
+    cout<< " Angles zwischen ray ["<< ray_in <<"] und der Normalen ["<<normal_in <<"]des Hitpunktes sind für x, y, z["
+    << angles <<" ]"  <<endl;
+    return  angles;
+  }
+
+
+
+
 
   void Lensbox::draw() const{
     lens.draw();
@@ -304,11 +382,8 @@
     m_f2 = m_center_d3;
     m_f2.x -= 1/m_D2;
 
-
-
-
-    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 << "/n "<< std::endl;
+    // std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
+    // std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
 
     return;
   }
