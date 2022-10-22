@@ -52,17 +52,17 @@ std::cout <<"---------------------------------------------"<< std::endl;
 
 void LensApp::setup_gui(){
     //-------------GÚI INTERFACE------------------------------------------------
-    shrd->s_orig_x.set("s_orig_x", 800, 0, 1000);
-    shrd->s_orig_y.set("s_orig_y", 700, 500, 900);
+    shrd->s_orig_x.set("s_orig_x", 590, 0, 1000);
+    shrd->s_orig_y.set("s_orig_y", 684, 500, 900);
     shrd->s_orig_z.set("s_orig_z", 0, 0, 0);
     shrd->s_rot_z.set("s_rot_z", 0, 0, 360);
 
-    shrd->s_diameter.set("s_diameter", 350, 1, 600);
+    shrd->s_diameter.set("s_diameter", 182.66, 1, 600);
     shrd->s_width.set("s_width", 0, 0, 25);
     shrd->s_type_r1.set("s_type_r1", 1, 1, 3);
-    shrd->s_r1.set("s_r1", 250, 0, 2000);
+    shrd->s_r1.set("s_r1", 98.36, 0, 2000);
     shrd->s_type_r2.set("s_type_r2", 1, 1, 3);
-    shrd->s_r2.set("s_r2", 250, 0, 2000);
+    shrd->s_r2.set("s_r2", 94.36, 0, 2000);
     shrd->s_n.set("s_n", 1.3456789f, 1, 3);
     shrd->s_show_constr_lines.set(false);
     shrd->show_rays.set(false);
@@ -89,7 +89,7 @@ void LensApp::setup_gui(){
     shrd->lens_attr_gui->addSlider(shrd-> s_n);
 
     shrd->lens_attr_gui->addToggle("Show Construction Lines", shrd->s_show_constr_lines);
-    shrd->lens_attr_gui->addToggle("Show Rays", shrd->show_rays);
+    shrd->lens_attr_gui->addToggle("Show Normals", shrd->show_rays);
     shrd->lens_attr_gui->addToggle("Show Focus etc", shrd->show_focus_etc);
     shrd->lens_attr_gui->addSlider(shrd-> select_lens);
     shrd->lens_attr_gui->addToggle("Store Lens", shrd->store_lens);
@@ -202,6 +202,14 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
       for(auto it : m_lens_shapes){
         //    it->print(std::cout);
           it->m_show_constr_lines = shrd->s_show_constr_lines;
+      }
+    }
+    if (e.target->getLabel() == "Show Normals"){
+      shrd->show_rays = e.checked;
+      //m_lens_shapes[shrd->select_lens]
+      for(auto it : m_lens_shapes){
+        //    it->print(std::cout);
+          it->m_draw_normals = shrd->show_rays;
       }
     }
 

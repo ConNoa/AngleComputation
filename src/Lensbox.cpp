@@ -171,8 +171,6 @@
     vec3 point0 = ray_in.m_orig;
     vec3 point1 = ray_in.m_orig + normalize(ray_in.m_direction)*100000;
 
-    float m_radius = m_diameter/2;
-
     vec3 intsctPos1 = vec3{0,0,0};
     vec3 intsctNrml1 = vec3{0,0,0};
     vec3 intsctPos2 = vec3{0,0,0};
@@ -197,13 +195,17 @@
         l_hit.m_point = intsctPos1;
         l_hit.m_normal = intsctNrml1;
         l_hit.m_distance = length(ray_in.m_orig - intsctPos1);
-        l_hit.draw();
+        if(m_draw_normals){
+          l_hit.draw();
+        }
       }
       else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
         l_hit.m_point = intsctPos2;
         l_hit.m_normal = intsctNrml2;
         l_hit.m_distance = length(ray_in.m_orig - intsctPos2);
-        l_hit.draw();
+        if(m_draw_normals){
+          l_hit.draw();
+        }
       }
 
     }
@@ -218,13 +220,13 @@
     lens.draw();
     if(m_show_constr_lines == true || m_act_manipulated == true){
       draw_construction();
+      draw_focalpoint();
     }
     return;
   }
 
   void Lensbox::draw_construction() const {
     ofBeginShape();
-
       ofSetColor(0, 0, 255);
       ofFill();
       // ofDrawCircle(o_x, o_y, o_z, 3);
@@ -245,13 +247,25 @@
       ofSetColor(40,40,40);
       ofDrawRectangle(m_orig, m_width, m_diameter);
       ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-
-
     ofEndShape(false);
+  }
 
+  void Lensbox::draw_focalpoint() const {
+    ofBeginShape();
+      ofSetColor(86, 174, 53);
+      ofFill();
+      // ofDrawCircle(o_x, o_y, o_z, 3);
+      ofDrawCircle(m_center_d0, 3);
+      ofDrawCircle(m_center_d3, 3);
+
+      ofDrawCircle(m_f1, 3);
+      ofDrawCircle(m_f2, 3);
+    ofEndShape();
   }
 
   void Lensbox::update(){
+
+    m_radius = m_diameter/2;
 
     //relevant?
     //Top and BottomPoints von äußerem Linsendiameter
@@ -270,6 +284,7 @@
     m_center_r2 = NULLPUNKT+m_orig;
     m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
 
+
     m_center_d1 = m_orig;
     m_center_d1.x = m_center_d1.x-m_width/2;
     m_center_d2 = m_orig;
@@ -277,6 +292,20 @@
 
     m_D1 = (m_n-m_n_air)/m_r1;
     m_D2 = (m_n_air-m_n)/m_r2;
+
+    m_center_d0 = m_center_r1;
+    m_center_d0.x = m_center_d0.x-m_r1;
+
+    m_center_d3 = m_center_r2;
+    m_center_d3.x = m_center_d3.x+m_r2;
+
+    m_f1 = m_center_d0;
+    m_f1.x -= 1/m_D1;
+    m_f2 = m_center_d3;
+    m_f2.x -= 1/m_D2;
+
+
+
 
     std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
     std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 << "/n "<< std::endl;

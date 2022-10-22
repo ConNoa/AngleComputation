@@ -45,6 +45,7 @@ public:
 
   void draw() const override;
   void draw_construction() const;
+  void draw_focalpoint() const;
 
   void update() override;
   void update_path();
@@ -57,8 +58,10 @@ public:
   float compute_lens_angle(float radius_ , float diameter_lens_);
 
 
-  vec3 m_orig;       //Origin -  Mittelpunkt der Linse
+  vec3  m_orig;           //Origin -  Mittelpunkt der Linse
   float m_diameter;       //Real-Durchmesser der Linse
+  float m_radius;         //Radius errechnet aus Realdurchmesser der Linse
+
   float m_width;          //Breite des Glaskörpers zwischen geschliffenen Linsenseiten
 
   float m_rot_z;          //Rotation der Linse um die Z-Achse
@@ -82,6 +85,7 @@ public:
 
 
   // variables for draw and visualisation
+
   ofPath lens;
 
   vec3 m_O_d1;       //Top Point for outerLensediameter  für Mittelachse
@@ -106,7 +110,7 @@ public:
   bool    m_show_constr_lines = false;
   bool    m_act_manipulated = false;
 
-
+  bool    m_draw_normals = false;
 private:
   vec3 m_min;
   vec3 m_max;
