@@ -149,13 +149,14 @@ obj/linux64/Release/src/Composition.o: \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
- /home/pixel/OF/addons/ofxGui/src/ofxGui.h \
- /home/pixel/OF/addons/ofxGui/src/ofxToggle.h \
- /home/pixel/OF/libs/openFrameworks/types/ofParameter.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
+ /home/pixel/OF/libs/openFrameworks/ofMain.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h \
  /home/pixel/OF/libs/tess2/include/tesselator.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
  /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h \
  /home/pixel/OF/libs/openFrameworks/events/ofEvent.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofTimer.h \
@@ -165,6 +166,11 @@ obj/linux64/Release/src/Composition.o: \
  /home/pixel/OF/libs/utf8/include/utf8/core.h \
  /home/pixel/OF/libs/utf8/include/utf8/unchecked.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofThread.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofJson.h \
+ /home/pixel/OF/libs/json/include/json.hpp \
+ /home/pixel/OF/libs/openFrameworks/types/ofParameter.h \
  /home/pixel/OF/libs/openFrameworks/types/ofPoint.h \
  /home/pixel/OF/libs/openFrameworks/math/ofVec3f.h \
  /home/pixel/OF/libs/openFrameworks/math/ofVec2f.h \
@@ -172,21 +178,20 @@ obj/linux64/Release/src/Composition.o: \
  /home/pixel/OF/libs/openFrameworks/math/ofVec4f.h \
  /home/pixel/OF/libs/openFrameworks/types/ofRectangle.h \
  /home/pixel/OF/libs/openFrameworks/types/ofColor.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
- /home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofTrueTypeFont.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofPath.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.inl \
+ /home/pixel/OF/libs/openFrameworks/utils/ofXml.h \
+ /home/pixel/OF/libs/pugixml/include/pugixml.hpp \
+ /home/pixel/OF/libs/pugixml/include/pugiconfig.hpp \
  /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h \
  /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h \
- /home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofTypes.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h \
+ /home/pixel/OF/libs/openFrameworks/math/ofMath.h \
  /home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/../detail/setup.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl \
  /home/pixel/OF/libs/glm/include/glm/gtc/constants.inl \
+ /home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h \
  /home/pixel/OF/libs/glm/include/glm/gtc/matrix_transform.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/matrix_projection.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/matrix_projection.inl \
@@ -263,145 +268,60 @@ obj/linux64/Release/src/Composition.o: \
  /home/pixel/OF/libs/openFrameworks/math/ofMatrix3x3.h \
  /home/pixel/OF/libs/openFrameworks/math/ofMatrix4x4.h \
  /home/pixel/OF/libs/openFrameworks/math/ofQuaternion.h \
+ /home/pixel/OF/libs/openFrameworks/communication/ofSerial.h \
+ /home/pixel/OF/libs/openFrameworks/communication/ofArduino.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofFbo.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofTexture.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofGLBaseTypes.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofGLRenderer.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.inl \
  /home/pixel/OF/libs/openFrameworks/app/ofAppRunner.h \
  /home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h \
  /home/pixel/OF/libs/openFrameworks/app/ofMainLoop.h \
- /home/pixel/OF/libs/openFrameworks/math/ofMath.h \
- /home/pixel/OF/libs/openFrameworks/gl/ofVboMesh.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h \
+ /home/pixel/OF/libs/openFrameworks/3d/of3dPrimitives.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofMesh.h \
  /home/pixel/OF/libs/openFrameworks/gl/ofGLUtils.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofMesh.inl \
+ /home/pixel/OF/libs/openFrameworks/3d/ofNode.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofBitmapFont.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofPixels.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofGraphics.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofMatrixStack.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofPath.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofVboMesh.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofMesh.h \
  /home/pixel/OF/libs/openFrameworks/gl/ofVbo.h \
  /home/pixel/OF/libs/openFrameworks/gl/ofBufferObject.h \
  /home/pixel/OF/libs/openFrameworks/graphics/ofTessellator.h \
- /home/pixel/OF/libs/openFrameworks/gl/ofTexture.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofPixels.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofBitmapFont.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofGraphics.h \
- /home/pixel/OF/addons/ofxGui/src/ofxSlider.h \
- /home/pixel/OF/addons/ofxGui/src/ofxInputField.h \
- /home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h \
- /home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h \
- /home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h \
- /home/pixel/OF/addons/ofxGui/src/ofxButton.h \
- /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
- /home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h \
- /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
- /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofLight.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofMaterial.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofShader.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofCairoRenderer.h \
+ /usr/include/cairo/cairo.h /usr/include/cairo/cairo-version.h \
+ /usr/include/cairo/cairo-features.h \
+ /usr/include/cairo/cairo-deprecated.h \
  /home/pixel/OF/libs/openFrameworks/graphics/ofImage.h \
- /home/pixel/OF/libs/openFrameworks/gl/ofGLBaseTypes.h \
- /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
- /usr/local/include/opencv4/opencv2/opencv.hpp \
- /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
- /usr/local/include/opencv4/opencv2/core.hpp \
- /usr/local/include/opencv4/opencv2/core/cvdef.h \
- /usr/local/include/opencv4/opencv2/core/version.hpp \
- /usr/local/include/opencv4/opencv2/core/hal/interface.h \
- /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
- /usr/local/include/opencv4/opencv2/core/base.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
- /usr/local/include/opencv4/opencv2/core/neon_utils.hpp \
- /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp \
- /usr/local/include/opencv4/opencv2/core/check.hpp \
- /usr/local/include/opencv4/opencv2/core/traits.hpp \
- /usr/local/include/opencv4/opencv2/core/matx.hpp \
- /usr/local/include/opencv4/opencv2/core/saturate.hpp \
- /usr/local/include/opencv4/opencv2/core/fast_math.hpp \
- /usr/local/include/opencv4/opencv2/core/types.hpp \
- /usr/local/include/opencv4/opencv2/core/mat.hpp \
- /usr/local/include/opencv4/opencv2/core/bufferpool.hpp \
- /usr/local/include/opencv4/opencv2/core/mat.inl.hpp \
- /usr/local/include/opencv4/opencv2/core/persistence.hpp \
- /usr/local/include/opencv4/opencv2/core/operations.hpp \
- /usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp \
- /usr/local/include/opencv4/opencv2/core/utility.hpp \
- /usr/local/include/opencv4/opencv2/core/optim.hpp \
- /usr/local/include/opencv4/opencv2/core/ovx.hpp \
- /usr/local/include/opencv4/opencv2/core/cvdef.h \
- /usr/local/include/opencv4/opencv2/calib3d.hpp \
- /usr/local/include/opencv4/opencv2/features2d.hpp \
- /usr/local/include/opencv4/opencv2/flann/miniflann.hpp \
- /usr/local/include/opencv4/opencv2/flann/defines.h \
- /usr/local/include/opencv4/opencv2/flann/config.h \
- /usr/local/include/opencv4/opencv2/core/affine.hpp \
- /usr/local/include/opencv4/opencv2/dnn.hpp \
- /usr/local/include/opencv4/opencv2/dnn/dnn.hpp \
- /usr/local/include/opencv4/opencv2/core/async.hpp \
- /usr/local/include/opencv4/opencv2/dnn/../dnn/version.hpp \
- /usr/local/include/opencv4/opencv2/dnn/dict.hpp \
- /usr/local/include/opencv4/opencv2/dnn/layer.hpp \
- /usr/local/include/opencv4/opencv2/dnn/dnn.inl.hpp \
- /usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
- /usr/local/include/opencv4/opencv2/dnn/utils/../dnn.hpp \
- /usr/local/include/opencv4/opencv2/flann.hpp \
- /usr/local/include/opencv4/opencv2/flann/flann_base.hpp \
- /usr/local/include/opencv4/opencv2/flann/general.h \
- /usr/local/include/opencv4/opencv2/flann/matrix.h \
- /usr/local/include/opencv4/opencv2/flann/params.h \
- /usr/local/include/opencv4/opencv2/flann/any.h \
- /usr/local/include/opencv4/opencv2/flann/defines.h \
- /usr/local/include/opencv4/opencv2/flann/saving.h \
- /usr/local/include/opencv4/opencv2/flann/nn_index.h \
- /usr/local/include/opencv4/opencv2/flann/result_set.h \
- /usr/local/include/opencv4/opencv2/flann/all_indices.h \
- /usr/local/include/opencv4/opencv2/flann/kdtree_index.h \
- /usr/local/include/opencv4/opencv2/flann/dynamic_bitset.h \
- /usr/local/include/opencv4/opencv2/flann/dist.h \
- /usr/local/include/opencv4/opencv2/flann/heap.h \
- /usr/local/include/opencv4/opencv2/flann/allocator.h \
- /usr/local/include/opencv4/opencv2/flann/random.h \
- /usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h \
- /usr/local/include/opencv4/opencv2/flann/kmeans_index.h \
- /usr/local/include/opencv4/opencv2/flann/logger.h \
- /usr/local/include/opencv4/opencv2/flann/composite_index.h \
- /usr/local/include/opencv4/opencv2/flann/linear_index.h \
- /usr/local/include/opencv4/opencv2/flann/hierarchical_clustering_index.h \
- /usr/local/include/opencv4/opencv2/flann/lsh_index.h \
- /usr/local/include/opencv4/opencv2/flann/lsh_table.h \
- /usr/local/include/opencv4/opencv2/flann/autotuned_index.h \
- /usr/local/include/opencv4/opencv2/flann/ground_truth.h \
- /usr/local/include/opencv4/opencv2/flann/index_testing.h \
- /usr/local/include/opencv4/opencv2/flann/timer.h \
- /usr/local/include/opencv4/opencv2/flann/sampling.h \
- /usr/local/include/opencv4/opencv2/highgui.hpp \
- /usr/local/include/opencv4/opencv2/imgcodecs.hpp \
- /usr/local/include/opencv4/opencv2/videoio.hpp \
- /usr/local/include/opencv4/opencv2/imgproc.hpp \
- /usr/local/include/opencv4/opencv2/./imgproc/segmentation.hpp \
- /usr/local/include/opencv4/opencv2/ml.hpp \
- /usr/local/include/opencv4/opencv2/ml/ml.inl.hpp \
- /usr/local/include/opencv4/opencv2/objdetect.hpp \
- /usr/local/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp \
- /usr/local/include/opencv4/opencv2/objdetect/face.hpp \
- /usr/local/include/opencv4/opencv2/photo.hpp \
- /usr/local/include/opencv4/opencv2/stitching.hpp \
- /usr/local/include/opencv4/opencv2/stitching/warpers.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp \
- /usr/local/include/opencv4/opencv2/core/cuda.hpp \
- /usr/local/include/opencv4/opencv2/core/cuda_types.hpp \
- /usr/local/include/opencv4/opencv2/core/cuda.inl.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/util.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp \
- /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
- /usr/local/include/opencv4/opencv2/video.hpp \
- /usr/local/include/opencv4/opencv2/video/tracking.hpp \
- /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofRendererCollection.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofTrueTypeFont.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundStream.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundPlayer.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofOpenALSoundPlayer.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fft.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fftr.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fft.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundBuffer.h \
+ /home/pixel/OF/libs/openFrameworks/video/ofVideoGrabber.h \
  /home/pixel/OF/libs/openFrameworks/video/ofVideoBaseTypes.h \
- /home/pixel/OF/libs/openFrameworks/video/ofVideoPlayer.h \
- /home/pixel/OF/libs/openFrameworks/video/ofGstVideoPlayer.h \
+ /home/pixel/OF/libs/openFrameworks/video/ofGstVideoGrabber.h \
  /home/pixel/OF/libs/openFrameworks/video/ofGstUtils.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofThread.h \
  /usr/include/gstreamer-1.0/gst/gst.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
@@ -604,9 +524,131 @@ obj/linux64/Release/src/Composition.o: \
  /usr/include/gstreamer-1.0/gst/video/videooverlay.h \
  /usr/include/gstreamer-1.0/gst/video/gstvideoaffinetransformationmeta.h \
  /usr/include/gstreamer-1.0/gst/video/video-anc.h \
- /home/pixel/OF/libs/openFrameworks/video/ofVideoGrabber.h \
- /home/pixel/OF/libs/openFrameworks/video/ofGstVideoGrabber.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h \
+ /home/pixel/OF/libs/openFrameworks/video/ofVideoPlayer.h \
+ /home/pixel/OF/libs/openFrameworks/video/ofGstVideoPlayer.h \
+ /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
+ /home/pixel/OF/addons/ofxGui/src/ofxGui.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxToggle.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxSlider.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxInputField.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxButton.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
+ /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
+ /usr/local/include/opencv4/opencv2/opencv.hpp \
+ /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
+ /usr/local/include/opencv4/opencv2/core.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvdef.h \
+ /usr/local/include/opencv4/opencv2/core/version.hpp \
+ /usr/local/include/opencv4/opencv2/core/hal/interface.h \
+ /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+ /usr/local/include/opencv4/opencv2/core/base.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+ /usr/local/include/opencv4/opencv2/core/neon_utils.hpp \
+ /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp \
+ /usr/local/include/opencv4/opencv2/core/check.hpp \
+ /usr/local/include/opencv4/opencv2/core/traits.hpp \
+ /usr/local/include/opencv4/opencv2/core/matx.hpp \
+ /usr/local/include/opencv4/opencv2/core/saturate.hpp \
+ /usr/local/include/opencv4/opencv2/core/fast_math.hpp \
+ /usr/local/include/opencv4/opencv2/core/types.hpp \
+ /usr/local/include/opencv4/opencv2/core/mat.hpp \
+ /usr/local/include/opencv4/opencv2/core/bufferpool.hpp \
+ /usr/local/include/opencv4/opencv2/core/mat.inl.hpp \
+ /usr/local/include/opencv4/opencv2/core/persistence.hpp \
+ /usr/local/include/opencv4/opencv2/core/operations.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp \
+ /usr/local/include/opencv4/opencv2/core/utility.hpp \
+ /usr/local/include/opencv4/opencv2/core/optim.hpp \
+ /usr/local/include/opencv4/opencv2/core/ovx.hpp \
+ /usr/local/include/opencv4/opencv2/core/cvdef.h \
+ /usr/local/include/opencv4/opencv2/calib3d.hpp \
+ /usr/local/include/opencv4/opencv2/features2d.hpp \
+ /usr/local/include/opencv4/opencv2/flann/miniflann.hpp \
+ /usr/local/include/opencv4/opencv2/flann/defines.h \
+ /usr/local/include/opencv4/opencv2/flann/config.h \
+ /usr/local/include/opencv4/opencv2/core/affine.hpp \
+ /usr/local/include/opencv4/opencv2/dnn.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dnn.hpp \
+ /usr/local/include/opencv4/opencv2/core/async.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/../dnn/version.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dict.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/layer.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/dnn.inl.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp \
+ /usr/local/include/opencv4/opencv2/dnn/utils/../dnn.hpp \
+ /usr/local/include/opencv4/opencv2/flann.hpp \
+ /usr/local/include/opencv4/opencv2/flann/flann_base.hpp \
+ /usr/local/include/opencv4/opencv2/flann/general.h \
+ /usr/local/include/opencv4/opencv2/flann/matrix.h \
+ /usr/local/include/opencv4/opencv2/flann/params.h \
+ /usr/local/include/opencv4/opencv2/flann/any.h \
+ /usr/local/include/opencv4/opencv2/flann/defines.h \
+ /usr/local/include/opencv4/opencv2/flann/saving.h \
+ /usr/local/include/opencv4/opencv2/flann/nn_index.h \
+ /usr/local/include/opencv4/opencv2/flann/result_set.h \
+ /usr/local/include/opencv4/opencv2/flann/all_indices.h \
+ /usr/local/include/opencv4/opencv2/flann/kdtree_index.h \
+ /usr/local/include/opencv4/opencv2/flann/dynamic_bitset.h \
+ /usr/local/include/opencv4/opencv2/flann/dist.h \
+ /usr/local/include/opencv4/opencv2/flann/heap.h \
+ /usr/local/include/opencv4/opencv2/flann/allocator.h \
+ /usr/local/include/opencv4/opencv2/flann/random.h \
+ /usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h \
+ /usr/local/include/opencv4/opencv2/flann/kmeans_index.h \
+ /usr/local/include/opencv4/opencv2/flann/logger.h \
+ /usr/local/include/opencv4/opencv2/flann/composite_index.h \
+ /usr/local/include/opencv4/opencv2/flann/linear_index.h \
+ /usr/local/include/opencv4/opencv2/flann/hierarchical_clustering_index.h \
+ /usr/local/include/opencv4/opencv2/flann/lsh_index.h \
+ /usr/local/include/opencv4/opencv2/flann/lsh_table.h \
+ /usr/local/include/opencv4/opencv2/flann/autotuned_index.h \
+ /usr/local/include/opencv4/opencv2/flann/ground_truth.h \
+ /usr/local/include/opencv4/opencv2/flann/index_testing.h \
+ /usr/local/include/opencv4/opencv2/flann/timer.h \
+ /usr/local/include/opencv4/opencv2/flann/sampling.h \
+ /usr/local/include/opencv4/opencv2/highgui.hpp \
+ /usr/local/include/opencv4/opencv2/imgcodecs.hpp \
+ /usr/local/include/opencv4/opencv2/videoio.hpp \
+ /usr/local/include/opencv4/opencv2/imgproc.hpp \
+ /usr/local/include/opencv4/opencv2/./imgproc/segmentation.hpp \
+ /usr/local/include/opencv4/opencv2/ml.hpp \
+ /usr/local/include/opencv4/opencv2/ml/ml.inl.hpp \
+ /usr/local/include/opencv4/opencv2/objdetect.hpp \
+ /usr/local/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp \
+ /usr/local/include/opencv4/opencv2/objdetect/face.hpp \
+ /usr/local/include/opencv4/opencv2/photo.hpp \
+ /usr/local/include/opencv4/opencv2/stitching.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/warpers.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp \
+ /usr/local/include/opencv4/opencv2/core/cuda.hpp \
+ /usr/local/include/opencv4/opencv2/core/cuda_types.hpp \
+ /usr/local/include/opencv4/opencv2/core/cuda.inl.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/util.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp \
+ /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
+ /usr/local/include/opencv4/opencv2/video.hpp \
+ /usr/local/include/opencv4/opencv2/video/tracking.hpp \
+ /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h \
  /usr/local/include/opencv4/opencv2/imgproc/imgproc_c.h \
  /usr/local/include/opencv4/opencv2/imgproc/types_c.h \
  /usr/local/include/opencv4/opencv2/core/core_c.h \
@@ -621,7 +663,6 @@ obj/linux64/Release/src/Composition.o: \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h \
- /home/pixel/OF/libs/openFrameworks/3d/ofNode.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/RunningBackground.h \
@@ -928,19 +969,21 @@ obj/linux64/Release/src/Composition.o: \
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
-
-/home/pixel/OF/addons/ofxGui/src/ofxGui.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxToggle.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofParameter.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
+/home/pixel/OF/libs/openFrameworks/ofMain.h:
 
 /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h:
 
 /home/pixel/OF/libs/tess2/include/tesselator.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
+
+/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
 
 /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h:
 
@@ -960,6 +1003,16 @@ obj/linux64/Release/src/Composition.o: \
 
 /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h:
 
+/home/pixel/OF/libs/openFrameworks/utils/ofThread.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofJson.h:
+
+/home/pixel/OF/libs/json/include/json.hpp:
+
+/home/pixel/OF/libs/openFrameworks/types/ofParameter.h:
+
 /home/pixel/OF/libs/openFrameworks/types/ofPoint.h:
 
 /home/pixel/OF/libs/openFrameworks/math/ofVec3f.h:
@@ -974,25 +1027,21 @@ obj/linux64/Release/src/Composition.o: \
 
 /home/pixel/OF/libs/openFrameworks/types/ofColor.h:
 
-/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
+/home/pixel/OF/libs/openFrameworks/utils/ofXml.h:
 
-/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
+/home/pixel/OF/libs/pugixml/include/pugixml.hpp:
 
-/home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofTrueTypeFont.h:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofPath.h:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.inl:
+/home/pixel/OF/libs/pugixml/include/pugiconfig.hpp:
 
 /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h:
 
 /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h:
 
-/home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h:
+/home/pixel/OF/libs/openFrameworks/types/ofTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h:
+
+/home/pixel/OF/libs/openFrameworks/math/ofMath.h:
 
 /home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp:
 
@@ -1003,6 +1052,8 @@ obj/linux64/Release/src/Composition.o: \
 /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl:
 
 /home/pixel/OF/libs/glm/include/glm/gtc/constants.inl:
+
+/home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h:
 
 /home/pixel/OF/libs/glm/include/glm/gtc/matrix_transform.hpp:
 
@@ -1156,15 +1207,31 @@ obj/linux64/Release/src/Composition.o: \
 
 /home/pixel/OF/libs/openFrameworks/math/ofQuaternion.h:
 
+/home/pixel/OF/libs/openFrameworks/communication/ofSerial.h:
+
+/home/pixel/OF/libs/openFrameworks/communication/ofArduino.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofFbo.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofTexture.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofGLBaseTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofGLRenderer.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.inl:
+
 /home/pixel/OF/libs/openFrameworks/app/ofAppRunner.h:
 
 /home/pixel/OF/libs/openFrameworks/app/ofWindowSettings.h:
 
 /home/pixel/OF/libs/openFrameworks/app/ofMainLoop.h:
 
-/home/pixel/OF/libs/openFrameworks/math/ofMath.h:
+/home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h:
 
-/home/pixel/OF/libs/openFrameworks/gl/ofVboMesh.h:
+/home/pixel/OF/libs/openFrameworks/3d/of3dPrimitives.h:
 
 /home/pixel/OF/libs/openFrameworks/3d/ofMesh.h:
 
@@ -1172,267 +1239,83 @@ obj/linux64/Release/src/Composition.o: \
 
 /home/pixel/OF/libs/openFrameworks/3d/ofMesh.inl:
 
+/home/pixel/OF/libs/openFrameworks/3d/ofNode.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofBitmapFont.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofPixels.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofGraphics.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofMatrixStack.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofPath.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofVboMesh.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofMesh.h:
+
 /home/pixel/OF/libs/openFrameworks/gl/ofVbo.h:
 
 /home/pixel/OF/libs/openFrameworks/gl/ofBufferObject.h:
 
 /home/pixel/OF/libs/openFrameworks/graphics/ofTessellator.h:
 
-/home/pixel/OF/libs/openFrameworks/gl/ofTexture.h:
+/home/pixel/OF/libs/openFrameworks/gl/ofLight.h:
 
-/home/pixel/OF/libs/openFrameworks/graphics/ofPixels.h:
+/home/pixel/OF/libs/openFrameworks/gl/ofMaterial.h:
 
-/home/pixel/OF/libs/openFrameworks/graphics/ofBitmapFont.h:
+/home/pixel/OF/libs/openFrameworks/gl/ofShader.h:
 
-/home/pixel/OF/libs/openFrameworks/graphics/ofGraphics.h:
+/home/pixel/OF/libs/openFrameworks/graphics/ofCairoRenderer.h:
 
-/home/pixel/OF/addons/ofxGui/src/ofxSlider.h:
+/usr/include/cairo/cairo.h:
 
-/home/pixel/OF/addons/ofxGui/src/ofxInputField.h:
+/usr/include/cairo/cairo-version.h:
 
-/home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h:
+/usr/include/cairo/cairo-features.h:
 
-/home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxButton.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxLabel.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
+/usr/include/cairo/cairo-deprecated.h:
 
 /home/pixel/OF/libs/openFrameworks/graphics/ofImage.h:
 
-/home/pixel/OF/libs/openFrameworks/gl/ofGLBaseTypes.h:
+/home/pixel/OF/libs/openFrameworks/graphics/ofRendererCollection.h:
 
-/home/pixel/OF/addons/ofxCv/src/ofxCv.h:
+/home/pixel/OF/libs/openFrameworks/graphics/ofTrueTypeFont.h:
 
-/usr/local/include/opencv4/opencv2/opencv.hpp:
+/home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h:
 
-/usr/local/include/opencv4/opencv2/opencv_modules.hpp:
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h:
 
-/usr/local/include/opencv4/opencv2/core.hpp:
+/home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h:
 
-/usr/local/include/opencv4/opencv2/core/cvdef.h:
+/home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h:
 
-/usr/local/include/opencv4/opencv2/core/version.hpp:
+/home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h:
 
-/usr/local/include/opencv4/opencv2/core/hal/interface.h:
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundStream.h:
 
-/usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundPlayer.h:
 
-/usr/local/include/opencv4/opencv2/core/base.hpp:
+/home/pixel/OF/libs/openFrameworks/sound/ofOpenALSoundPlayer.h:
 
-/usr/local/include/opencv4/opencv2/core/cvstd.hpp:
+/home/pixel/OF/libs/kiss/include/kiss_fft.h:
 
-/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
+/home/pixel/OF/libs/kiss/include/kiss_fftr.h:
 
-/usr/local/include/opencv4/opencv2/core/neon_utils.hpp:
+/home/pixel/OF/libs/kiss/include/kiss_fft.h:
 
-/usr/local/include/opencv4/opencv2/core/vsx_utils.hpp:
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundBuffer.h:
 
-/usr/local/include/opencv4/opencv2/core/check.hpp:
-
-/usr/local/include/opencv4/opencv2/core/traits.hpp:
-
-/usr/local/include/opencv4/opencv2/core/matx.hpp:
-
-/usr/local/include/opencv4/opencv2/core/saturate.hpp:
-
-/usr/local/include/opencv4/opencv2/core/fast_math.hpp:
-
-/usr/local/include/opencv4/opencv2/core/types.hpp:
-
-/usr/local/include/opencv4/opencv2/core/mat.hpp:
-
-/usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
-
-/usr/local/include/opencv4/opencv2/core/mat.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/core/persistence.hpp:
-
-/usr/local/include/opencv4/opencv2/core/operations.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/core/utility.hpp:
-
-/usr/local/include/opencv4/opencv2/core/optim.hpp:
-
-/usr/local/include/opencv4/opencv2/core/ovx.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cvdef.h:
-
-/usr/local/include/opencv4/opencv2/calib3d.hpp:
-
-/usr/local/include/opencv4/opencv2/features2d.hpp:
-
-/usr/local/include/opencv4/opencv2/flann/miniflann.hpp:
-
-/usr/local/include/opencv4/opencv2/flann/defines.h:
-
-/usr/local/include/opencv4/opencv2/flann/config.h:
-
-/usr/local/include/opencv4/opencv2/core/affine.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/dnn.hpp:
-
-/usr/local/include/opencv4/opencv2/core/async.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/../dnn/version.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/dict.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/layer.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/dnn.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp:
-
-/usr/local/include/opencv4/opencv2/dnn/utils/../dnn.hpp:
-
-/usr/local/include/opencv4/opencv2/flann.hpp:
-
-/usr/local/include/opencv4/opencv2/flann/flann_base.hpp:
-
-/usr/local/include/opencv4/opencv2/flann/general.h:
-
-/usr/local/include/opencv4/opencv2/flann/matrix.h:
-
-/usr/local/include/opencv4/opencv2/flann/params.h:
-
-/usr/local/include/opencv4/opencv2/flann/any.h:
-
-/usr/local/include/opencv4/opencv2/flann/defines.h:
-
-/usr/local/include/opencv4/opencv2/flann/saving.h:
-
-/usr/local/include/opencv4/opencv2/flann/nn_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/result_set.h:
-
-/usr/local/include/opencv4/opencv2/flann/all_indices.h:
-
-/usr/local/include/opencv4/opencv2/flann/kdtree_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/dynamic_bitset.h:
-
-/usr/local/include/opencv4/opencv2/flann/dist.h:
-
-/usr/local/include/opencv4/opencv2/flann/heap.h:
-
-/usr/local/include/opencv4/opencv2/flann/allocator.h:
-
-/usr/local/include/opencv4/opencv2/flann/random.h:
-
-/usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/kmeans_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/logger.h:
-
-/usr/local/include/opencv4/opencv2/flann/composite_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/linear_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/hierarchical_clustering_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/lsh_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/lsh_table.h:
-
-/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
-
-/usr/local/include/opencv4/opencv2/flann/ground_truth.h:
-
-/usr/local/include/opencv4/opencv2/flann/index_testing.h:
-
-/usr/local/include/opencv4/opencv2/flann/timer.h:
-
-/usr/local/include/opencv4/opencv2/flann/sampling.h:
-
-/usr/local/include/opencv4/opencv2/highgui.hpp:
-
-/usr/local/include/opencv4/opencv2/imgcodecs.hpp:
-
-/usr/local/include/opencv4/opencv2/videoio.hpp:
-
-/usr/local/include/opencv4/opencv2/imgproc.hpp:
-
-/usr/local/include/opencv4/opencv2/./imgproc/segmentation.hpp:
-
-/usr/local/include/opencv4/opencv2/ml.hpp:
-
-/usr/local/include/opencv4/opencv2/ml/ml.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/objdetect.hpp:
-
-/usr/local/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp:
-
-/usr/local/include/opencv4/opencv2/objdetect/face.hpp:
-
-/usr/local/include/opencv4/opencv2/photo.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/warpers.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cuda.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cuda_types.hpp:
-
-/usr/local/include/opencv4/opencv2/core/cuda.inl.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/util.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/seam_finders.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp:
-
-/usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp:
-
-/usr/local/include/opencv4/opencv2/video.hpp:
-
-/usr/local/include/opencv4/opencv2/video/tracking.hpp:
-
-/usr/local/include/opencv4/opencv2/video/background_segm.hpp:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h:
+/home/pixel/OF/libs/openFrameworks/video/ofVideoGrabber.h:
 
 /home/pixel/OF/libs/openFrameworks/video/ofVideoBaseTypes.h:
 
-/home/pixel/OF/libs/openFrameworks/video/ofVideoPlayer.h:
-
-/home/pixel/OF/libs/openFrameworks/video/ofGstVideoPlayer.h:
+/home/pixel/OF/libs/openFrameworks/video/ofGstVideoGrabber.h:
 
 /home/pixel/OF/libs/openFrameworks/video/ofGstUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofThread.h:
 
 /usr/include/gstreamer-1.0/gst/gst.h:
 
@@ -1870,11 +1753,255 @@ obj/linux64/Release/src/Composition.o: \
 
 /usr/include/gstreamer-1.0/gst/video/video-anc.h:
 
-/home/pixel/OF/libs/openFrameworks/video/ofVideoGrabber.h:
+/home/pixel/OF/libs/openFrameworks/video/ofVideoPlayer.h:
 
-/home/pixel/OF/libs/openFrameworks/video/ofGstVideoGrabber.h:
+/home/pixel/OF/libs/openFrameworks/video/ofGstVideoPlayer.h:
 
-/home/pixel/OF/libs/openFrameworks/graphics/ofPolyline.h:
+/home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofCamera.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGui.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxToggle.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxSlider.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxInputField.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxButton.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxLabel.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
+
+/home/pixel/OF/addons/ofxCv/src/ofxCv.h:
+
+/usr/local/include/opencv4/opencv2/opencv.hpp:
+
+/usr/local/include/opencv4/opencv2/opencv_modules.hpp:
+
+/usr/local/include/opencv4/opencv2/core.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvdef.h:
+
+/usr/local/include/opencv4/opencv2/core/version.hpp:
+
+/usr/local/include/opencv4/opencv2/core/hal/interface.h:
+
+/usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h:
+
+/usr/local/include/opencv4/opencv2/core/base.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd_wrapper.hpp:
+
+/usr/local/include/opencv4/opencv2/core/neon_utils.hpp:
+
+/usr/local/include/opencv4/opencv2/core/vsx_utils.hpp:
+
+/usr/local/include/opencv4/opencv2/core/check.hpp:
+
+/usr/local/include/opencv4/opencv2/core/traits.hpp:
+
+/usr/local/include/opencv4/opencv2/core/matx.hpp:
+
+/usr/local/include/opencv4/opencv2/core/saturate.hpp:
+
+/usr/local/include/opencv4/opencv2/core/fast_math.hpp:
+
+/usr/local/include/opencv4/opencv2/core/types.hpp:
+
+/usr/local/include/opencv4/opencv2/core/mat.hpp:
+
+/usr/local/include/opencv4/opencv2/core/bufferpool.hpp:
+
+/usr/local/include/opencv4/opencv2/core/mat.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/core/persistence.hpp:
+
+/usr/local/include/opencv4/opencv2/core/operations.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvstd.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/core/utility.hpp:
+
+/usr/local/include/opencv4/opencv2/core/optim.hpp:
+
+/usr/local/include/opencv4/opencv2/core/ovx.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cvdef.h:
+
+/usr/local/include/opencv4/opencv2/calib3d.hpp:
+
+/usr/local/include/opencv4/opencv2/features2d.hpp:
+
+/usr/local/include/opencv4/opencv2/flann/miniflann.hpp:
+
+/usr/local/include/opencv4/opencv2/flann/defines.h:
+
+/usr/local/include/opencv4/opencv2/flann/config.h:
+
+/usr/local/include/opencv4/opencv2/core/affine.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/dnn.hpp:
+
+/usr/local/include/opencv4/opencv2/core/async.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/../dnn/version.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/dict.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/layer.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/dnn.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/utils/inference_engine.hpp:
+
+/usr/local/include/opencv4/opencv2/dnn/utils/../dnn.hpp:
+
+/usr/local/include/opencv4/opencv2/flann.hpp:
+
+/usr/local/include/opencv4/opencv2/flann/flann_base.hpp:
+
+/usr/local/include/opencv4/opencv2/flann/general.h:
+
+/usr/local/include/opencv4/opencv2/flann/matrix.h:
+
+/usr/local/include/opencv4/opencv2/flann/params.h:
+
+/usr/local/include/opencv4/opencv2/flann/any.h:
+
+/usr/local/include/opencv4/opencv2/flann/defines.h:
+
+/usr/local/include/opencv4/opencv2/flann/saving.h:
+
+/usr/local/include/opencv4/opencv2/flann/nn_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/result_set.h:
+
+/usr/local/include/opencv4/opencv2/flann/all_indices.h:
+
+/usr/local/include/opencv4/opencv2/flann/kdtree_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/dynamic_bitset.h:
+
+/usr/local/include/opencv4/opencv2/flann/dist.h:
+
+/usr/local/include/opencv4/opencv2/flann/heap.h:
+
+/usr/local/include/opencv4/opencv2/flann/allocator.h:
+
+/usr/local/include/opencv4/opencv2/flann/random.h:
+
+/usr/local/include/opencv4/opencv2/flann/kdtree_single_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/kmeans_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/logger.h:
+
+/usr/local/include/opencv4/opencv2/flann/composite_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/linear_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/hierarchical_clustering_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/lsh_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/lsh_table.h:
+
+/usr/local/include/opencv4/opencv2/flann/autotuned_index.h:
+
+/usr/local/include/opencv4/opencv2/flann/ground_truth.h:
+
+/usr/local/include/opencv4/opencv2/flann/index_testing.h:
+
+/usr/local/include/opencv4/opencv2/flann/timer.h:
+
+/usr/local/include/opencv4/opencv2/flann/sampling.h:
+
+/usr/local/include/opencv4/opencv2/highgui.hpp:
+
+/usr/local/include/opencv4/opencv2/imgcodecs.hpp:
+
+/usr/local/include/opencv4/opencv2/videoio.hpp:
+
+/usr/local/include/opencv4/opencv2/imgproc.hpp:
+
+/usr/local/include/opencv4/opencv2/./imgproc/segmentation.hpp:
+
+/usr/local/include/opencv4/opencv2/ml.hpp:
+
+/usr/local/include/opencv4/opencv2/ml/ml.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/objdetect.hpp:
+
+/usr/local/include/opencv4/opencv2/objdetect/detection_based_tracker.hpp:
+
+/usr/local/include/opencv4/opencv2/objdetect/face.hpp:
+
+/usr/local/include/opencv4/opencv2/photo.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/warpers.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cuda.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cuda_types.hpp:
+
+/usr/local/include/opencv4/opencv2/core/cuda.inl.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/motion_estimators.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/matchers.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/util.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/seam_finders.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp:
+
+/usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp:
+
+/usr/local/include/opencv4/opencv2/video.hpp:
+
+/usr/local/include/opencv4/opencv2/video/tracking.hpp:
+
+/usr/local/include/opencv4/opencv2/video/background_segm.hpp:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h:
 
 /usr/local/include/opencv4/opencv2/imgproc/imgproc_c.h:
 
@@ -1903,8 +2030,6 @@ obj/linux64/Release/src/Composition.o: \
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h:
 
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h:
-
-/home/pixel/OF/libs/openFrameworks/3d/ofNode.h:
 
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h:
 

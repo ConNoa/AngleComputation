@@ -6,10 +6,10 @@
 
   //Default
 Mems::Mems():
-          m_orig{10,700,0},
+          m_orig{20,700,0},
           m_orient{1,0,0},
-          m_dimensions{30, 15, 0},
-          m_amm_mirr{5, 3}{std::cout << "Mems is being created" << std::endl;}
+          m_dimensions{30, 20, 0},
+          m_amm_mirr{6, 4}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
           m_orig(orig),
@@ -43,13 +43,23 @@ void Mems::update(){
     std::cout<< "yi = " << yi<< std::endl;
     for(int xi=0; xi< m_amm_mirr.x; xi++){
       std::cout<<"xi = " <<xi <<std::endl;
-      vec3 pos = vec3{0, yi*y_ax+m_orig.y, xi*x_ax+m_orig.x};
+      vec3 pos = vec3{xi*x_ax+m_orig.x-m_dimensions.x/2, yi*y_ax+m_orig.y-m_dimensions.y/2, 0};
       std::cout<< "pos = "<< pos << std::endl;
-      Ray new_ray{pos, vec3{0,0,1}};
+      std::cout<< "m_orient = " << m_orient<< std::endl;
+      Ray new_ray{pos, m_orient};
       m_mems_rays.push_back(new_ray);
     }
   }
+  return;
+}
 
+
+void Mems::draw(){
+
+  for(auto it : m_mems_rays){
+    //    it->print(std::cout);
+      it.draw();
+  }
 
 
 }

@@ -59,8 +59,9 @@ void LensApp::draw(){
   for(auto it : m_lens_shapes){
     //    it->print(std::cout);
       it->update();
-       it->draw();
+      it->draw();
   }
+  m_mems.draw();
 
   return;
 }

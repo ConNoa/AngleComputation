@@ -32,7 +32,7 @@ public:
 
     void update();
 
-    void draw() const;
+    void draw();
 
     void scale(float faktor);
     void translate(glm::vec3 const& vec);

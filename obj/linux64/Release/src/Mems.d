@@ -617,7 +617,48 @@ obj/linux64/Release/src/Mems.o: \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
+ /home/pixel/OF/libs/openFrameworks/ofMain.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofJson.h \
+ /home/pixel/OF/libs/json/include/json.hpp \
+ /home/pixel/OF/libs/openFrameworks/utils/ofXml.h \
+ /home/pixel/OF/libs/pugixml/include/pugixml.hpp \
+ /home/pixel/OF/libs/pugixml/include/pugiconfig.hpp \
+ /home/pixel/OF/libs/openFrameworks/types/ofTypes.h \
+ /home/pixel/OF/libs/openFrameworks/communication/ofSerial.h \
+ /home/pixel/OF/libs/openFrameworks/communication/ofArduino.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofFbo.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofGLRenderer.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h \
+ /home/pixel/OF/libs/openFrameworks/3d/of3dPrimitives.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofMesh.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofMatrixStack.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofLight.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofMaterial.h \
+ /home/pixel/OF/libs/openFrameworks/gl/ofShader.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofCairoRenderer.h \
+ /usr/include/cairo/cairo.h /usr/include/cairo/cairo-version.h \
+ /usr/include/cairo/cairo-features.h \
+ /usr/include/cairo/cairo-deprecated.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofRendererCollection.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h \
+ /home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundStream.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundPlayer.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofOpenALSoundPlayer.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fft.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fftr.h \
+ /home/pixel/OF/libs/kiss/include/kiss_fft.h \
+ /home/pixel/OF/libs/openFrameworks/sound/ofSoundBuffer.h \
+ /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
+ /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp:
 
@@ -1886,3 +1927,87 @@ obj/linux64/Release/src/Mems.o: \
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
+
+/home/pixel/OF/libs/openFrameworks/ofMain.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofJson.h:
+
+/home/pixel/OF/libs/json/include/json.hpp:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofXml.h:
+
+/home/pixel/OF/libs/pugixml/include/pugixml.hpp:
+
+/home/pixel/OF/libs/pugixml/include/pugiconfig.hpp:
+
+/home/pixel/OF/libs/openFrameworks/types/ofTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/communication/ofSerial.h:
+
+/home/pixel/OF/libs/openFrameworks/communication/ofArduino.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofFbo.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofGLRenderer.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/of3dGraphics.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/of3dPrimitives.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofMesh.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofMatrixStack.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofLight.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofMaterial.h:
+
+/home/pixel/OF/libs/openFrameworks/gl/ofShader.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofCairoRenderer.h:
+
+/usr/include/cairo/cairo.h:
+
+/usr/include/cairo/cairo-version.h:
+
+/usr/include/cairo/cairo-features.h:
+
+/usr/include/cairo/cairo-deprecated.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofRendererCollection.h:
+
+/home/pixel/OF/libs/openFrameworks/app/ofBaseApp.h:
+
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundBaseTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/app/ofAppBaseWindow.h:
+
+/home/pixel/OF/libs/openFrameworks/app/ofAppGLFWWindow.h:
+
+/home/pixel/OF/libs/openFrameworks/app/ofAppGlutWindow.h:
+
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundStream.h:
+
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundPlayer.h:
+
+/home/pixel/OF/libs/openFrameworks/sound/ofOpenALSoundPlayer.h:
+
+/home/pixel/OF/libs/kiss/include/kiss_fft.h:
+
+/home/pixel/OF/libs/kiss/include/kiss_fftr.h:
+
+/home/pixel/OF/libs/kiss/include/kiss_fft.h:
+
+/home/pixel/OF/libs/openFrameworks/sound/ofSoundBuffer.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofCamera.h:
+
+/home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:

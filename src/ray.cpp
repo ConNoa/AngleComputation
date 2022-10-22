@@ -14,6 +14,20 @@
 		m_inv_direction{glm::vec3{-1.0*dir.x, -1.0*dir.y, -1.0*dir.z}}{}
 
 
+	void Ray::draw(){
+			ofBeginShape();
+				ofSetColor(ofColor::yellow);
+				m_direction = normalize(m_direction)*1000;
+				//std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
+	      //std::cout<< "direction of Ray = " << m_direction<< std::endl;
+				ofDrawLine(glm::vec2(m_orig), glm::vec2(m_orig+m_direction));
+
+
+			ofEndShape();
+
+	}
+
+
 	void Ray::transform(glm::mat4 const &t_mat){
 		glm::vec4 a{m_orig,1.0f};
 		glm::vec4 b{m_direction,0.0f};
