@@ -36,19 +36,19 @@
 	//
 	// }
 	void Ray::draw(){
-			ofBeginShape();
-				ofSetColor(ofColor::yellow);
-				m_direction = normalize(m_direction)*1000;
-				// std::cout<< "Ray draw ()  - " <<std::endl;
-				// std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
-	      // std::cout<< "direction of Ray = " << m_direction<< std::endl;
-				ofDrawLine(glm::vec2(m_orig), glm::vec2(m_orig+m_direction));
-				// std::cout<< "after Ray draw ()  - " <<std::endl;
-				// std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
-				// std::cout<< "direction of Ray = " << m_direction<< std::endl;
-
-
-			ofEndShape();
+			// ofBeginShape();
+			// 	ofSetColor(ofColor::yellow);
+			// 	m_direction = normalize(m_direction)*1000;
+			// 	// std::cout<< "Ray draw ()  - " <<std::endl;
+			// 	// std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
+	    //   // std::cout<< "direction of Ray = " << m_direction<< std::endl;
+			// 	ofDrawLine(glm::vec2(m_orig), glm::vec2(m_orig+m_direction));
+			// 	// std::cout<< "after Ray draw ()  - " <<std::endl;
+			// 	// std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
+			// 	// std::cout<< "direction of Ray = " << m_direction<< std::endl;
+			//
+			//
+			// ofEndShape();
 
 	}
 

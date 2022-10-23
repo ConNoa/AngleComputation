@@ -13,7 +13,7 @@ void LensApp::setup(){
 
     m_mems.setup();
 
-    run_routine();
+    //run_routine();
 
 
 }
@@ -30,7 +30,7 @@ void LensApp::draw(){
       it->update();
       it->draw();
   }
-  m_mems.draw();
+  // m_mems.draw();
 
   for(auto lens_it : m_lens_shapes){
     int counter = 0;
@@ -53,9 +53,9 @@ void LensApp::setup_gui(){
     shrd->s_diameter.set("s_diameter", 521.44, 1, 600);
     shrd->s_width.set("s_width", 50, 0, 100);
     shrd->s_type_r1.set("s_type_r1", 1, 1, 3);
-    shrd->s_r1.set("s_r1", 459.02, 0, 1000);
+    shrd->s_r1.set("s_r1", 459.02, 0, 4000);
     shrd->s_type_r2.set("s_type_r2", 1, 1, 3);
-    shrd->s_r2.set("s_r2", 442.62, 0, 1000);
+    shrd->s_r2.set("s_r2", 442.62, 0, 4000);
     shrd->s_n.set("s_n", 2.0f, 1, 3);
     shrd->s_show_constr_lines.set(true);
     shrd->show_rays.set(true);

@@ -29,21 +29,21 @@
 			m_shape{ tmp_hit.m_shape } {std::cout<<"Custom 2 Hit constructed\n";}
 
 //FUNKTIOENNE----------------------------------------------------------------
-		void Hit::draw() const{
+		void Hit::draw(vec3 const& direction_from) const{
 
-
+			vec3 direction_to = normalize(direction_from);
 			ofBeginShape();
 
 			//Drawing horizontal Black Lines
-			// ofSetColor(ofColor::black);
-			// ofDrawLine(m_point-vec3{50, 0, 0}, m_point+vec3{50, 0, 0});
+			ofSetColor(ofColor::orange);
+			ofDrawLine(m_point, m_point+ direction_to* m_distance);
 			ofSetLineWidth(2);
 			//Drawing Normals
 			ofSetColor(75, 196, 213);
-			ofDrawArrow(m_point, m_point+m_normal*300, 3);
+			ofDrawArrow(m_point, m_point+m_normal*50, 3);
 			// ofSetColor(146, 21, 37);
+			ofDrawArrow(m_point, m_point-m_normal*50, 3);
 
-			ofDrawArrow(m_point, m_point-m_normal*300, 3);
 
 			ofEndShape();
 
@@ -63,8 +63,7 @@
 		}
 
 
-		Hit& Hit::operator=(Hit const& tmp_hit)
-		{
+		Hit& Hit::operator=(Hit const& tmp_hit){
 		    if (this == &tmp_hit) {
 		        return *this;
 		    }

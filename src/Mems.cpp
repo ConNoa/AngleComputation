@@ -8,8 +8,8 @@
 Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
-          m_dimensions{0, 400, 0},
-          m_amm_mirr{1, 3}{std::cout << "Mems is being created" << std::endl;}
+          m_dimensions{0, 200, 0},
+          m_amm_mirr{1, 30}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
           m_orig(orig),
@@ -62,11 +62,6 @@ void Mems::update(){
 
 
 void Mems::draw(){
-
-  for(auto it : m_mems_rays){
-    //    it->print(std::cout);
-      it.draw();
-  }
 
 
 }

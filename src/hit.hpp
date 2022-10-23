@@ -20,7 +20,7 @@ struct Hit
 
 	//FUNKTIONEN------------------------------------------------------------------
 
-		void draw() const;
+		void draw(vec3 const& direction_from) const;
 
 		void print() const;
 
@@ -32,4 +32,5 @@ struct Hit
     vec3 m_point;
     vec3 m_normal;
     const Shape* m_shape; //Soll RAW-Pointer sein, damit this funktioniert und und... vlt noch const setzen?
+
 };
