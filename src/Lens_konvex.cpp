@@ -1,4 +1,4 @@
-#include "Lensbox.hpp"
+#include "Lens_konvex.hpp"
 
 #include <cmath>
 #include <catch.hpp>
@@ -8,20 +8,20 @@
 //KONSTRUTOREN----------------------------------------------------------------
 
   //Default
-  Lensbox::Lensbox() :
-  Shape {"Lensbox",{}},
+  Lens_konvex::Lens_konvex() :
+  Shape {"Lens_konvex",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f} {}
 
   // Custom 1
-  Lensbox::Lensbox(vec3 const& min, vec3 const& max) :
-  Shape {"Lensbox",{}},
+  Lens_konvex::Lens_konvex(vec3 const& min, vec3 const& max) :
+  Shape {"Lens_konvex",{}},
   m_min {min},
   m_max {max} {}
 
   // Constructor for LensSystem
-  Lensbox::Lensbox(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  Shape {"Lensbox",{}},
+  Lens_konvex::Lens_konvex(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
+  Shape {"Lens_konvex",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f},
   m_orig {orig},
@@ -36,8 +36,8 @@
   m_n_air{1.000272f}{}
 
   // Constructor for LensSystem
-  Lensbox::Lensbox(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Shape {"Lensbox",{}},
+  Lens_konvex::Lens_konvex(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
+  Shape {"Lens_konvex",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f},
   m_orig {orig},
@@ -52,20 +52,20 @@
   m_n_air{1.000272f}{}
 
   // Custom 3
-  Lensbox::Lensbox(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
+  Lens_konvex::Lens_konvex(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
   Shape {name, mat},
   m_min {min},
   m_max {max} {}
 
   //Destruktor
-  Lensbox::~Lensbox()
+  Lens_konvex::~Lens_konvex()
   {
-    std::cout << "Lensbox-Destruction: " << Shape::name()<< std::endl;
+    std::cout << "Lens_konvex-Destruction: " << Shape::name()<< std::endl;
   }
 
 //FUNKTIONEN------------------------------------------------------------------
 
-  std::ostream& Lensbox::print(std::ostream& os) const{
+  std::ostream& Lens_konvex::print(std::ostream& os) const{
     Shape::print(os);
 
     os << "Minimum: (" << m_min.x << ", "
@@ -96,10 +96,10 @@
   /*Întersect
   ######################################
   Prüft in Hit boxhit.m_hit ob der Strahl
-  die Lensbox trifft(bool).
+  die Lens_konvex trifft(bool).
   In welcher Entfernung, boxhit.m_distance
   wird geschnitten?
-  Übergabe per Pointer der Lensbox in
+  Übergabe per Pointer der Lens_konvex in
   boxhit.m_shape.
   Der Śchnittpunkt liegt in
   boxhit.m_point.
@@ -139,7 +139,7 @@
     }
 
    */
-  Hit Lensbox::intersect(Ray &ray_in, int count_hits) const{
+  Hit Lens_konvex::intersect(Ray &ray_in, int count_hits) const{
     // std::cout << "__________________________________________________________________________"<< std::endl;
     std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
     std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
@@ -276,7 +276,7 @@
     return input_hit;
   }
 
-  float Lensbox::snells_law(float alpha_i, float n_i, float n_t)const {
+  float Lens_konvex::snells_law(float alpha_i, float n_i, float n_t)const {
     // std::cout<<"--> snells_law() :"<< std::endl;
     float sin_alph_in = sin(alpha_i);
     // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
@@ -296,7 +296,7 @@
   }
 
 
-  vec3 Lensbox::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
+  vec3 Lens_konvex::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
 
     vec3 angles;
     vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
@@ -325,21 +325,22 @@
   }
 
 
-  void Lensbox::draw() const{
+  void Lens_konvex::draw() const{
     lens.draw();
     if(m_show_constr_lines||m_act_manipulated){ draw_construction();}
     if(m_draw_focalpoint){ draw_focalpoint();}
     return;
   }
 
-  // void Lensbox::draw_construction(int mode) const {
-    void Lensbox::draw_construction() const {
-    // if(mode == 1){
+  void Lens_konvex::draw_construction() const {
+
       ofBeginShape();
-        ofSetColor(0, 0, 255);
+        ofSetColor(255, 255, 255);
         ofFill();
         // ofDrawCircle(o_x, o_y, o_z, 3);
-        ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+        //kleiner Kreis um den Ursprung bzw. Mittelpunkt der Linse
+        ofDrawCircle(m_orig, 3);
+        //Senkrechte durch den Mittelpunkt in Länge des Linsendurchmessers
         ofDrawLine(m_O_d1, m_O_d2);
 
         ofSetCircleResolution(720);
@@ -357,41 +358,12 @@
         ofDrawRectangle(m_orig, m_width, m_diameter);
         ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
       ofEndShape(false);
-      return;
-    }
-    // else if(mode == 2){
-  //
-  //     ofBeginShape();
-  //       ofSetColor(255, 255, 255);
-  //       ofFill();
-  //       // ofDrawCircle(o_x, o_y, o_z, 3);
-  //       //kleiner Kreis um den Ursprung bzw. Mittelpunkt der Linse
-  //       ofDrawCircle(m_orig, 3);
-  //       //Senkrechte durch den Mittelpunkt in Länge des Linsendurchmessers
-  //       ofDrawLine(m_O_d1, m_O_d2);
-  //
-  //       ofSetCircleResolution(720);
-  //       ofNoFill();
-  //       ofSetColor(0,0, 250);
-  //       ofDrawCircle(m_center_r1, 3);
-  //       ofDrawCircle(m_center_r1, m_r1);
-  //       //ofDrawCircle(f1, r1_);
-  //       ofSetColor(255,0,0);
-  //       ofDrawCircle(m_center_r2, 3);
-  //       ofDrawCircle(m_center_r2, m_r2);
-  //
-  //       ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-  //       ofSetColor(40,40,40);
-  //       ofDrawRectangle(m_orig, m_width, m_diameter);
-  //       ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-  //     ofEndShape(false);
 
-  // }
+  }
 
 
 
-
-  void Lensbox::draw_focalpoint() const {
+  void Lens_konvex::draw_focalpoint() const {
     ofBeginShape();
       ofSetColor(86, 174, 53);
       ofFill();
@@ -404,7 +376,7 @@
     ofEndShape();
   }
 
-  void Lensbox::update(){
+  void Lens_konvex::update(){
 
     m_radius = m_diameter/2;
 
@@ -449,7 +421,7 @@
     return;
   }
 
-  void Lensbox::update_path(){
+  void Lens_konvex::update_path(){
 
     lens.clear();
 
@@ -478,23 +450,23 @@
     lens.close();
   }
 
-  void Lensbox::scale(float faktor){
+  void Lens_konvex::scale(float faktor){
     //Skaliere von min ausgehend!
     // vec3 diff=m_max-m_min;
     // m_max=m_min+(diff*faktor);
     //translate(XXX); Damit Zentrum bleibt?
   }
 
-  void Lensbox::translate(vec3 const& vec){
+  void Lens_konvex::translate(vec3 const& vec){
       m_trans_vec = vec;
       //update();
     }
 
-  void Lensbox::rotate(float angle,vec3 const& vec){
+  void Lens_konvex::rotate(float angle,vec3 const& vec){
     //NOT YET IMPLEMENTED
   }
 
-  float Lensbox::compute_lens_angle(float radius_ , float diameter_lens_){
+  float Lens_konvex::compute_lens_angle(float radius_ , float diameter_lens_){
     float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
     vec3 f_ursp = vec3{0,0,0};
     vec3 l_ursp = f_ursp;
@@ -517,24 +489,24 @@
 
   //GETTER----------------------------------------------------------------------
 
-  vec3 const& Lensbox::max() const
+  vec3 const& Lens_konvex::max() const
   {
     return m_max;
   }
 
-  vec3 const& Lensbox::min() const
+  vec3 const& Lens_konvex::min() const
   {
     return m_min;
   }
 
   //SETTER----------------------------------------------------------------------
 
-  void Lensbox::max(vec3 const& max)
+  void Lens_konvex::max(vec3 const& max)
   {
     m_max = max;
   }
 
-  void Lensbox::min(vec3 const& min)
+  void Lens_konvex::min(vec3 const& min)
   {
     m_min = min;
   }

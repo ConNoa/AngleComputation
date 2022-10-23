@@ -5,7 +5,7 @@
 #include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
 #include "LensApp.hpp"
-#include "Lens.hpp"
+// #include "Lens.hpp"
 #include "State.hpp"
 
 //========================================================================
