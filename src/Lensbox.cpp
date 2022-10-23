@@ -332,29 +332,63 @@
     return;
   }
 
-  void Lensbox::draw_construction() const {
-    ofBeginShape();
-      ofSetColor(0, 0, 255);
-      ofFill();
-      // ofDrawCircle(o_x, o_y, o_z, 3);
-      ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
-      ofDrawLine(m_O_d1, m_O_d2);
+  void Lensbox::draw_construction(int mode) const {
+    if(mode == 1){
+      ofBeginShape();
+        ofSetColor(0, 0, 255);
+        ofFill();
+        // ofDrawCircle(o_x, o_y, o_z, 3);
+        ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+        ofDrawLine(m_O_d1, m_O_d2);
 
-      ofSetCircleResolution(720);
-      ofNoFill();
-      ofSetColor(0,0, 250);
-      ofDrawCircle(m_center_r1, 3);
-      ofDrawCircle(m_center_r1, m_r1);
-      //ofDrawCircle(f1, r1_);
-      ofSetColor(255,0,0);
-      ofDrawCircle(m_center_r2, 3);
-      ofDrawCircle(m_center_r2, m_r2);
+        ofSetCircleResolution(720);
+        ofNoFill();
+        ofSetColor(0,0, 250);
+        ofDrawCircle(m_center_r1, 3);
+        ofDrawCircle(m_center_r1, m_r1);
+        //ofDrawCircle(f1, r1_);
+        ofSetColor(255,0,0);
+        ofDrawCircle(m_center_r2, 3);
+        ofDrawCircle(m_center_r2, m_r2);
 
-      ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-      ofSetColor(40,40,40);
-      ofDrawRectangle(m_orig, m_width, m_diameter);
-      ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-    ofEndShape(false);
+        ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
+        ofSetColor(40,40,40);
+        ofDrawRectangle(m_orig, m_width, m_diameter);
+        ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
+      ofEndShape(false);
+      return;
+    }else if(mode == 2){
+
+      ofBeginShape();
+        ofSetColor(255, 255, 255);
+        ofFill();
+        // ofDrawCircle(o_x, o_y, o_z, 3);
+        //kleiner Kreis um den Ursprung bzw. Mittelpunkt der Linse
+        ofDrawCircle(m_orig, 3);
+        //Senkrechte durch den Mittelpunkt in Länge des Linsendurchmessers
+        ofDrawLine(m_O_d1, m_O_d2);
+
+        ofSetCircleResolution(720);
+        ofNoFill();
+        ofSetColor(0,0, 250);
+        ofDrawCircle(m_center_r1, 3);
+        ofDrawCircle(m_center_r1, m_r1);
+        //ofDrawCircle(f1, r1_);
+        ofSetColor(255,0,0);
+        ofDrawCircle(m_center_r2, 3);
+        ofDrawCircle(m_center_r2, m_r2);
+
+        ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
+        ofSetColor(40,40,40);
+        ofDrawRectangle(m_orig, m_width, m_diameter);
+        ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
+      ofEndShape(false);
+
+
+
+    }
+
+
   }
 
   void Lensbox::draw_focalpoint() const {
@@ -403,10 +437,14 @@
     m_f1 = m_center_d0;
     m_f1.x -= 1/m_D1;
     m_f2 = m_center_d3;
-    m_f2.x -= 1/m_D2;
+    m_f2.x = m_f2.x + 1/m_D2;
 
-    // std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    // std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
+    //d_1 = (n_t1-n_i1)/R_1;
+
+
+
+    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
+    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
 
     return;
   }
