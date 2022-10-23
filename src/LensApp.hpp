@@ -20,6 +20,8 @@
 #include "lensefield.hpp"
 #include "Lensbox.hpp"
 #include "Mems.hpp"
+#include "Lens_konkav.hpp"
+#include "Lens_konvex.hpp"
 
 
 

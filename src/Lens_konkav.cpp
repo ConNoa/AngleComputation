@@ -332,7 +332,7 @@
     return;
   }
 
-  void Lens_konkav::draw_construction(int mode) const {
+  void Lens_konkav::draw_construction() const {
       ofBeginShape();
         ofSetColor(0, 0, 255);
         ofFill();

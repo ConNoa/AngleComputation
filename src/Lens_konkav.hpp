@@ -50,7 +50,7 @@ public:
   vec3 compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in) const;
 
   void draw() const override;
-  void draw_construction(int mode) const;
+  void draw_construction() const;
   void draw_focalpoint() const;
 
   void update() override;

@@ -1,6 +1,6 @@
 obj/linux64/Release/src/Lens_konvex.o: \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.cpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp \
  /home/pixel/OF/libs/glm/include/glm/glm.hpp \
  /home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp \
  /home/pixel/OF/libs/glm/include/glm/detail/setup.hpp \
@@ -692,7 +692,7 @@ obj/linux64/Release/src/Lens_konvex.o: \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/glm.hpp:
 
