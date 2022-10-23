@@ -216,6 +216,14 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
           it->m_draw_normals = shrd->s_draw_normals;
       }
     }
+    if (e.target->getLabel() == "Draw Focus etc"){
+      shrd->s_show_focus_etc = e.checked;
+      //m_lens_shapes[shrd->select_lens]
+      for(auto it : m_lens_shapes){
+        //    it->print(std::cout);
+          it->m_draw_focalpoint = shrd->s_show_focus_etc;
+      }
+    }
   return;
   }
 

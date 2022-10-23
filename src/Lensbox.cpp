@@ -327,10 +327,8 @@
 
   void Lensbox::draw() const{
     lens.draw();
-    if(m_show_constr_lines == true || m_act_manipulated == true){
-      draw_construction();
-      draw_focalpoint();
-    }
+    if(m_show_constr_lines||m_act_manipulated){ draw_construction();}
+    if(m_draw_focalpoint){ draw_focalpoint();}
     return;
   }
 
