@@ -700,16 +700,14 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Composition.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h:
@@ -2146,8 +2144,6 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Composition.hpp:
-
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
@@ -2156,14 +2152,12 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
-
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp:

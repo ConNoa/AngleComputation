@@ -6,15 +6,6 @@ void LensApp::setup(){
 
     setup_gui();
 
-    //
-    // m_composite= std::make_shared<Composite>("my_Lens_composition");
-    // m_composite->add(new_lens_box);
-    // std::cout<< "Composite added" <<std::endl;
-    //
-    // vec3    movevec{0.0f, 000.0f, 0.0f};
-    // new_lens_box->translate(movevec);
-    //
-
 
     setup_lens();
     load_lens_parameters(shrd->select_lens);
@@ -33,9 +24,7 @@ void LensApp::update(){
 }
 
 
-
-void LensApp::run_routine(){
-
+void LensApp::draw(){
   for(auto it : m_lens_shapes){
     //    it->print(std::cout);
       it->update();
@@ -43,7 +32,6 @@ void LensApp::run_routine(){
   }
   m_mems.draw();
 
-std::cout <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<< std::endl;
   for(auto lens_it : m_lens_shapes){
     int counter = 0;
     for(auto ray_it : m_mems.m_mems_rays){
@@ -52,12 +40,6 @@ std::cout <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<< std::endl;
       temp_hit = lens_it->intersect(ray_it, counter);
     }
   }
-  return;
-}
-
-
-void LensApp::draw(){
-  run_routine();
   return;
 }
 

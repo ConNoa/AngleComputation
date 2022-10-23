@@ -15,11 +15,10 @@
 #include <glm/vec3.hpp> // glm::vec3
 #include <glm/vec4.hpp> // glm::vec4
 #include <glm/gtx/intersect.hpp>
-#include "Composition.hpp"
 #include "shape.hpp"
 #include "State.hpp"
 #include "lensefield.hpp"
-#include "Lens.hpp"
+#include "Lensbox.hpp"
 #include "Mems.hpp"
 
 
@@ -31,8 +30,6 @@ public:
 	void setup();
 	void update();
 	void draw();
-
-	void run_routine();
 
 	void setup_gui();
 	void setup_lens();
@@ -69,7 +66,7 @@ public:
 
 	//------Containers for lenses---------------------------------------
 
-	std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
+	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
 	std::vector<std::shared_ptr<Lensbox>> m_lens_shapes;
 
 

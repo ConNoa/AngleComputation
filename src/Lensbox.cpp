@@ -63,30 +63,6 @@
     std::cout << "Lensbox-Destruction: " << Shape::name()<< std::endl;
   }
 
-//GETTER----------------------------------------------------------------------
-
-  vec3 const& Lensbox::max() const
-  {
-    return m_max;
-  }
-
-  vec3 const& Lensbox::min() const
-  {
-    return m_min;
-  }
-
-//SETTER----------------------------------------------------------------------
-
-  void Lensbox::max(vec3 const& max)
-  {
-    m_max = max;
-  }
-
-  void Lensbox::min(vec3 const& min)
-  {
-    m_min = min;
-  }
-
 //FUNKTIONEN------------------------------------------------------------------
 
   std::ostream& Lensbox::print(std::ostream& os) const{
@@ -291,8 +267,6 @@
   }
 
 
-
-
   vec3 Lensbox::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
 
     vec3 angles;
@@ -331,9 +305,6 @@
     angles[2] = r_angle_z;
     return  angles;
   }
-
-
-
 
 
   void Lensbox::draw() const{
@@ -493,4 +464,29 @@
     // std::cout << angle_<< std::endl;
 
     return angle_;
+  }
+
+
+  //GETTER----------------------------------------------------------------------
+
+  vec3 const& Lensbox::max() const
+  {
+    return m_max;
+  }
+
+  vec3 const& Lensbox::min() const
+  {
+    return m_min;
+  }
+
+  //SETTER----------------------------------------------------------------------
+
+  void Lensbox::max(vec3 const& max)
+  {
+    m_max = max;
+  }
+
+  void Lensbox::min(vec3 const& min)
+  {
+    m_min = min;
   }
