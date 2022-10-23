@@ -84,7 +84,7 @@ void LensApp::setup_gui(){
     shrd->lens_attr_gui->addSlider(shrd-> s_n);
 
     shrd->lens_attr_gui->addToggle("Draw Construction Lines", shrd->s_show_constr_lines);
-    shrd->lens_attr_gui->addToggle("Draw Rays ", shrd->s_draw_rays);
+    shrd->lens_attr_gui->addToggle("Draw Rays", shrd->s_draw_rays);
     shrd->lens_attr_gui->addToggle("Draw Normals", shrd->s_draw_normals);
     shrd->lens_attr_gui->addToggle("Draw Focus etc", shrd->s_show_focus_etc);
     shrd->lens_attr_gui->addSlider(shrd->s_select_lens);
@@ -192,7 +192,7 @@ void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
 
 void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
     cout << e.target->getLabel() << " checked = " << e.checked << endl;
-    if (e.target->getLabel() == "Show Construction Lines"){
+    if (e.target->getLabel() == "Draw Construction Lines"){
       shrd->s_show_constr_lines = e.checked;
       //m_lens_shapes[shrd->select_lens]
       for(auto it : m_lens_shapes){
@@ -216,10 +216,8 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
           it->m_draw_normals = shrd->s_draw_normals;
       }
     }
-
-
-
-}
+  return;
+  }
 
 
 void LensApp::onButtonEvent(ofxDatGuiButtonEvent e){

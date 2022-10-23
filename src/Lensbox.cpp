@@ -232,10 +232,8 @@
           t_hit.m_point = intsctPos3;
           t_hit.m_normal = intsctNrml3;
           t_hit.m_distance = length(input_hit.m_point - intsctPos3);
-          if(m_draw_normals){
-            // vec3 t1_ray_inv = t1_ray*-1;
-            t_hit.draw(-t1_ray);
-          }
+          if(m_draw_rays){      t_hit.draw(-t1_ray); }
+          if(m_draw_normals){   t_hit.draw_normals();}
         }
         else if(length(m_center_d3-intsctPos3)>length(m_center_d3-intsctPos4)){
           std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
@@ -243,10 +241,8 @@
           t_hit.m_point = intsctPos4;
           t_hit.m_normal = intsctNrml4;
           t_hit.m_distance = length(input_hit.m_point - intsctPos4);
-          if(m_draw_normals){
-            // vec3 t1_ray_inv = t1_ray*-1;
-            t_hit.draw(-t1_ray);
-          }
+          if(m_draw_rays){      t_hit.draw(-t1_ray); }
+          if(m_draw_normals){   t_hit.draw_normals();}
         }
         else{
           std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
@@ -267,17 +263,15 @@
         vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
 
         vec3 angle_t2 = compute_angle_sampleray(t_hit.m_normal, -t2_ray);
-
+        if(m_draw_rays){
         ofBeginShape();
           ofSetLineWidth(1);
           //Drawing Normals
           ofSetColor(227, 227, 80);
           ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
         ofEndShape();
-
-
+        }
       }
-
     }
     return input_hit;
   }
