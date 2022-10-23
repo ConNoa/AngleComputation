@@ -62,7 +62,7 @@ ofParameter<bool> s_store_lens;
 */
 
 
-
+/*
 //
 // ofxLabel dim_monitor1;
 // ofxLabel label;
@@ -94,7 +94,10 @@ ofParameter<bool> s_store_lens;
 	//
 	// ofParameter<ofColor> color;
 	// ofxPanel gui;
+*/
 
 
+//------Containers for lenses---------------------------------------
+std::vector<std::shared_ptr<Shape>> m_all_shapes;
 
 };

@@ -106,12 +106,12 @@ void LensApp::setup_lens(){
   orig_pos.z = shrd->s_orig_z;
 
 
-  std::shared_ptr<Lensbox> lens_2 = std::make_shared<Lensbox>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_type_r1, shrd->s_r1, shrd->s_type_r2, shrd->s_r2, shrd->s_n);
-    std::cout<< "This is the new created Lens: [ "<< endl;
-    lens_2->print(std::cout);
-    std::cout<< " ]. " <<std::endl;
-  lens_2->update();
-  m_lens_shapes.push_back(lens_2);
+  std::shared_ptr<Lens_konvex> new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_type_r1, shrd->s_r1, shrd->s_type_r2, shrd->s_r2, shrd->s_n);
+  std::cout<< "This is the new created Lens: [ "<< endl;
+  new_Lens->print(std::cout);
+  std::cout<< " ]. " <<std::endl;
+  new_Lens->update();
+  shrd->m_all_shapes.push_back(new_Lens);
 
 
   return;

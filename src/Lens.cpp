@@ -1,4 +1,4 @@
-#include "Lensbox.hpp"
+#include "Lens.hpp"
 
 #include <cmath>
 #include <catch.hpp>
@@ -8,20 +8,20 @@
 //KONSTRUTOREN----------------------------------------------------------------
 
   //Default
-  Lensbox::Lensbox() :
-  Shape {"Lensbox",{}},
+  Lens::Lens() :
+  Shape {"Lens",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f} {}
 
   // Custom 1
-  Lensbox::Lensbox(vec3 const& min, vec3 const& max) :
-  Shape {"Lensbox",{}},
+  Lens::Lens(vec3 const& min, vec3 const& max) :
+  Shape {"Lens",{}},
   m_min {min},
   m_max {max} {}
 
   // Constructor for LensSystem
-  Lensbox::Lensbox(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  Shape {"Lensbox",{}},
+  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
+  Shape {"Lens",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f},
   m_orig {orig},
@@ -36,8 +36,8 @@
   m_n_air{1.000272f}{}
 
   // Constructor for LensSystem
-  Lensbox::Lensbox(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Shape {"Lensbox",{}},
+  Lens::Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
+  Shape {"Lens",{}},
   m_min {0.0f, 0.0f, 0.0f},
   m_max {1.0f, 1.0f, 1.0f},
   m_orig {orig},
@@ -52,20 +52,20 @@
   m_n_air{1.000272f}{}
 
   // Custom 3
-  Lensbox::Lensbox(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
+  Lens::Lens(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
   Shape {name, mat},
   m_min {min},
   m_max {max} {}
 
   //Destruktor
-  Lensbox::~Lensbox()
+  Lens::~Lens()
   {
-    std::cout << "Lensbox-Destruction: " << Shape::name()<< std::endl;
+    std::cout << "Lens-Destruction: " << Shape::name()<< std::endl;
   }
 
 //FUNKTIONEN------------------------------------------------------------------
 
-  std::ostream& Lensbox::print(std::ostream& os) const{
+  std::ostream& Lens::print(std::ostream& os) const{
     Shape::print(os);
 
     os << "Minimum: (" << m_min.x << ", "
@@ -93,53 +93,7 @@
     return os;
   }
 
-  /*Întersect
-  ######################################
-  Prüft in Hit boxhit.m_hit ob der Strahl
-  die Lensbox trifft(bool).
-  In welcher Entfernung, boxhit.m_distance
-  wird geschnitten?
-  Übergabe per Pointer der Lensbox in
-  boxhit.m_shape.
-  Der Śchnittpunkt liegt in
-  boxhit.m_point.
-
-  Grund-Verfahren-Source:
-  http://www.scratchapixel.com/
-  lessons/3d-basic-rendering/
-  minimal-ray-tracer-rendering
-  -simple-shapes/ray-box-intersection
-
-  Hit Sphere::intersect(Ray ray) const
-    {
-
-      Hit spherehit;
-
-      spherehit.m_hit = intersectRaySphere
-        (
-          ray.m_orig, ray.m_direction,
-          m_center, m_radius,
-          spherehit.m_point, spherehit.m_normal //Indirekte param.
-        );
-
-      if (spherehit.m_hit) //=true ->extra Info
-      {
-        spherehit.m_distance = distance(ray.m_orig, spherehit.m_point);
-        spherehit.m_shape = this;
-
-
-         if(distance(spherehit.m_point-0.001f*ray.m_direction, m_center) < m_radius)
-        {
-          spherehit.m_normal = -spherehit.m_normal;
-        }
-
-      }
-
-      return spherehit;
-    }
-
-   */
-  Hit Lensbox::intersect(Ray &ray_in, int count_hits) const{
+  Hit Lens::intersect(Ray &ray_in, int count_hits) const{
     // std::cout << "__________________________________________________________________________"<< std::endl;
     std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
     std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
@@ -276,7 +230,7 @@
     return input_hit;
   }
 
-  float Lensbox::snells_law(float alpha_i, float n_i, float n_t)const {
+  float Lens::snells_law(float alpha_i, float n_i, float n_t)const {
     // std::cout<<"--> snells_law() :"<< std::endl;
     float sin_alph_in = sin(alpha_i);
     // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
@@ -296,44 +250,44 @@
   }
 
 
-  vec3 Lensbox::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
+    vec3 Lens::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
 
-    vec3 angles;
-    vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
-    vec3 muly_vec = {0,1,1};
-    vec3 mulz_vec = {1,0,1};
-    vec3 sr_x = normalize(ray_in*mulx_vec);
-    vec3 sr_y = normalize(ray_in*muly_vec);
-    vec3 sr_z = normalize(ray_in*mulz_vec);
-    vec3 ray_v_normale = {1,0,0};
-    vec3 rotrefy = {1,0,0};
-    vec3 rotrefx = {0,0,1};
-    vec3 rotrefz = {0,1,0};
-    float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
-    float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
-    float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
+        vec3 angles;
+        vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
+        vec3 muly_vec = {0,1,1};
+        vec3 mulz_vec = {1,0,1};
+        vec3 sr_x = normalize(ray_in*mulx_vec);
+        vec3 sr_y = normalize(ray_in*muly_vec);
+        vec3 sr_z = normalize(ray_in*mulz_vec);
+        vec3 ray_v_normale = {1,0,0};
+        vec3 rotrefy = {1,0,0};
+        vec3 rotrefx = {0,0,1};
+        vec3 rotrefz = {0,1,0};
+        float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
+        float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
+        float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
 
-    // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
-    // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
-    // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
-    // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
+        // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
+        // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
+        // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
+        // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
 
-    angles[0] = r_angle_x;
-    angles[1] = r_angle_y;
-    angles[2] = r_angle_z;
-    return  angles;
-  }
+        angles[0] = r_angle_x;
+        angles[1] = r_angle_y; //Ist nicht relevant   -> vec2 daraus machen?
+        angles[2] = r_angle_z;
+        return  angles;
+      }
 
 
-  void Lensbox::draw() const{
+  void Lens::draw() const{
     lens.draw();
     if(m_show_constr_lines||m_act_manipulated){ draw_construction();}
     if(m_draw_focalpoint){ draw_focalpoint();}
     return;
   }
 
-  // void Lensbox::draw_construction(int mode) const {
-    void Lensbox::draw_construction() const {
+  // void Lens::draw_construction(int mode) const {
+    void Lens::draw_construction() const {
     // if(mode == 1){
       ofBeginShape();
         ofSetColor(0, 0, 255);
@@ -359,39 +313,8 @@
       ofEndShape(false);
       return;
     }
-    // else if(mode == 2){
-  //
-  //     ofBeginShape();
-  //       ofSetColor(255, 255, 255);
-  //       ofFill();
-  //       // ofDrawCircle(o_x, o_y, o_z, 3);
-  //       //kleiner Kreis um den Ursprung bzw. Mittelpunkt der Linse
-  //       ofDrawCircle(m_orig, 3);
-  //       //Senkrechte durch den Mittelpunkt in Länge des Linsendurchmessers
-  //       ofDrawLine(m_O_d1, m_O_d2);
-  //
-  //       ofSetCircleResolution(720);
-  //       ofNoFill();
-  //       ofSetColor(0,0, 250);
-  //       ofDrawCircle(m_center_r1, 3);
-  //       ofDrawCircle(m_center_r1, m_r1);
-  //       //ofDrawCircle(f1, r1_);
-  //       ofSetColor(255,0,0);
-  //       ofDrawCircle(m_center_r2, 3);
-  //       ofDrawCircle(m_center_r2, m_r2);
-  //
-  //       ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-  //       ofSetColor(40,40,40);
-  //       ofDrawRectangle(m_orig, m_width, m_diameter);
-  //       ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-  //     ofEndShape(false);
 
-  // }
-
-
-
-
-  void Lensbox::draw_focalpoint() const {
+  void Lens::draw_focalpoint() const {
     ofBeginShape();
       ofSetColor(86, 174, 53);
       ofFill();
@@ -404,7 +327,7 @@
     ofEndShape();
   }
 
-  void Lensbox::update(){
+  void Lens::update(){
 
     m_radius = m_diameter/2;
 
@@ -449,7 +372,7 @@
     return;
   }
 
-  void Lensbox::update_path(){
+  void Lens::update_path(){
 
     lens.clear();
 
@@ -478,23 +401,24 @@
     lens.close();
   }
 
-  void Lensbox::scale(float faktor){
+  void Lens::scale(float faktor){
     //Skaliere von min ausgehend!
     // vec3 diff=m_max-m_min;
     // m_max=m_min+(diff*faktor);
     //translate(XXX); Damit Zentrum bleibt?
   }
 
-  void Lensbox::translate(vec3 const& vec){
+  void Lens::translate(vec3 const& vec){
       m_trans_vec = vec;
       //update();
     }
 
-  void Lensbox::rotate(float angle,vec3 const& vec){
+  void Lens::rotate(float angle,vec3 const& vec){
     //NOT YET IMPLEMENTED
   }
 
-  float Lensbox::compute_lens_angle(float radius_ , float diameter_lens_){
+  float Lens::compute_lens_angle(float radius_ , float diameter_lens_){
+    
     float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
     vec3 f_ursp = vec3{0,0,0};
     vec3 l_ursp = f_ursp;
@@ -517,24 +441,24 @@
 
   //GETTER----------------------------------------------------------------------
 
-  vec3 const& Lensbox::max() const
+  vec3 const& Lens::max() const
   {
     return m_max;
   }
 
-  vec3 const& Lensbox::min() const
+  vec3 const& Lens::min() const
   {
     return m_min;
   }
 
   //SETTER----------------------------------------------------------------------
 
-  void Lensbox::max(vec3 const& max)
+  void Lens::max(vec3 const& max)
   {
     m_max = max;
   }
 
-  void Lensbox::min(vec3 const& min)
+  void Lens::min(vec3 const& min)
   {
     m_min = min;
   }

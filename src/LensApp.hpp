@@ -18,7 +18,8 @@
 #include "shape.hpp"
 #include "State.hpp"
 #include "lensefield.hpp"
-#include "Lensbox.hpp"
+#include "Lens_konvex.hpp"
+#include "Lens_konkav.hpp"
 #include "Mems.hpp"
 #include "Lens_konkav.hpp"
 #include "Lens_konvex.hpp"
@@ -66,10 +67,8 @@ public:
 
 	Mems m_mems;
 
-	//------Containers for lenses---------------------------------------
 
 	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
-	std::vector<std::shared_ptr<Lensbox>> m_lens_shapes;
 
 
 };
