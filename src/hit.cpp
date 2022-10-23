@@ -38,6 +38,7 @@
 			ofSetColor(ofColor::orange);
 			ofDrawLine(m_point, m_point+ direction_to* m_distance);
 			ofSetLineWidth(2);
+			
 			//Drawing Normals
 			ofSetColor(75, 196, 213);
 			ofDrawArrow(m_point, m_point+m_normal*50, 3);

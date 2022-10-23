@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "shape.hpp"
+#include "State.hpp"
 #include <memory>
 #include <cmath> // INFINITY
 
@@ -31,6 +32,10 @@ struct Hit
     double m_distance;
     vec3 m_point;
     vec3 m_normal;
+
+		shared_ptr<State> shrd;
+
+
     const Shape* m_shape; //Soll RAW-Pointer sein, damit this funktioniert und und... vlt noch const setzen?
 
 };

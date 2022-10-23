@@ -4,7 +4,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-// #include "ofxDatGui.h"
+#include "ofxDatGui.h"
 
 #include <memory>
 

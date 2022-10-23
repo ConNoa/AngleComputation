@@ -7,6 +7,7 @@
 #include "ofxGui.h"
 #include "ofxCv.h"
 #include <iostream>
+#include "State.hpp"
 #include "shape.hpp"
 #include "hit.hpp"
 
@@ -91,10 +92,10 @@ public:
 
   // variables for draw and visualisation
 
-  ofPath lens;
+  ofPath  lens;
 
-  vec3 m_O_d1;       //Top Point for outerLensediameter  für Mittelachse
-  vec3 m_O_d2;       //Bottom Point for outerLensediameter  für Mittelachse
+  vec3    m_O_d1;       //Top Point for outerLensediameter  für Mittelachse
+  vec3    m_O_d2;       //Bottom Point for outerLensediameter  für Mittelachse
 
   float   m_ankat_r1;
   float   m_ankat_r2;
@@ -102,8 +103,8 @@ public:
   float   m_ankat_angle_r1;
   float   m_ankat_angle_r2;
 
-  vec3 NULLPUNKT {0, 0, 0};
-  vec3 m_trans_vec {0, 0, 0};
+  vec3    NULLPUNKT {0, 0, 0};
+  vec3    m_trans_vec {0, 0, 0};
 
   int     m_type_r1;
   int     m_type_r2;
@@ -114,8 +115,12 @@ public:
 
   bool    m_show_constr_lines = true;
   bool    m_act_manipulated = false;
-
   bool    m_draw_normals = true;
+  bool    m_draw_rays = true;
+
+  shared_ptr<State> shrd;
+
+
 private:
   vec3 m_min;
   vec3 m_max;

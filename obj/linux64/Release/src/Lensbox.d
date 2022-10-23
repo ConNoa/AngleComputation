@@ -617,16 +617,7 @@ obj/linux64/Release/src/Lensbox.o: \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h \
  /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
  /home/pixel/OF/libs/openFrameworks/ofMain.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
  /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
@@ -668,6 +659,37 @@ obj/linux64/Release/src/Lensbox.o: \
  /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h \
+ /home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h \
+ /home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
@@ -1936,25 +1958,7 @@ obj/linux64/Release/src/Lensbox.o: \
 
 /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp:
 
 /home/pixel/OF/libs/openFrameworks/ofMain.h:
 
@@ -2039,5 +2043,67 @@ obj/linux64/Release/src/Lensbox.o: \
 /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h:
 
 /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:

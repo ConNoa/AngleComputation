@@ -16,25 +16,7 @@
 		m_distance_hit{100.0f}{}
 
 
-	// void Ray::draw(){
-	// 		ofBeginShape();
-	// 			std::cout<< "m_distancehit "<< m_distance_hit <<std::endl;
-	//
-	// 			ofSetColor(ofColor::yellow);
-	// 			m_hitpoint = m_orig;
-	// 			m_hitpoint.y += m_distance_hit;
-	// 			std::cout<< "m_hitpoint "<< m_hitpoint <<std::endl;
-	// 			// std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
-	//       // std::cout<< "direction of Ray = " << m_direction<< std::endl;
-	// 			ofDrawLine(glm::vec2(m_orig), glm::vec2(m_orig+m_direction));
-	// 			std::cout<< "after Ray draw ()  - " <<std::endl;
-	// 			std::cout<< "m_orig of Ray = "<< m_orig << std::endl;
-	// 			std::cout<< "direction of Ray = " << m_direction<< std::endl;
-	//
-	//
-	// 		ofEndShape();
-	//
-	// }
+
 	void Ray::draw(){
 			// ofBeginShape();
 			// 	ofSetColor(ofColor::yellow);

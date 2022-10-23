@@ -22,15 +22,15 @@ int main( ){
 
 		// ofGLFWWindowSettings settings;
 
-		settings.setSize(1100, 1000);
+		settings.setSize(1600, 1000);
 		settings.setPosition(glm::vec2(0,1000));
 		// settings.resizable = true;
 		settings.title = "MEMS PLANE VISUALISATION";
 
 		shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
-		settings.setSize(1550, 1000);
-		settings.setPosition(glm::vec2(1200,1000));
+		settings.setSize(1600, 1000);
+		settings.setPosition(glm::vec2(1650,1000));
 		// settings.resizable = false;
 		settings.title = "LENS - INTERFACE";
 

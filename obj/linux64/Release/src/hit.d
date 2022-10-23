@@ -528,7 +528,41 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/openFrameworks/video/ofGstVideoPlayer.h \
  /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
- /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h
+ /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
+ /home/pixel/OF/addons/ofxGui/src/ofxGui.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxToggle.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxSlider.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxInputField.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxButton.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
+ /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
+ /home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h \
+ /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h \
+ /home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h \
+ /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
+ /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
 
@@ -1621,3 +1655,71 @@ obj/linux64/Release/src/hit.o: \
 /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h:
 
 /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGui.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxToggle.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxSlider.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxInputField.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxButton.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxLabel.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h:
+
+/home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h:
+
+/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
