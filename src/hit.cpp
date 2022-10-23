@@ -50,6 +50,18 @@
 
 		}
 
+		void Hit::print() const {
+			cout<< ":-------------------------------------------------------------: "  <<endl;
+			std::cout << "Hit: ["<<std::endl;
+			std::cout<< "m_hit   : [ " << m_hit << " ]" <<std::endl;
+			std::cout<< "m_distance   : [ " <<m_distance  << " ]" <<std::endl;
+			std::cout<< " m_point  : [ " << m_point << " ]" <<std::endl;
+			std::cout<< " m_normal  : [ " <<  m_normal<< " ]" <<std::endl;
+			std::cout<< " m_shape  : [ " << m_shape << " ]    ]   -------------------------- \n \n" <<std::endl;
+			cout<< ":-------------------------------------------------------------: "  <<endl;
+
+		}
+
 
 		Hit& Hit::operator=(Hit const& tmp_hit)
 		{

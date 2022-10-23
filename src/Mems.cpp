@@ -39,7 +39,7 @@ void Mems::setup(){
   std::cout << "x_ax = " << y_ax << std::endl;
   std::cout << "y_ax = " << y_ax << std::endl;
 
-  for( int yi=0; yi< m_amm_mirr.y; yi++){
+  for( int yi=0; yi<= m_amm_mirr.y; yi++){
     std::cout<< "yi = " << yi<< std::endl;
     for(int xi=0; xi< m_amm_mirr.x; xi++){
       std::cout<<"xi = " <<xi <<std::endl;

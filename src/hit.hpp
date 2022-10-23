@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "shape.hpp"
 #include <memory>
 #include <cmath> // INFINITY
@@ -18,7 +19,11 @@ struct Hit
 
 
 	//FUNKTIONEN------------------------------------------------------------------
+
 		void draw() const;
+
+		void print() const;
+
 		Hit& operator=(Hit const& tmp_hit);
 
 	//VARIABLEN-------------------------------------------------------------------

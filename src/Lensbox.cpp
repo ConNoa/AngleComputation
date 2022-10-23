@@ -163,8 +163,10 @@
     }
 
    */
-  Hit Lensbox::intersect(Ray const &ray_in) const{
-    //std::cout<< "Lensbox::intersect exec. "<< std::endl;
+  Hit Lensbox::intersect(Ray &ray_in, int count_hits) const{
+    // std::cout << "__________________________________________________________________________"<< std::endl;
+    std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
+    std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
 
     Hit l_hit;
 
@@ -182,17 +184,16 @@
 
     if(l_hit.m_hit == true) {
 
-      std::cout<< "Lenshit! with ray from [" << ray_in.m_orig << "]"<<std::endl;
-      std::cout << " At Pos 1 :"<< intsctPos1<< std::endl;
-      std::cout << " with Intersection-normal 1 :"<< intsctNrml1<< std::endl;
-      // std::cout << " At Pos 2 :"<< intsctPos2<< std::endl;
-      // std::cout << " with Intersection-normal 2 :"<< intsctNrml2<< std::endl;
-
-
       l_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
         intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
 
+        std::cout<< "         with ray from: [" << ray_in.m_orig << "]"<<std::endl;
+        std::cout<< "At              Pos 1 : ["<< intsctPos1<<"]" << std::endl;
+        std::cout <<"Intersection-normal 1 : ["<< intsctNrml1<<"]" <<std::endl;
+
       if(length(m_orig-intsctPos1)<length(m_orig-intsctPos2)){
+        // std::cout << "ifcondition"<<std::endl;
+
         l_hit.m_point = intsctPos1;
         l_hit.m_normal = intsctNrml1;
         l_hit.m_distance = length(ray_in.m_orig - intsctPos1);
@@ -201,6 +202,8 @@
         }
       }
       else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
+        std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
+
         l_hit.m_point = intsctPos2;
         l_hit.m_normal = intsctNrml2;
         l_hit.m_distance = length(ray_in.m_orig - intsctPos2);
@@ -208,20 +211,45 @@
           l_hit.draw();
         }
       }
-      //Winkel zwischen eintreffendem Strahl und der Normalen der Oberfläche
-      float angle_ri_n = angle(-normalize(l_hit.m_normal), normalize(ray_in.m_direction))* (180.0/3.141592653589793238463);
-      std::cout << "Winkel rayincoming /  normale-hitpoint: " << angle_ri_n<< std::endl;
-      vec3 angle_i = compute_angle_sampleray(-ray_in.m_direction, l_hit.m_normal );
-      float angle_t_x = snells_law(angle_i.x, m_n_air, m_n);
-      float angle_t_z = snells_law(angle_i.z, m_n_air, m_n);
+      else{
+        std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
 
-      fmat4 transform_matrix = glm::rotate(angle_t_x, fvec3{1.0f, 0.0f, 0.0f});
-      //cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<endl;
+        return l_hit;
+      }
+      std::cout<<"lhit distance  :"<< l_hit.m_distance << std::endl;
+      ray_in.m_distance_hit = l_hit.m_distance;
+
+      // std::cout << "compute alpha_i : " << std::endl;
+      // //vec3 DEBUG_Ri = normalize(ray_in.m_direction);
+      // vec3 DEBUG_Hpnorm = -normalize(l_hit.m_normal);
+      //
+      // std::cout << "incoming_Ray  : [normalize(ray_in.m_direction)]  : " << ray_in.m_direction << std::endl;
+      // std::cout << "normale_hitpoint : [-normalize(l_hit.m_normal)]  : " << DEBUG_Hpnorm << std::endl;
+      //
+      // //Winkel zwischen eintreffendem Strahl und der Normalen der Oberfläche
+      // float angle_ri_n = angle(-normalize(l_hit.m_normal), normalize(ray_in.m_direction))* (180.0/3.141592653589793238463);
+      // std::cout << "\n Winkel alpha_i zwischen incoming_Ray & normale_hitpoint: " << angle_ri_n<< " Grad"  << std::endl;
+      // std::cout << "__________________________________________________________________________"<< std::endl;
+      vec3 angle_i = compute_angle_sampleray(-ray_in.m_direction, l_hit.m_normal );
+
+
+      float angle_t_x = snells_law(angle_i.x, m_n_air, m_n);
+      //float angle_t_z = snells_law(angle_i.z, m_n_air, m_n);
+
+      fmat4 transform_matrix = glm::rotate(angle_t_x, fvec3{0.0f, 0.0f, 1.0f});
+      //std::cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<std::endl;
       // transform_matrix = glm::rotate(transform_matrix,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
-      // cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<endl;
+      // std::cout<< "Transform Matrix:  [ "<<transform_matrix<< " ]."<<std::endl;
       fmat3 rot_mat_shrinked = fmat3(transform_matrix);
-      //cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<endl;
-      vec3 new_ray = (rot_mat_shrinked*-l_hit.m_normal);
+      std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
+
+      //Spiegelverkehrt um normale
+      // vec3 new_ray = (-rot_mat_shrinked*l_hit.m_normal);
+
+      //Testing
+      vec3 new_ray = (l_hit.m_normal*-rot_mat_shrinked);
+
+
       ofBeginShape();
 
       //Drawing horizontal Black Lines
@@ -232,20 +260,33 @@
       ofSetColor(227, 227, 80);
       ofDrawArrow(l_hit.m_point, l_hit.m_point+new_ray*300, 3);
       // ofSetColor(146, 21, 37);
+      vec3 angle_t = compute_angle_sampleray(new_ray, -l_hit.m_normal );
+      // std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ angle_t is "<< angle_t.x* 180.0/3.141592653589793238463 <<std::endl;
 
     //  ofDrawArrow(l_hit.m_point, l_hit.m_point-m_normal*300, 3);
 
       ofEndShape();
 
-      cout<< "------------  [ "<< " ]  ------------------------------------------"<<endl;
     }
     return l_hit;
   }
 
   float Lensbox::snells_law(float alpha_i, float n_i, float n_t)const {
-
+    // std::cout<<"--> snells_law() :"<< std::endl;
+    float sin_alph_in = sin(alpha_i);
+    // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
+    // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
+    // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
+    float n_it = n_i/n_t;
+    // std::cout<<"\n n_i :"<<  n_i << std::endl;
+    // std::cout<<" n_t :"<<  n_t << std::endl;
+    // std::cout<<" n_it :"<<  n_it << std::endl;
+    float alp_n_it = sin_alph_in*n_it;
+    // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
     float alpha_t = asin(sin(alpha_i)*n_i/n_t);
-    cout<<" Angle t ou is : "<< alpha_t << endl;
+    // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
+    // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
+    // std::cout<<"\n"<<std::endl;
     return alpha_t;
   }
 
@@ -253,9 +294,6 @@
 
 
   vec3 Lensbox::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
-
-    cout<< "::  compute_angle_sampleray() : "  <<endl;
-
 
     vec3 angles;
     vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
@@ -281,12 +319,16 @@
     float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
 
 
+
     angles[0] = r_angle_x* 180.0/3.141592653589793238463;
     angles[1] = r_angle_y* 180.0/3.141592653589793238463;
     angles[2] = r_angle_z* 180.0/3.141592653589793238463;
 
-    cout<< " Angles zwischen ray ["<< ray_in <<"] und der Normalen ["<<normal_in <<"]des Hitpunktes sind für x, y, z["
-    << angles <<" ]"  <<endl;
+    // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
+
+    angles[0] = r_angle_x;
+    angles[1] = r_angle_y;
+    angles[2] = r_angle_z;
     return  angles;
   }
 

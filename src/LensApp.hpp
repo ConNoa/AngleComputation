@@ -32,6 +32,8 @@ public:
 	void update();
 	void draw();
 
+	void run_routine();
+
 	void setup_gui();
 	void setup_lens();
 

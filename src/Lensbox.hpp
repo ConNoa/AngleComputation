@@ -11,6 +11,7 @@
 #include "hit.hpp"
 
 using namespace glm;
+//using namespace std;
 
 class Lensbox : public Shape{
 
@@ -41,7 +42,7 @@ public:
 
   //FUNKTIONEN------------------------------------------------------------------
   std::ostream& print(std::ostream& os) const override;
-  Hit intersect(Ray const &ray_in) const override;
+  Hit intersect(Ray &ray_in, int count_hits) const override;
 
   float snells_law(float alpha_i, float n_i, float n_t) const;
 

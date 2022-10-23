@@ -25,7 +25,7 @@
 	  ######################################
 	  Gibt das durch einen Ray als erstes
 	  getroffene Objekt mit DATA zurück! */
-	Hit Composite::intersect(Ray ray) const
+	Hit Composite::intersect(Ray &ray, int count_hits) const
 	{
 		/*if (transf())
     	{
@@ -35,7 +35,7 @@
 		Hit temphit;
 		for( auto &i : m_shapes)
 		{
-		  temphit= i->intersect(ray);
+		  temphit= i->intersect(ray, 999999);
 		  if(temphit.m_distance<hit.m_distance)
 		  {
 		    hit = temphit;
@@ -50,7 +50,7 @@
 	}
 
 
-	void Composite::update() 
+	void Composite::update()
 	{
 		return;
 	}

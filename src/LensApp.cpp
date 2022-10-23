@@ -22,6 +22,7 @@ void LensApp::setup(){
 
     m_mems.setup();
 
+    run_routine();
 
 
 }
@@ -31,7 +32,9 @@ void LensApp::update(){
   return;
 }
 
-void LensApp::draw(){
+
+
+void LensApp::run_routine(){
 
   for(auto it : m_lens_shapes){
     //    it->print(std::cout);
@@ -40,20 +43,28 @@ void LensApp::draw(){
   }
   m_mems.draw();
 
-std::cout <<"---------------------------------------------"<< std::endl;
+std::cout <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<< std::endl;
   for(auto lens_it : m_lens_shapes){
+    int counter = 0;
     for(auto ray_it : m_mems.m_mems_rays){
+      counter += 1;
       Hit temp_hit;
-      temp_hit = lens_it->intersect(ray_it);
+      temp_hit = lens_it->intersect(ray_it, counter);
     }
   }
+  return;
+}
+
+
+void LensApp::draw(){
+  run_routine();
   return;
 }
 
 void LensApp::setup_gui(){
     //-------------GÚI INTERFACE------------------------------------------------
     shrd->s_orig_x.set("s_orig_x", 680, 0, 1000);
-    shrd->s_orig_y.set("s_orig_y", 634, 500, 800);
+    shrd->s_orig_y.set("s_orig_y", 700, 500, 800);
     shrd->s_orig_z.set("s_orig_z", 0, -600, 600);
     shrd->s_rot_z.set("s_rot_z", 0, 0, 360);
 

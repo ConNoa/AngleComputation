@@ -24,7 +24,7 @@ class Composite : public Shape
     ~Composite();
 
     //FUNKTIONEN-------------------------------------------------------------------------
-    Hit intersect(Ray ray) const;
+    Hit intersect(Ray &ray, int count_hits) const;
 
     void draw() const override;
 
