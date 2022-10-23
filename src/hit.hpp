@@ -21,6 +21,8 @@ struct Hit
 
 	//FUNKTIONEN------------------------------------------------------------------
 
+		void draw_normals() const;
+
 		void draw(vec3 const& direction_from) const;
 
 		void print() const;

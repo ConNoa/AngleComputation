@@ -8,7 +8,7 @@ void LensApp::setup(){
 
 
     setup_lens();
-    load_lens_parameters(shrd->select_lens);
+    load_lens_parameters(shrd->s_select_lens);
     for(auto it : m_lens_shapes){it->update_path();}
 
     m_mems.setup();
@@ -57,11 +57,13 @@ void LensApp::setup_gui(){
     shrd->s_type_r2.set("s_type_r2", 1, 1, 3);
     shrd->s_r2.set("s_r2", 442.62, 0, 4000);
     shrd->s_n.set("s_n", 2.0f, 1, 3);
+
     shrd->s_show_constr_lines.set(true);
-    shrd->show_rays.set(true);
-    shrd->show_focus_etc.set(true);
-    shrd->select_lens.set("Select Lens", 0, 0, 5);
-    shrd->store_lens.set(false);
+    shrd->s_draw_rays.set(true);
+    shrd->s_draw_normals.set(true);
+    shrd->s_show_focus_etc.set(true);
+    shrd->s_select_lens.set("Select Lens", 0, 0, 5);
+    shrd->s_store_lens.set(false);
 
 
     shrd->lens_attr_gui = new ofxDatGui();
@@ -81,11 +83,12 @@ void LensApp::setup_gui(){
     shrd->lens_attr_gui->addSlider(shrd-> s_r2);
     shrd->lens_attr_gui->addSlider(shrd-> s_n);
 
-    shrd->lens_attr_gui->addToggle("Show Construction Lines", shrd->s_show_constr_lines);
-    shrd->lens_attr_gui->addToggle("Show Normals", shrd->show_rays);
-    shrd->lens_attr_gui->addToggle("Show Focus etc", shrd->show_focus_etc);
-    shrd->lens_attr_gui->addSlider(shrd-> select_lens);
-    shrd->lens_attr_gui->addToggle("Store Lens", shrd->store_lens);
+    shrd->lens_attr_gui->addToggle("Draw Construction Lines", shrd->s_show_constr_lines);
+    shrd->lens_attr_gui->addToggle("Draw Rays ", shrd->s_draw_rays);
+    shrd->lens_attr_gui->addToggle("Draw Normals", shrd->s_draw_normals);
+    shrd->lens_attr_gui->addToggle("Draw Focus etc", shrd->s_show_focus_etc);
+    shrd->lens_attr_gui->addSlider(shrd->s_select_lens);
+    shrd->lens_attr_gui->addToggle("Store Lens", shrd->s_store_lens);
 
     shrd->lens_attr_gui->setPosition(20, 20);
     shrd->lens_attr_gui->onSliderEvent(this, &LensApp::onSliderEvent);
@@ -118,58 +121,58 @@ void LensApp::setup_lens(){
 void LensApp::load_lens_parameters(int lens_nmbr){
   cout<<"load parameters of lens "<< lens_nmbr << endl;
 
-    shrd->s_orig_x = m_lens_shapes[shrd->select_lens]->m_orig.x;
-    shrd->s_orig_y = m_lens_shapes[shrd->select_lens]->m_orig.y;
-    shrd->s_orig_z = m_lens_shapes[shrd->select_lens]->m_orig.z;
-    shrd->s_rot_z = m_lens_shapes[shrd->select_lens]->m_rot_z;
-    shrd->s_diameter = m_lens_shapes[shrd->select_lens]->m_diameter;
-    shrd->s_width = m_lens_shapes[shrd->select_lens]->m_width;
-    shrd->s_type_r1 = m_lens_shapes[shrd->select_lens]->m_type_r1;
-    shrd->s_r1 = m_lens_shapes[shrd->select_lens]->m_r1;
-    shrd->s_type_r2 = m_lens_shapes[shrd->select_lens]->m_type_r2;
-    shrd->s_r2 = m_lens_shapes[shrd->select_lens]->m_r2;
-    shrd->s_n = m_lens_shapes[shrd->select_lens]->m_n;
-    shrd->s_show_constr_lines = m_lens_shapes[shrd->select_lens]->m_show_constr_lines;
+    shrd->s_orig_x = m_lens_shapes[shrd->s_select_lens]->m_orig.x;
+    shrd->s_orig_y = m_lens_shapes[shrd->s_select_lens]->m_orig.y;
+    shrd->s_orig_z = m_lens_shapes[shrd->s_select_lens]->m_orig.z;
+    shrd->s_rot_z = m_lens_shapes[shrd->s_select_lens]->m_rot_z;
+    shrd->s_diameter = m_lens_shapes[shrd->s_select_lens]->m_diameter;
+    shrd->s_width = m_lens_shapes[shrd->s_select_lens]->m_width;
+    shrd->s_type_r1 = m_lens_shapes[shrd->s_select_lens]->m_type_r1;
+    shrd->s_r1 = m_lens_shapes[shrd->s_select_lens]->m_r1;
+    shrd->s_type_r2 = m_lens_shapes[shrd->s_select_lens]->m_type_r2;
+    shrd->s_r2 = m_lens_shapes[shrd->s_select_lens]->m_r2;
+    shrd->s_n = m_lens_shapes[shrd->s_select_lens]->m_n;
+    shrd->s_show_constr_lines = m_lens_shapes[shrd->s_select_lens]->m_show_constr_lines;
     return;
 
 }
 
 void LensApp::change_lens_parameters(std::string label_in){
 
-  m_lens_shapes[shrd->select_lens]->m_act_manipulated = true;
+  m_lens_shapes[shrd->s_select_lens]->m_act_manipulated = true;
 
   if (label_in == "s_orig_x"){
-    m_lens_shapes[shrd->select_lens]->m_orig.x = shrd->s_orig_x;
+    m_lens_shapes[shrd->s_select_lens]->m_orig.x = shrd->s_orig_x;
   }
   if (label_in == "s_orig_y"){
-    m_lens_shapes[shrd->select_lens]->m_orig.y = shrd->s_orig_y;
+    m_lens_shapes[shrd->s_select_lens]->m_orig.y = shrd->s_orig_y;
   }
   if (label_in == "s_orig_z"){
-    m_lens_shapes[shrd->select_lens]->m_orig.z = shrd->s_orig_z;
+    m_lens_shapes[shrd->s_select_lens]->m_orig.z = shrd->s_orig_z;
   }
   if (label_in == "s_rot_z"){
-      m_lens_shapes[shrd->select_lens]->m_rot_z = shrd->s_rot_z;
+      m_lens_shapes[shrd->s_select_lens]->m_rot_z = shrd->s_rot_z;
   }
   if (label_in == "s_diameter"){
-      m_lens_shapes[shrd->select_lens]->m_diameter = shrd->s_diameter;
+      m_lens_shapes[shrd->s_select_lens]->m_diameter = shrd->s_diameter;
   }
   if (label_in == "s_width"){
-      m_lens_shapes[shrd->select_lens]->m_width = shrd->s_width;
+      m_lens_shapes[shrd->s_select_lens]->m_width = shrd->s_width;
   }
   if (label_in == "s_type_r1"){
-      m_lens_shapes[shrd->select_lens]->m_type_r1 = shrd->s_type_r1;
+      m_lens_shapes[shrd->s_select_lens]->m_type_r1 = shrd->s_type_r1;
   }
   if (label_in == "s_r1"){
-      m_lens_shapes[shrd->select_lens]->m_r1 = shrd->s_r1;
+      m_lens_shapes[shrd->s_select_lens]->m_r1 = shrd->s_r1;
   }
   if (label_in == "s_type_r2"){
-      m_lens_shapes[shrd->select_lens]->m_type_r2 = shrd->s_type_r2;
+      m_lens_shapes[shrd->s_select_lens]->m_type_r2 = shrd->s_type_r2;
   }
   if (label_in == "s_r2"){
-      m_lens_shapes[shrd->select_lens]->m_r2 = shrd->s_r2;
+      m_lens_shapes[shrd->s_select_lens]->m_r2 = shrd->s_r2;
   }
   if (label_in == "s_n"){
-      m_lens_shapes[shrd->select_lens]->m_n = shrd->s_n;
+      m_lens_shapes[shrd->s_select_lens]->m_n = shrd->s_n;
   }
 
 }
@@ -177,7 +180,7 @@ void LensApp::change_lens_parameters(std::string label_in){
 void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
   cout << e.target->getName() << " : " << e.value << endl;
 
-  if(shrd->select_lens < m_lens_shapes.size()){
+  if(shrd->s_select_lens < m_lens_shapes.size()){
     if (e.target->getLabel() == "Select Lens"){
       load_lens_parameters((int)e.value);
     }
@@ -197,12 +200,20 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
           it->m_show_constr_lines = shrd->s_show_constr_lines;
       }
     }
-    if (e.target->getLabel() == "Show Normals"){
-      shrd->show_rays = e.checked;
+    if (e.target->getLabel() == "Draw Rays"){
+      shrd->s_draw_rays = e.checked;
       //m_lens_shapes[shrd->select_lens]
       for(auto it : m_lens_shapes){
         //    it->print(std::cout);
-          it->m_draw_normals = shrd->show_rays;
+          it->m_draw_rays = shrd->s_draw_rays;
+      }
+    }
+    if (e.target->getLabel() == "Draw Normals"){
+      shrd->s_draw_normals = e.checked;
+      //m_lens_shapes[shrd->select_lens]
+      for(auto it : m_lens_shapes){
+        //    it->print(std::cout);
+          it->m_draw_normals = shrd->s_draw_normals;
       }
     }
 

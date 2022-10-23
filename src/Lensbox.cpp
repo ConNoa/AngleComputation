@@ -173,9 +173,8 @@
         input_hit.m_point = intsctPos1;
         input_hit.m_normal = intsctNrml1;
         input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
-        if(m_draw_normals){
-          input_hit.draw(ray_in.m_inv_direction);
-        }
+        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
+        if(m_draw_normals){   input_hit.draw_normals();               }
       }
       else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
         std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
@@ -183,9 +182,8 @@
         input_hit.m_point = intsctPos2;
         input_hit.m_normal = intsctNrml2;
         input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
-        if(m_draw_normals){
-          input_hit.draw(ray_in.m_inv_direction);
-        }
+        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
+        if(m_draw_normals){   input_hit.draw_normals();               }
       }
       else{
         std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;

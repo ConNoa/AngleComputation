@@ -33,11 +33,14 @@ ofParameter<float> s_r1;
 ofParameter<int> s_type_r2;
 ofParameter<float> s_r2;
 ofParameter<float> s_n;
+
+
 ofParameter<bool> s_show_constr_lines;
-ofParameter<bool> show_rays;
-ofParameter<bool> show_focus_etc;
-ofParameter<int> select_lens;
-ofParameter<bool> store_lens;
+ofParameter<bool> s_draw_rays;
+ofParameter<bool> s_draw_normals;
+ofParameter<bool> s_show_focus_etc;
+ofParameter<int>  s_select_lens;
+ofParameter<bool> s_store_lens;
 
 /*
 >s_orig_x;
