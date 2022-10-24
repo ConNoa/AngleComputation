@@ -12,10 +12,9 @@ public:
   Lens();
   Lens(int mat_id);
   Lens(std::string const& name, int mat_id);
-  Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2);
-  Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, int mat_id);
-
-  virtual ~Lens();
+  Lens(vec3 const& orig, float diameter, float width, float r1, float r2);
+  Lens(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id);
+  ~Lens();
 
   //FUNKTIONEN------------------------------------------------------------------
   virtual std::ostream& print(std::ostream& os) const;

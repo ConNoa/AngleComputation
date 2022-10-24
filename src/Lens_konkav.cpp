@@ -1,60 +1,41 @@
 #include "Lens_konkav.hpp"
 
-#include <cmath>
 #include <catch.hpp>
 // #include <limits>
 #include <algorithm>
 
 //KONSTRUTOREN----------------------------------------------------------------
 
-  // //Default
+  //Default
   Lens_konkav::Lens_konkav() :
   Lens {"Lens_konkav",{}}{}
-  //
-  // // Custom 1
-  // Lens_konkav::Lens_konkav(vec3 const& min, vec3 const& max) :
-  // Shape {"Lens_konkav",{}},
-  // m_min {min},
-  // m_max {max} {}
-  //
-  // // Constructor for LensSystem
-  // Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  // Shape {"Lens_konkav",{}},
-  // m_min {0.0f, 0.0f, 0.0f},
-  // m_max {1.0f, 1.0f, 1.0f},
-  // m_orig {orig},
-  // m_diameter {diameter},
-  // m_width {width},
-  // m_rot_z {0},
-  // m_type_r1 {1},
-  // m_r1 {r1},
-  // m_type_r2 {1},
-  // m_r2 {r2},
-  // m_n {n},
-  // m_n_air{1.000272f}{}
-  //
-  // Constructor for LensSystem
-  Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Lens {"Lens_konkav",{}},
-  m_orig {orig},
-  m_diameter {diameter},
-  m_width {width},
-  m_rot_z {0},
-  m_type_r1 {t_r1},
-  m_r1 {r1},
-  m_type_r2 {t_r2},
-  m_r2 {r2},
-  m_n {n},
-  m_n_air{1.000272f}{}
 
-  // Custom 3
-  Lens_konkav::Lens_konkav(std::string const& name, std::shared_ptr<Material> mat) :
-  Lens {name, mat}{}
+  Lens_konkav::Lens_konkav(int mat_id) :
+  Lens {"Lens_konkav", mat_id}{}
+
+  Lens_konkav::Lens_konkav(std::string const& name, int mat_id) :
+  Lens {name, mat_id}{}
+
+  Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2) :
+  Lens {"Lens_konkav", 1},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
+
+  Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id) :
+  Lens {"Lens_konkav", mat_id},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
 
   //Destruktor
   Lens_konkav::~Lens_konkav()
   {
-    std::cout << "Lens_konkav-Destruction: " << Shape::name()<< std::endl;
+    std::cout << "Lens_konkav-Destruction: " << Lens::name()<< std::endl;
   }
 
 //FUNKTIONEN------------------------------------------------------------------
@@ -62,7 +43,7 @@
   std::ostream& Lens_konkav::print(std::ostream& os) const{
     Shape::print(os);
 
-    os<< "Origin: (" << m_orig.x << ", "
+    os << "Origin: (" << m_orig.x << ", "
     << m_orig.y << ", "
     << m_orig.z << ")" << "\n"
 
@@ -140,7 +121,7 @@
     vec3 intsctPos2 = vec3{0,0,0};
     vec3 intsctNrml2 = vec3{0,0,0};
 
-    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_radius,
+    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_diameter/2,
                                         intsctPos1, intsctNrml1,
                                         intsctPos2, intsctNrml2);
 
@@ -198,7 +179,7 @@
       vec3 intsctPos4 = vec3{0,0,0};
       vec3 intsctNrml4 = vec3{0,0,0};
 
-      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_radius,
+      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_diameter/2,
                                           intsctPos3, intsctNrml3,
                                           intsctPos4, intsctNrml4);
 
@@ -309,7 +290,7 @@
   //   angles[2] = r_angle_z;
   //   return  angles;
   // }
-  //
+
 
   void Lens_konkav::draw() const{
     lens.draw();
@@ -318,48 +299,8 @@
     return;
   }
 
-//   void Lens_konkav::draw_construction() const {
-//       ofBeginShape();
-//         ofSetColor(0, 0, 255);
-//         ofFill();
-//         // ofDrawCircle(o_x, o_y, o_z, 3);
-//         ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
-//         ofDrawLine(m_O_d1, m_O_d2);
-//
-//         ofSetCircleResolution(720);
-//         ofNoFill();
-//         ofSetColor(0,0, 250);
-//         ofDrawCircle(m_center_r1, 3);
-//         ofDrawCircle(m_center_r1, m_r1);
-//         //ofDrawCircle(f1, r1_);
-//         ofSetColor(255,0,0);
-//         ofDrawCircle(m_center_r2, 3);
-//         ofDrawCircle(m_center_r2, m_r2);
-//
-//         ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-//         ofSetColor(40,40,40);
-//         ofDrawRectangle(m_orig, m_width, m_diameter);
-//         ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-//       ofEndShape(false);
-//       return;
-// }
-
-  // void Lens_konkav::draw_focalpoint() const {
-  //   ofBeginShape();
-  //     ofSetColor(86, 174, 53);
-  //     ofFill();
-  //     // ofDrawCircle(o_x, o_y, o_z, 3);
-  //     ofDrawCircle(m_center_d0, 3);
-  //     ofDrawCircle(m_center_d3, 3);
-  //     ofSetColor(ofColor::white);
-  //     ofDrawCircle(m_f1, 3);
-  //     ofDrawCircle(m_f2, 3);
-  //   ofEndShape();
-  // }
 
   void Lens_konkav::update(){
-
-    m_radius = m_diameter/2;
 
     //relevant?
     //Top and BottomPoints von äußerem Linsendiameter
@@ -393,6 +334,9 @@
     m_f2.x = m_f2.x + 1/m_D2;
 
     //d_1 = (n_t1-n_i1)/R_1;
+
+
+
     std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
     std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
 
@@ -427,26 +371,3 @@
     lens.setFillColor(ofColor::grey);
     lens.close();
   }
-  //
-  //
-  //
-  // float Lens_konkav::compute_lens_angle(float radius_ , float diameter_lens_){
-  //   float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
-  //   vec3 f_ursp = vec3{0,0,0};
-  //   vec3 l_ursp = f_ursp;
-  //   l_ursp.x = radius_;
-  //
-  //   vec3 l_edge = f_ursp;
-  //   l_edge.x = lr_x_atd;
-  //   l_edge.y = diameter_lens_/2;
-  //   vec3 refx = vec3{1,0,0};
-  //
-  //   l_ursp = normalize(l_ursp);
-  //   l_edge = normalize(l_edge);
-  //   float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
-  //   // std::cout << "compute angle"<< std::endl;
-  //   // std::cout << angle_<< std::endl;
-  //
-  //   return angle_;
-  // }
-  //

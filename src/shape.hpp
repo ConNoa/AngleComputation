@@ -21,7 +21,7 @@ public:
   Shape();
   Shape(std::string const& name, int mat_id);
   // Shape(std::string const& name, std::shared_ptr<Material> mat);
-  virtual ~Shape();
+  ~Shape();
 
   //FUNKTIONEN------------------------------------------------------------------------
   std::string name() const;

@@ -14,10 +14,10 @@
   Lens::Lens(int mat_id) :
   Shape {"Lens", mat_id}{}
 
-  Lens::Lens(std::string const& name, std::shared_ptr<Material> mat) :
-  Shape {name, mat}{}
+  Lens::Lens(std::string const& name, int mat_id) :
+  Shape {name, mat_id}{}
 
-  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2,) :
+  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2) :
   Shape {"Lens", 1},
   m_orig{orig},
   m_diameter{diameter},
@@ -56,7 +56,7 @@
 
     << "R2: (" << m_r2<< ")" << "\n"
 
-    << "Brechungsindex: (" << m_n << ")" << std::endl;
+    << "Brechungsindex ergibt sich aus Material: (" << material() << ")" << std::endl;
 
     return os;
   }

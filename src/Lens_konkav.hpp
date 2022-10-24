@@ -4,17 +4,18 @@
 #include "hit.hpp"
 
 using namespace glm;
+using namespace std;
 
 class Lens_konkav : public Lens{
 
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lens_konkav();
-  // Lens_konkav(vec3 const& min, vec3 const& max);
-  // Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n);
-  Lens_konkav(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n);
-  Lens_konkav(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max);
-  ~Lens_konkav();
+  Lens_konkav(int mat_id);
+  Lens_konkav(std::string const& name, int mat_id);
+  Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2);
+  Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id);
+~Lens_konkav();
 
   //FUNKTIONEN------------------------------------------------------------------
   std::ostream& print(std::ostream& os) const override;
@@ -23,9 +24,7 @@ public:
   void update() override;
   void update_path() override;
 
-
   //Hilfsfunktionen-------------------------------------------------------------
-
 
   //---------------Von Lens gererbte Funktionen---------------------------------
   //
@@ -43,6 +42,14 @@ public:
   //----------------------------------------------------------------------------
 
   // //----------------------------------------------------------------------------
+  //----------------------------------------------------------------------------
+  //MEMEBER-VARIABLEN-----------------------------------------------------------
+  //----------------------------------------------------------------------------
+  vec3  m_orig;           //Origin -  Mittelpunkt der Linse
+  float m_diameter;       //Real-Durchmesser der Linse
+  float m_width;          //Breite des Glaskörpers zwischen geschliffenen Linsenseiten
+  float m_r1;             //Radius der theoretischen Kugel der vorderen Linsenseite
+  float m_r2;             //Radius der theoretischen Kugel der hinteren Linsenseite
   // //MEMEBER-VARIABLEN-----------------------------------------------------------
   // //----------------------------------------------------------------------------
   // vec3  m_orig;           //Origin -  Mittelpunkt der Linse
@@ -97,7 +104,7 @@ public:
   // bool    m_draw_rays = true;
   // bool    m_draw_focalpoint = true;
   //
-  // shared_ptr<State> shrd;
+  // // shared_ptr<State> shrd;
   //
   // int     m_type_r1;
   // int     m_type_r2;

@@ -10,50 +10,32 @@
   Lens_konvex::Lens_konvex() :
   Lens {"Lens_konvex",{}}{}
 
-  // // Custom 1
-  // Lens_konvex::Lens_konvex(vec3 const& min, vec3 const& max) :
-  // Shape {"Lens_konvex",{}),
-  // m_min {min},
-  // m_max {max} {}
-  //
-  // // Constructor for LensSystem
-  // Lens_konvex::Lens_konvex(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  // Shape {"Lens_konvex",{}},
-  // m_min {0.0f, 0.0f, 0.0f},
-  // m_max {1.0f, 1.0f, 1.0f},
-  // m_orig {orig},
-  // m_diameter {diameter},
-  // m_width {width},
-  // m_rot_z {0},
-  // m_type_r1 {1},
-  // m_r1 {r1},
-  // m_type_r2 {1},
-  // m_r2 {r2},
-  // m_n {n},
-  // m_n_air{1.000272f}{}
-  //
-  // Constructor for LensSystem
-  Lens_konvex::Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Lens {"Lens_konvex",{}},
-  m_orig (orig),
-  m_diameter (diameter),
-  m_width (width),
-  m_rot_z (0),
-  m_type_r1 (t_r1),
-  m_r1 (r1),
-  m_type_r2 (t_r2),
-  m_r2 (r2),
-  m_n (n),
-  m_n_air(1.000272f){}
+  Lens_konvex::Lens_konvex(int mat_id) :
+  Lens {"Lens_konvex", mat_id}{}
 
-  // Custom 3
-  Lens_konvex::Lens_konvex(std::string const& name, std::shared_ptr<Material> mat) :
-  Lens {name, mat}{}
+  Lens_konvex::Lens_konvex(std::string const& name, int mat_id) :
+  Lens {name, mat_id}{}
+
+  Lens_konvex::Lens_konvex(vec3 const& orig, float diameter, float width, float r1, float r2) :
+  Lens {"Lens_konvex", 1},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
+
+  Lens_konvex::Lens_konvex(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id) :
+  Lens {"Lens_konvex", mat_id},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
 
   //Destruktor
   Lens_konvex::~Lens_konvex()
   {
-    std::cout << "Lens_konvex-Destruction: " << Shape::name()<< std::endl;
+    std::cout << "Lens_konvex-Destruction: " << Lens::name()<< std::endl;
   }
 
 //FUNKTIONEN------------------------------------------------------------------
@@ -139,7 +121,7 @@
     vec3 intsctPos2 = vec3{0,0,0};
     vec3 intsctNrml2 = vec3{0,0,0};
 
-    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_radius,
+    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_diameter/2,
                                         intsctPos1, intsctNrml1,
                                         intsctPos2, intsctNrml2);
 
@@ -197,7 +179,7 @@
       vec3 intsctPos4 = vec3{0,0,0};
       vec3 intsctNrml4 = vec3{0,0,0};
 
-      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_radius,
+      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_diameter/2,
                                           intsctPos3, intsctNrml3,
                                           intsctPos4, intsctNrml4);
 
@@ -319,8 +301,6 @@
 
 
   void Lens_konvex::update(){
-
-    m_radius = m_diameter/2;
 
     //relevant?
     //Top and BottomPoints von äußerem Linsendiameter
