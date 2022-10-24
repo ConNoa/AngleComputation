@@ -693,15 +693,15 @@ obj/linux64/Release/src/LensApp.o: \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvHaarFinder.h \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mirror.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Beam.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp \
@@ -2131,6 +2131,12 @@ obj/linux64/Release/src/LensApp.o: \
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Beam.hpp:
 
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp:
+
 /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp:
@@ -2142,12 +2148,6 @@ obj/linux64/Release/src/LensApp.o: \
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
 

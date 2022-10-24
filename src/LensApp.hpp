@@ -11,10 +11,10 @@
 #include <opencv2/highgui.hpp>
 #include "Mirror.hpp"
 #include "Beam.hpp"
-#include <glm/glm.hpp>
-#include <glm/vec3.hpp> // glm::vec3
-#include <glm/vec4.hpp> // glm::vec4
-#include <glm/gtx/intersect.hpp>
+// #include <glm/glm.hpp>
+// #include <glm/vec3.hpp> // glm::vec3
+// #include <glm/vec4.hpp> // glm::vec4
+// #include <glm/gtx/intersect.hpp>
 #include "shape.hpp"
 #include "State.hpp"
 #include "lensefield.hpp"
@@ -67,6 +67,7 @@ public:
 
 	Mems m_mems;
 
+	std::vector<std::shared_ptr<Lens>> m_all_lenses;
 
 	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
 

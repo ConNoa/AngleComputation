@@ -533,12 +533,13 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
  /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
  /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
- /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
+ /home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h \
+ /home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h \
+ /usr/local/include/opencv4/opencv2/core/version.hpp \
  /usr/local/include/opencv4/opencv2/opencv.hpp \
  /usr/local/include/opencv4/opencv2/opencv_modules.hpp \
  /usr/local/include/opencv4/opencv2/core.hpp \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \
- /usr/local/include/opencv4/opencv2/core/version.hpp \
  /usr/local/include/opencv4/opencv2/core/hal/interface.h \
  /usr/local/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
  /usr/local/include/opencv4/opencv2/core/base.hpp \
@@ -639,29 +640,10 @@ obj/linux64/Release/src/ofApp.o: \
  /usr/local/include/opencv4/opencv2/video.hpp \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h \
  /usr/local/include/opencv4/opencv2/imgproc/imgproc_c.h \
  /usr/local/include/opencv4/opencv2/imgproc/types_c.h \
  /usr/local/include/opencv4/opencv2/core/core_c.h \
  /usr/local/include/opencv4/opencv2/core/types_c.h \
- /usr/local/include/opencv4/opencv2/calib3d/calib3d_c.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Wrappers.h \
- /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h \
- /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/ETF.h \
- /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h \
- /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/fdog.h \
- /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/myvec.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/RunningBackground.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h \
- /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h \
- /home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h \
- /home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvImage.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvGrayscaleImage.h \
  /home/pixel/OF/addons/ofxOpenCv/src/ofxCvBlob.h \
@@ -700,17 +682,35 @@ obj/linux64/Release/src/ofApp.o: \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
  /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h \
+ /home/pixel/OF/addons/ofxCv/src/ofxCv.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h \
+ /usr/local/include/opencv4/opencv2/calib3d/calib3d_c.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Wrappers.h \
+ /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h \
+ /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/ETF.h \
+ /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h \
+ /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/fdog.h \
+ /home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/myvec.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/RunningBackground.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h \
+ /home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konkav.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ofApp.h:
 
@@ -1812,7 +1812,11 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
 
-/home/pixel/OF/addons/ofxCv/src/ofxCv.h:
+/home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h:
+
+/home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h:
+
+/usr/local/include/opencv4/opencv2/core/version.hpp:
 
 /usr/local/include/opencv4/opencv2/opencv.hpp:
 
@@ -1821,8 +1825,6 @@ obj/linux64/Release/src/ofApp.o: \
 /usr/local/include/opencv4/opencv2/core.hpp:
 
 /usr/local/include/opencv4/opencv2/core/cvdef.h:
-
-/usr/local/include/opencv4/opencv2/core/version.hpp:
 
 /usr/local/include/opencv4/opencv2/core/hal/interface.h:
 
@@ -2024,8 +2026,6 @@ obj/linux64/Release/src/ofApp.o: \
 
 /usr/local/include/opencv4/opencv2/video/background_segm.hpp:
 
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h:
-
 /usr/local/include/opencv4/opencv2/imgproc/imgproc_c.h:
 
 /usr/local/include/opencv4/opencv2/imgproc/types_c.h:
@@ -2033,42 +2033,6 @@ obj/linux64/Release/src/ofApp.o: \
 /usr/local/include/opencv4/opencv2/core/core_c.h:
 
 /usr/local/include/opencv4/opencv2/core/types_c.h:
-
-/usr/local/include/opencv4/opencv2/calib3d/calib3d_c.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Wrappers.h:
-
-/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h:
-
-/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/ETF.h:
-
-/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h:
-
-/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/fdog.h:
-
-/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/myvec.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/RunningBackground.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h:
-
-/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h:
-
-/home/pixel/OF/addons/ofxOpenCv/src/ofxOpenCv.h:
-
-/home/pixel/OF/addons/ofxOpenCv/src/ofxCvConstants.h:
 
 /home/pixel/OF/addons/ofxOpenCv/src/ofxCvImage.h:
 
@@ -2146,6 +2110,42 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
 
+/home/pixel/OF/addons/ofxCv/src/ofxCv.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Utilities.h:
+
+/usr/local/include/opencv4/opencv2/calib3d/calib3d_c.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Wrappers.h:
+
+/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h:
+
+/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/ETF.h:
+
+/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/imatrix.h:
+
+/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/fdog.h:
+
+/home/pixel/OF/addons/ofxCv/libs/CLD/include/CLD/myvec.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Distance.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Calibration.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Tracker.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/RunningBackground.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Flow.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/ObjectFinder.h:
+
+/home/pixel/OF/addons/ofxCv/libs/ofxCv/include/ofxCv/Kalman.h:
+
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
@@ -2158,12 +2158,12 @@ obj/linux64/Release/src/ofApp.o: \
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/lensefield.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lensbox.hpp:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens.hpp:
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp:
-
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konkav.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Lens_konvex.hpp:
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/Mems.hpp:

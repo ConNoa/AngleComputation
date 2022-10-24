@@ -3,11 +3,14 @@
 #include "material.hpp"
 #include <glm/glm.hpp>
 #include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+
 #include <glm/gtx/intersect.hpp>
 #include <cmath>
 #include <string>
 #include <iostream>
 #include <memory>
+
 #include "ray.hpp"
 
 struct Hit;
@@ -16,7 +19,8 @@ class Shape {
 public:
   //KONSTRUTOREN----------------------------------------------------------------------
   Shape();
-  Shape(std::string const& name, std::shared_ptr<Material> mat);
+  Shape(std::string const& name, int mat_id);
+  // Shape(std::string const& name, std::shared_ptr<Material> mat);
   virtual ~Shape();
 
   //FUNKTIONEN------------------------------------------------------------------------
@@ -39,6 +43,8 @@ public:
 private:
   std::string m_name;
   std::shared_ptr<Material> m_mat;
+   int mat_id;
+  Material m_material;
 
 
 };

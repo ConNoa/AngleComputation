@@ -9,74 +9,42 @@
 
   //Default
   Lens::Lens() :
-  Shape {"Lens",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f} {}
+  Shape {"Lens",{}}{}
 
-  // Custom 1
-  Lens::Lens(vec3 const& min, vec3 const& max) :
-  Shape {"Lens",{}},
-  m_min {min},
-  m_max {max} {}
+  Lens::Lens(int mat_id) :
+  Shape {"Lens", mat_id}{}
 
-  // Constructor for LensSystem
-  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  Shape {"Lens",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f},
-  m_orig {orig},
-  m_diameter {diameter},
-  m_width {width},
-  m_rot_z {0},
-  m_type_r1 {1},
-  m_r1 {r1},
-  m_type_r2 {1},
-  m_r2 {r2},
-  m_n {n},
-  m_n_air{1.000272f}{}
+  Lens::Lens(std::string const& name, std::shared_ptr<Material> mat) :
+  Shape {name, mat}{}
 
-  // Constructor for LensSystem
-  Lens::Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Shape {"Lens",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f},
-  m_orig {orig},
-  m_diameter {diameter},
-  m_width {width},
-  m_rot_z {0},
-  m_type_r1 {t_r1},
-  m_r1 {r1},
-  m_type_r2 {t_r2},
-  m_r2 {r2},
-  m_n {n},
-  m_n_air{1.000272f}{}
+  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2,) :
+  Shape {"Lens", 1},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
 
-  // Custom 3
-  Lens::Lens(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
-  Shape {name, mat},
-  m_min {min},
-  m_max {max} {}
+  Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id) :
+  Shape {"Lens", mat_id},
+  m_orig{orig},
+  m_diameter{diameter},
+  m_width{width},
+  m_r1{r1},
+  m_r2{r2}{}
 
   //Destruktor
   Lens::~Lens()
   {
-    std::cout << "Lens-Destruction: " << Shape::name()<< std::endl;
+    std::cout << "Lens-Destruction: " << Lens::name()<< std::endl;
   }
 
-//FUNKTIONEN------------------------------------------------------------------
+  //FUNKTIONEN------------------------------------------------------------------
 
   std::ostream& Lens::print(std::ostream& os) const{
     Shape::print(os);
 
-    os << "Minimum: (" << m_min.x << ", "
-    << m_min.y << ", "
-    << m_min.z << ")" << "\n"
-
-    << "Maximum: (" << m_max.x << ", "
-    << m_max.y << ", "
-    << m_max.z << ")" << "\n"
-
-    << "Origin: (" << m_orig.x << ", "
+    os << "Origin: (" << m_orig.x << ", "
     << m_orig.y << ", "
     << m_orig.z << ")" << "\n"
 
@@ -93,201 +61,7 @@
     return os;
   }
 
-  Hit Lens::intersect(Ray &ray_in, int count_hits) const{
-    // std::cout << "__________________________________________________________________________"<< std::endl;
-    std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
-    std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
-
-    Hit input_hit;
-
-    vec3 point0 = ray_in.m_orig;
-    vec3 point1 = ray_in.m_orig + normalize(ray_in.m_direction)*100000;
-
-    vec3 intsctPos1 = vec3{0,0,0};
-    vec3 intsctNrml1 = vec3{0,0,0};
-    vec3 intsctPos2 = vec3{0,0,0};
-    vec3 intsctNrml2 = vec3{0,0,0};
-
-    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_radius,
-                                        intsctPos1, intsctNrml1,
-                                        intsctPos2, intsctNrml2);
-
-    if(input_hit.m_hit) {
-
-      input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
-        intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
-
-        std::cout<< "         with ray from: [" << ray_in.m_orig << "]"<<std::endl;
-        std::cout<< "At              Pos 1 : ["<< intsctPos1<<"]" << std::endl;
-        std::cout <<"Intersection-normal 1 : ["<< intsctNrml1<<"]" <<std::endl;
-
-      if(length(m_orig-intsctPos1)<length(m_orig-intsctPos2)){
-        // std::cout << "ifcondition"<<std::endl;
-
-        input_hit.m_point = intsctPos1;
-        input_hit.m_normal = intsctNrml1;
-        input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
-      }
-      else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
-        std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
-
-        input_hit.m_point = intsctPos2;
-        input_hit.m_normal = intsctNrml2;
-        input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
-      }
-      else{
-        std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
-
-        return input_hit;
-      }
-      std::cout<<"i_hit distance  :"<< input_hit.m_distance << std::endl;
-      // ray_in.m_distance_hit = input_hit.m_distance;
-      vec3 angle_i1 = compute_angle_sampleray(-ray_in.m_direction, input_hit.m_normal );
-      float angle_t1_x = snells_law(angle_i1.x, m_n_air, m_n);
-      //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
-      fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
-      //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
-      // rot_mat_i = glm::rotate(rot_mat_i,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
-      // std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
-      fmat3 rot_mat_shrinked = fmat3(rot_mat_i);
-      std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
-      vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
-
-      vec3 angle_t1 = compute_angle_sampleray(t1_ray, -input_hit.m_normal );
-
-      Hit t_hit;
-
-      vec3 intsctPos3 = vec3{0,0,0};
-      vec3 intsctNrml3 = vec3{0,0,0};
-      vec3 intsctPos4 = vec3{0,0,0};
-      vec3 intsctNrml4 = vec3{0,0,0};
-
-      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_radius,
-                                          intsctPos3, intsctNrml3,
-                                          intsctPos4, intsctNrml4);
-
-      if (t_hit.m_hit){
-        t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
-          intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
-
-          std::cout<< "         with ray from: [" << input_hit.m_point << "]"<<std::endl;
-          std::cout<< "At              Pos 3 : ["<< intsctPos3<<"]" << std::endl;
-          std::cout <<"Intersection-normal 3 : ["<< intsctNrml3<<"]" <<std::endl;
-          std::cout<< "At              Pos 4 : ["<< intsctPos4<<"]" << std::endl;
-          std::cout <<"Intersection-normal 4 : ["<< intsctNrml4<<"]" <<std::endl;
-
-        if(length(m_center_d3-intsctPos3)<length(m_center_d3-intsctPos4)){
-          // std::cout << "ifcondition"<<std::endl;
-
-          t_hit.m_point = intsctPos3;
-          t_hit.m_normal = intsctNrml3;
-          t_hit.m_distance = length(input_hit.m_point - intsctPos3);
-          if(m_draw_rays){      t_hit.draw(-t1_ray); }
-          if(m_draw_normals){   t_hit.draw_normals();}
-        }
-        else if(length(m_center_d3-intsctPos3)>length(m_center_d3-intsctPos4)){
-          std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
-
-          t_hit.m_point = intsctPos4;
-          t_hit.m_normal = intsctNrml4;
-          t_hit.m_distance = length(input_hit.m_point - intsctPos4);
-          if(m_draw_rays){      t_hit.draw(-t1_ray); }
-          if(m_draw_normals){   t_hit.draw_normals();}
-        }
-        else{
-          std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
-
-          return t_hit;
-        }
-
-
-        vec3 angle_i2 = compute_angle_sampleray(-t1_ray, t_hit.m_normal );
-        float angle_t1_x = snells_law(angle_i2.x, m_n, m_n_air);
-        //float angle_t_z = snells_law(angle_i2.z, m_n_air, m_n);
-
-        fmat4 rot_mat_t = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
-        //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
-
-        fmat3 rot_mat_t_shrnkd = fmat3(rot_mat_t);
-
-        vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
-
-        vec3 angle_t2 = compute_angle_sampleray(t_hit.m_normal, -t2_ray);
-        if(m_draw_rays){
-        ofBeginShape();
-          ofSetLineWidth(1);
-          //Drawing Normals
-          ofSetColor(227, 227, 80);
-          ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
-        ofEndShape();
-        }
-      }
-    }
-    return input_hit;
-  }
-
-  float Lens::snells_law(float alpha_i, float n_i, float n_t)const {
-    // std::cout<<"--> snells_law() :"<< std::endl;
-    float sin_alph_in = sin(alpha_i);
-    // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
-    // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
-    float n_it = n_i/n_t;
-    // std::cout<<"\n n_i :"<<  n_i << std::endl;
-    // std::cout<<" n_t :"<<  n_t << std::endl;
-    // std::cout<<" n_it :"<<  n_it << std::endl;
-    float alp_n_it = sin_alph_in*n_it;
-    // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
-    float alpha_t = asin(sin(alpha_i)*n_i/n_t);
-    // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
-    // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"\n"<<std::endl;
-    return alpha_t;
-  }
-
-
-    vec3 Lens::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
-
-        vec3 angles;
-        vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
-        vec3 muly_vec = {0,1,1};
-        vec3 mulz_vec = {1,0,1};
-        vec3 sr_x = normalize(ray_in*mulx_vec);
-        vec3 sr_y = normalize(ray_in*muly_vec);
-        vec3 sr_z = normalize(ray_in*mulz_vec);
-        vec3 ray_v_normale = {1,0,0};
-        vec3 rotrefy = {1,0,0};
-        vec3 rotrefx = {0,0,1};
-        vec3 rotrefz = {0,1,0};
-        float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
-        float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
-        float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
-
-        // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
-        // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
-        // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
-        // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
-
-        angles[0] = r_angle_x;
-        angles[1] = r_angle_y; //Ist nicht relevant   -> vec2 daraus machen?
-        angles[2] = r_angle_z;
-        return  angles;
-      }
-
-
-  void Lens::draw() const{
-    lens.draw();
-    if(m_show_constr_lines||m_act_manipulated){ draw_construction();}
-    if(m_draw_focalpoint){ draw_focalpoint();}
-    return;
-  }
-
-  // void Lens::draw_construction(int mode) const {
-    void Lens::draw_construction() const {
+  void Lens::draw_construction() const {
     // if(mode == 1){
       ofBeginShape();
         ofSetColor(0, 0, 255);
@@ -327,98 +101,56 @@
     ofEndShape();
   }
 
-  void Lens::update(){
 
-    m_radius = m_diameter/2;
-
-    //relevant?
-    //Top and BottomPoints von äußerem Linsendiameter
-    m_O_d1 = NULLPUNKT+m_orig;
-    m_O_d1.y = m_O_d1.y+ m_diameter/2;
-
-    m_O_d2 = NULLPUNKT+m_orig;
-    m_O_d2.y = m_O_d2.y- m_diameter/2;
-
-    m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
-    //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
-    m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
-
-    m_center_r1 = NULLPUNKT+m_orig;
-    m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
-    m_center_r2 = NULLPUNKT+m_orig;
-    m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
-    m_center_d1 = m_orig;
-    m_center_d1.x = m_center_d1.x-m_width/2;
-    m_center_d2 = m_orig;
-    m_center_d2.x = m_center_d2.x+m_width/2;
-    m_D1 = (m_n-m_n_air)/m_r1;
-    m_D2 = (m_n_air-m_n)/m_r2;
-    m_center_d0 = m_center_r1;
-    m_center_d0.x = m_center_d0.x-m_r1;
-    m_center_d3 = m_center_r2;
-    m_center_d3.x = m_center_d3.x+m_r2;
-    m_f1 = m_center_d0;
-    m_f1.x -= 1/m_D1;
-    m_f2 = m_center_d3;
-    m_f2.x = m_f2.x + 1/m_D2;
-
-    //d_1 = (n_t1-n_i1)/R_1;
-
-
-
-    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
-
-    return;
+  float Lens::snells_law(float alpha_i, float n_i, float n_t)const {
+    // std::cout<<"--> snells_law() :"<< std::endl;
+    float sin_alph_in = sin(alpha_i);
+    // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
+    // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
+    // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
+    float n_it = n_i/n_t;
+    // std::cout<<"\n n_i :"<<  n_i << std::endl;
+    // std::cout<<" n_t :"<<  n_t << std::endl;
+    // std::cout<<" n_it :"<<  n_it << std::endl;
+    float alp_n_it = sin_alph_in*n_it;
+    // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
+    float alpha_t = asin(sin(alpha_i)*n_i/n_t);
+    // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
+    // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
+    // std::cout<<"\n"<<std::endl;
+    return alpha_t;
   }
 
-  void Lens::update_path(){
+  vec3 Lens::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
 
-    lens.clear();
+        vec3 angles;
+        vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
+        vec3 muly_vec = {0,1,1};
+        vec3 mulz_vec = {1,0,1};
+        vec3 sr_x = normalize(ray_in*mulx_vec);
+        vec3 sr_y = normalize(ray_in*muly_vec);
+        vec3 sr_z = normalize(ray_in*mulz_vec);
+        vec3 ray_v_normale = {1,0,0};
+        vec3 rotrefy = {1,0,0};
+        vec3 rotrefx = {0,0,1};
+        vec3 rotrefz = {0,1,0};
+        float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
+        float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
+        float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
 
-    m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
-    float r1_a1 = -180  - m_ankat_angle_r1;
-    float r1_a2 = -180  + m_ankat_angle_r1;
+        // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
+        // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
+        // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
+        // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
 
-    m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
-    float r2_a1 = -0    - m_ankat_angle_r2;
-    float r2_a2 = -0    + m_ankat_angle_r2;
+        angles[0] = r_angle_x;
+        angles[1] = r_angle_y; //Ist nicht relevant   -> vec2 daraus machen?
+        angles[2] = r_angle_z;
+        return  angles;
+      }
 
+  float Lens::compute_lens_angle(float radius_ , float diameter_lens_)const{
 
-    lens.arc(m_center_r1, m_r1, m_r1 ,r1_a1, r1_a2);
-    lens.close();
-    lens.arc(m_center_r2, m_r2, m_r2, r2_a1, r2_a2);
-    lens.close();
-
-    vec3 pos_lrect = NULLPUNKT+m_orig;     //Position des Rechtecks (dicker Glasteil in der Linse)
-    pos_lrect.x = pos_lrect.x-m_width/2;
-    pos_lrect.y = pos_lrect.y-m_diameter/2;
-    lens.rectangle(pos_lrect.x, pos_lrect.y, m_width, m_diameter);
-    lens.setCircleResolution(720);
-    lens.setStrokeWidth(1);
-    lens.setStrokeColor(ofColor::black);
-    lens.setFillColor(ofColor::grey);
-    lens.close();
-  }
-
-  void Lens::scale(float faktor){
-    //Skaliere von min ausgehend!
-    // vec3 diff=m_max-m_min;
-    // m_max=m_min+(diff*faktor);
-    //translate(XXX); Damit Zentrum bleibt?
-  }
-
-  void Lens::translate(vec3 const& vec){
-      m_trans_vec = vec;
-      //update();
-    }
-
-  void Lens::rotate(float angle,vec3 const& vec){
-    //NOT YET IMPLEMENTED
-  }
-
-  float Lens::compute_lens_angle(float radius_ , float diameter_lens_){
-    
     float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
     vec3 f_ursp = vec3{0,0,0};
     vec3 l_ursp = f_ursp;
@@ -439,26 +171,18 @@
   }
 
 
-  //GETTER----------------------------------------------------------------------
-
-  vec3 const& Lens::max() const
-  {
-    return m_max;
+  void Lens::scale(float faktor){
+    //Skaliere von min ausgehend!
+    // vec3 diff=m_max-m_min;
+    // m_max=m_min+(diff*faktor);
+    //translate(XXX); Damit Zentrum bleibt?
   }
 
-  vec3 const& Lens::min() const
-  {
-    return m_min;
-  }
+  void Lens::translate(vec3 const& vec){
+      m_trans_vec = vec;
+      //update();
+    }
 
-  //SETTER----------------------------------------------------------------------
-
-  void Lens::max(vec3 const& max)
-  {
-    m_max = max;
-  }
-
-  void Lens::min(vec3 const& min)
-  {
-    m_min = min;
+  void Lens::rotate(float angle,vec3 const& vec){
+    //NOT YET IMPLEMENTED
   }

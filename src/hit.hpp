@@ -1,11 +1,14 @@
 #pragma once
 
+#include "ofMain.h"
+
 #include <iostream>
-#include "shape.hpp"
-#include "State.hpp"
 #include <memory>
 #include <cmath> // INFINITY
-
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp> // glm::vec3
+#include <glm/vec4.hpp> // glm::vec4
+#include <glm/gtx/intersect.hpp>
 using namespace glm;
 
 class Shape;
@@ -34,8 +37,6 @@ struct Hit
     double m_distance;
     vec3 m_point;
     vec3 m_normal;
-
-		shared_ptr<State> shrd;
 
 
     const Shape* m_shape; //Soll RAW-Pointer sein, damit this funktioniert und und... vlt noch const setzen?

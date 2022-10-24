@@ -4,7 +4,7 @@
 #include <iostream>
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "ofxCv.h"
+// #include "ofxCv.h"
 #include "ofxOpenCv.h"
 #include <opencv2/highgui.hpp>
 #include "Mirror.hpp"

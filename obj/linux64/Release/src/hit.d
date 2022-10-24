@@ -1,19 +1,29 @@
 obj/linux64/Release/src/hit.o: \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.cpp \
  /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp \
- /home/pixel/OF/libs/glm/include/glm/glm.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/setup.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/../simd/platform.h \
- /home/pixel/OF/libs/glm/include/glm/fwd.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/qualifier.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/setup.hpp \
+ /home/pixel/OF/libs/openFrameworks/ofMain.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h \
+ /home/pixel/OF/libs/tess2/include/tesselator.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h \
+ /home/pixel/OF/libs/openFrameworks/events/ofEvent.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofTimer.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofUtils.h \
+ /home/pixel/OF/libs/utf8/include/utf8.h \
+ /home/pixel/OF/libs/utf8/include/utf8/checked.h \
+ /home/pixel/OF/libs/utf8/include/utf8/core.h \
+ /home/pixel/OF/libs/utf8/include/utf8/unchecked.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h \
  /home/pixel/OF/libs/glm/include/glm/vec2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec2.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/qualifier.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../simd/platform.h \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec2.inl \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/./compute_vector_relational.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/./setup.hpp \
@@ -26,19 +36,17 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_int2_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/vec3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp \
+ /home/pixel/OF/libs/openFrameworks/utils/ofThread.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h \
+ /home/pixel/OF/libs/openFrameworks/utils/ofJson.h \
+ /home/pixel/OF/libs/json/include/json.hpp \
+ /home/pixel/OF/libs/openFrameworks/types/ofParameter.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofPoint.h \
+ /home/pixel/OF/libs/openFrameworks/math/ofVec3f.h \
+ /home/pixel/OF/libs/openFrameworks/math/ofVec2f.h \
+ /home/pixel/OF/libs/openFrameworks/math/ofMathConstants.h \
+ /home/pixel/OF/libs/glm/include/glm/fwd.hpp \
+ /home/pixel/OF/libs/openFrameworks/math/ofVec4f.h \
  /home/pixel/OF/libs/glm/include/glm/vec4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec4.hpp \
@@ -53,12 +61,59 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_int4_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/mat2x2.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/matrix_double2x2.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat2x2.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat2x2.inl \
+ /home/pixel/OF/libs/glm/include/glm/vec3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp \
+ /home/pixel/OF/libs/openFrameworks/types/ofRectangle.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofColor.h \
+ /home/pixel/OF/libs/glm/include/glm/common.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/func_common.inl \
+ /home/pixel/OF/libs/glm/include/glm/detail/../vector_relational.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/../detail/func_vector_relational.inl \
+ /home/pixel/OF/libs/glm/include/glm/detail/compute_common.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/type_vec1.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/type_vec1.inl \
+ /home/pixel/OF/libs/glm/include/glm/detail/_vectorize.hpp \
+ /home/pixel/OF/libs/openFrameworks/utils/ofXml.h \
+ /home/pixel/OF/libs/pugixml/include/pugixml.hpp \
+ /home/pixel/OF/libs/pugixml/include/pugiconfig.hpp \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h \
+ /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofTypes.h \
+ /home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h \
+ /home/pixel/OF/libs/openFrameworks/math/ofMath.h \
+ /home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtc/../ext/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtc/constants.inl \
+ /home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h \
+ /home/pixel/OF/libs/glm/include/glm/mat3x3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/matrix_double3x3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat3x3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat3x3.inl \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../matrix.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat2x2.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double2x2.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat2x2.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat2x2.inl \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double2x2_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float2x2.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float2x2_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat2x3.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
@@ -80,13 +135,6 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat3x3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat3x4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
@@ -119,79 +167,13 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../geometric.hpp \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
  /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../common.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/matrix_double2x2_precision.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/matrix_float2x2.hpp \
- /home/pixel/OF/libs/glm/include/glm/./ext/matrix_float2x2_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/matrix_double3x3_precision.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/matrix_float3x3.hpp \
+ /home/pixel/OF/libs/glm/include/glm/./ext/matrix_float3x3_precision.hpp \
  /home/pixel/OF/libs/glm/include/glm/trigonometric.hpp \
+ /home/pixel/OF/libs/glm/include/glm/detail/setup.hpp \
  /home/pixel/OF/libs/glm/include/glm/detail/func_trigonometric.inl \
- /home/pixel/OF/libs/glm/include/glm/packing.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/func_packing.inl \
- /home/pixel/OF/libs/glm/include/glm/detail/type_half.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/type_half.inl \
- /home/pixel/OF/libs/glm/include/glm/integer.hpp \
- /home/pixel/OF/libs/glm/include/glm/detail/func_integer.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp \
- /home/pixel/OF/libs/openFrameworks/ofMain.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofConstants.h \
- /home/pixel/OF/libs/tess2/include/tesselator.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofLog.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEvents.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h \
- /home/pixel/OF/libs/openFrameworks/events/ofEvent.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofTimer.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofUtils.h \
- /home/pixel/OF/libs/utf8/include/utf8.h \
- /home/pixel/OF/libs/utf8/include/utf8/checked.h \
- /home/pixel/OF/libs/utf8/include/utf8/core.h \
- /home/pixel/OF/libs/utf8/include/utf8/unchecked.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofThread.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofJson.h \
- /home/pixel/OF/libs/json/include/json.hpp \
- /home/pixel/OF/libs/openFrameworks/types/ofParameter.h \
- /home/pixel/OF/libs/openFrameworks/types/ofPoint.h \
- /home/pixel/OF/libs/openFrameworks/math/ofVec3f.h \
- /home/pixel/OF/libs/openFrameworks/math/ofVec2f.h \
- /home/pixel/OF/libs/openFrameworks/math/ofMathConstants.h \
- /home/pixel/OF/libs/openFrameworks/math/ofVec4f.h \
- /home/pixel/OF/libs/openFrameworks/types/ofRectangle.h \
- /home/pixel/OF/libs/openFrameworks/types/ofColor.h \
- /home/pixel/OF/libs/openFrameworks/utils/ofXml.h \
- /home/pixel/OF/libs/pugixml/include/pugixml.hpp \
- /home/pixel/OF/libs/pugixml/include/pugiconfig.hpp \
- /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h \
- /home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h \
- /home/pixel/OF/libs/openFrameworks/types/ofTypes.h \
- /home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h \
- /home/pixel/OF/libs/openFrameworks/math/ofMath.h \
- /home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtc/../ext/../detail/setup.hpp \
- /home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl \
- /home/pixel/OF/libs/glm/include/glm/gtc/constants.inl \
- /home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h \
  /home/pixel/OF/libs/glm/include/glm/gtc/matrix_transform.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/matrix_projection.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtc/../ext/matrix_projection.inl \
@@ -229,6 +211,16 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/gtc/epsilon.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/norm.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/quaternion.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../glm.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/_fixes.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../packing.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/func_packing.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/type_half.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/setup.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/type_half.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../integer.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/func_integer.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../ext/quaternion_exponential.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../ext/quaternion_exponential.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/quaternion.inl \
@@ -529,68 +521,60 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/openFrameworks/3d/of3dUtils.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofCamera.h \
  /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h \
- /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp \
- /home/pixel/OF/addons/ofxGui/src/ofxGui.h \
- /home/pixel/OF/addons/ofxGui/src/ofxToggle.h \
- /home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h \
- /home/pixel/OF/addons/ofxGui/src/ofxSlider.h \
- /home/pixel/OF/addons/ofxGui/src/ofxInputField.h \
- /home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h \
- /home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h \
- /home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h \
- /home/pixel/OF/addons/ofxGui/src/ofxButton.h \
- /home/pixel/OF/addons/ofxGui/src/ofxLabel.h \
- /home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h \
- /home/pixel/OF/addons/ofxGui/src/ofxPanel.h \
- /home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h \
- /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h \
- /home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h \
- /home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h \
- /home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h \
- /home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
+ /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/shape.hpp:
+/home/pixel/OF/libs/openFrameworks/ofMain.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/material.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofConstants.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/color.hpp:
+/home/pixel/OF/libs/tess2/include/tesselator.h:
 
-/home/pixel/OF/libs/glm/include/glm/glm.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
 
-/home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
 
-/home/pixel/OF/libs/glm/include/glm/detail/setup.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
 
-/home/pixel/OF/libs/glm/include/glm/detail/../simd/platform.h:
+/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
 
-/home/pixel/OF/libs/glm/include/glm/fwd.hpp:
+/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
 
-/home/pixel/OF/libs/glm/include/glm/detail/qualifier.hpp:
+/home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h:
 
-/home/pixel/OF/libs/glm/include/glm/detail/setup.hpp:
+/home/pixel/OF/libs/openFrameworks/events/ofEvent.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofTimer.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofUtils.h:
+
+/home/pixel/OF/libs/utf8/include/utf8.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/checked.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/core.h:
+
+/home/pixel/OF/libs/utf8/include/utf8/unchecked.h:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h:
 
 /home/pixel/OF/libs/glm/include/glm/vec2.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_bool2.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec2.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/qualifier.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../simd/platform.h:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec2.inl:
 
@@ -616,31 +600,27 @@ obj/linux64/Release/src/hit.o: \
 
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint2_precision.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/vec3.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofThread.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp:
+/home/pixel/OF/libs/openFrameworks/utils/ofJson.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl:
+/home/pixel/OF/libs/json/include/json.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp:
+/home/pixel/OF/libs/openFrameworks/types/ofParameter.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp:
+/home/pixel/OF/libs/openFrameworks/types/ofPoint.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp:
+/home/pixel/OF/libs/openFrameworks/math/ofVec3f.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp:
+/home/pixel/OF/libs/openFrameworks/math/ofVec2f.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp:
+/home/pixel/OF/libs/openFrameworks/math/ofMathConstants.h:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp:
+/home/pixel/OF/libs/glm/include/glm/fwd.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp:
+/home/pixel/OF/libs/openFrameworks/math/ofVec4f.h:
 
 /home/pixel/OF/libs/glm/include/glm/vec4.hpp:
 
@@ -670,17 +650,111 @@ obj/linux64/Release/src/hit.o: \
 
 /home/pixel/OF/libs/glm/include/glm/./ext/vector_uint4_precision.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/mat2x2.hpp:
+/home/pixel/OF/libs/glm/include/glm/vec3.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/matrix_double2x2.hpp:
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat2x2.hpp:
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat2x2.inl:
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_vec3.inl:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_bool3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_float3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_double3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_int3_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/vector_uint3_precision.hpp:
+
+/home/pixel/OF/libs/openFrameworks/types/ofRectangle.h:
+
+/home/pixel/OF/libs/openFrameworks/types/ofColor.h:
+
+/home/pixel/OF/libs/glm/include/glm/common.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/_fixes.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/func_common.inl:
+
+/home/pixel/OF/libs/glm/include/glm/detail/../vector_relational.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/../detail/func_vector_relational.inl:
+
+/home/pixel/OF/libs/glm/include/glm/detail/compute_common.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/type_vec1.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/detail/type_vec1.inl:
+
+/home/pixel/OF/libs/glm/include/glm/detail/_vectorize.hpp:
+
+/home/pixel/OF/libs/openFrameworks/utils/ofXml.h:
+
+/home/pixel/OF/libs/pugixml/include/pugixml.hpp:
+
+/home/pixel/OF/libs/pugixml/include/pugiconfig.hpp:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h:
+
+/home/pixel/OF/libs/openFrameworks/types/ofTypes.h:
+
+/home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h:
+
+/home/pixel/OF/libs/openFrameworks/math/ofMath.h:
+
+/home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtc/../ext/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl:
+
+/home/pixel/OF/libs/glm/include/glm/gtc/constants.inl:
+
+/home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h:
+
+/home/pixel/OF/libs/glm/include/glm/mat3x3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/matrix_double3x3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat3x3.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/type_mat3x3.inl:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../matrix.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat2x2.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double2x2.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat2x2.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat2x2.inl:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double2x2_precision.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float2x2.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float2x2_precision.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat2x3.hpp:
 
@@ -723,20 +797,6 @@ obj/linux64/Release/src/hit.o: \
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat3x3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../mat3x4.hpp:
 
@@ -802,151 +862,19 @@ obj/linux64/Release/src/hit.o: \
 
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../exponential.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl:
-
 /home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp:
+/home/pixel/OF/libs/glm/include/glm/./ext/matrix_double3x3_precision.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp:
+/home/pixel/OF/libs/glm/include/glm/./ext/matrix_float3x3.hpp:
 
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../common.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/matrix_double2x2_precision.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/matrix_float2x2.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/./ext/matrix_float2x2_precision.hpp:
+/home/pixel/OF/libs/glm/include/glm/./ext/matrix_float3x3_precision.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/trigonometric.hpp:
 
+/home/pixel/OF/libs/glm/include/glm/detail/setup.hpp:
+
 /home/pixel/OF/libs/glm/include/glm/detail/func_trigonometric.inl:
-
-/home/pixel/OF/libs/glm/include/glm/packing.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/detail/func_packing.inl:
-
-/home/pixel/OF/libs/glm/include/glm/detail/type_half.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/detail/type_half.inl:
-
-/home/pixel/OF/libs/glm/include/glm/integer.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/detail/func_integer.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
-
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
-
-/home/pixel/OF/libs/openFrameworks/ofMain.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofConstants.h:
-
-/home/pixel/OF/libs/tess2/include/tesselator.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofFileUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofLog.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofSystemUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofURLFileLoader.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEvents.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEventUtils.h:
-
-/home/pixel/OF/libs/openFrameworks/events/ofEvent.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofTimer.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofUtils.h:
-
-/home/pixel/OF/libs/utf8/include/utf8.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/checked.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/core.h:
-
-/home/pixel/OF/libs/utf8/include/utf8/unchecked.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofFpsCounter.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofThread.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofThreadChannel.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofJson.h:
-
-/home/pixel/OF/libs/json/include/json.hpp:
-
-/home/pixel/OF/libs/openFrameworks/types/ofParameter.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofPoint.h:
-
-/home/pixel/OF/libs/openFrameworks/math/ofVec3f.h:
-
-/home/pixel/OF/libs/openFrameworks/math/ofVec2f.h:
-
-/home/pixel/OF/libs/openFrameworks/math/ofMathConstants.h:
-
-/home/pixel/OF/libs/openFrameworks/math/ofVec4f.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofRectangle.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofColor.h:
-
-/home/pixel/OF/libs/openFrameworks/utils/ofXml.h:
-
-/home/pixel/OF/libs/pugixml/include/pugixml.hpp:
-
-/home/pixel/OF/libs/pugixml/include/pugiconfig.hpp:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsBaseTypes.h:
-
-/home/pixel/OF/libs/openFrameworks/graphics/ofGraphicsConstants.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofTypes.h:
-
-/home/pixel/OF/libs/openFrameworks/types/ofParameterGroup.h:
-
-/home/pixel/OF/libs/openFrameworks/math/ofMath.h:
-
-/home/pixel/OF/libs/glm/include/glm/gtc/constants.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtc/../ext/../detail/setup.hpp:
-
-/home/pixel/OF/libs/glm/include/glm/gtc/../ext/scalar_constants.inl:
-
-/home/pixel/OF/libs/glm/include/glm/gtc/constants.inl:
-
-/home/pixel/OF/libs/openFrameworks/math/ofVectorMath.h:
 
 /home/pixel/OF/libs/glm/include/glm/gtc/matrix_transform.hpp:
 
@@ -1021,6 +949,26 @@ obj/linux64/Release/src/hit.o: \
 /home/pixel/OF/libs/glm/include/glm/gtx/norm.hpp:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/quaternion.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../glm.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/_fixes.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../packing.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/func_packing.inl:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/type_half.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/setup.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/type_half.inl:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../integer.hpp:
+
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../detail/func_integer.inl:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/../ext/quaternion_exponential.hpp:
 
@@ -1656,70 +1604,14 @@ obj/linux64/Release/src/hit.o: \
 
 /home/pixel/OF/libs/openFrameworks/3d/ofEasyCam.h:
 
-/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/State.hpp:
+/home/pixel/OF/libs/glm/include/glm/gtx/intersect.hpp:
 
-/home/pixel/OF/addons/ofxGui/src/ofxGui.h:
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.hpp:
 
-/home/pixel/OF/addons/ofxGui/src/ofxToggle.h:
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl:
 
-/home/pixel/OF/addons/ofxGui/src/ofxBaseGui.h:
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp:
 
-/home/pixel/OF/addons/ofxGui/src/ofxSlider.h:
+/home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
 
-/home/pixel/OF/addons/ofxGui/src/ofxInputField.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxGuiUtils.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxSliderGroup.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxGuiGroup.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxButton.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxLabel.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxColorPicker.h:
-
-/home/pixel/OF/addons/ofxGui/src/ofxPanel.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/ofxDatGui.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiGroups.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiLabel.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiComponent.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiIntObject.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiThemes.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/themes/ofxDatGuiTheme.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/libs/ofxSmartFont/ofxSmartFont.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiEvents.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/core/ofxDatGuiConstants.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiButton.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiSlider.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInputField.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTextInput.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiFRM.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGui2dPad.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiMatrix.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiTimeGraph.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiScrollView.h:
-
-/home/pixel/OF/addons/ofxDatGui/src/components/ofxDatGuiControls.h:
+/home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:

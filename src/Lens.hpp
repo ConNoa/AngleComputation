@@ -1,26 +1,21 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
-#include "ofxGui.h"
-#include "ofxCv.h"
-#include <iostream>
-#include "State.hpp"
-#include "shape.hpp"
 #include "hit.hpp"
+#include "shape.hpp"
 
 using namespace glm;
 
-class Lens : public Shape{
+class Lens : public Shape {
 
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lens();
-  Lens(vec3 const& orig, float diameter, float width, float r1, float r2, float n);
-  Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n);
-  Lens(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max);
-  ~Lens()override;
+  Lens(int mat_id);
+  Lens(std::string const& name, int mat_id);
+  Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2);
+  Lens(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, int mat_id);
+
+  virtual ~Lens();
 
   //FUNKTIONEN------------------------------------------------------------------
   virtual std::ostream& print(std::ostream& os) const;
@@ -36,26 +31,29 @@ public:
   vec3   cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in) const;
   float  compute_lens_angle(float radius_ , float diameter_lens_)         const;
 
-  void scale(float faktor)                  override;
-  void translate(vec3 const& vec)           override;
-  void rotate(float angle,vec3 const& vec)  override;
+  void scale(float faktor)                  ;
+  void translate(vec3 const& vec)           ;
+  void rotate(float angle,vec3 const& vec)  ;
 
   //----------------------------------------------------------------------------
   //MEMEBER-VARIABLEN-----------------------------------------------------------
   //----------------------------------------------------------------------------
   vec3  m_orig;           //Origin -  Mittelpunkt der Linse
   float m_diameter;       //Real-Durchmesser der Linse
-  float m_radius;         //Radius errechnet aus Realdurchmesser der Linse
-
   float m_width;          //Breite des Glaskörpers zwischen geschliffenen Linsenseiten
-
-  float m_rot_z;          //Rotation der Linse um die Z-Achse
-
   float m_r1;             //Radius der theoretischen Kugel der vorderen Linsenseite
   float m_r2;             //Radius der theoretischen Kugel der hinteren Linsenseite
 
+
+
+
+
   float m_n;              //Brechungsindex der Linse
-  float m_n_air = 1.000292f;
+
+  float m_rot_z;          //Rotation der Linse um die Z-Achse
+
+
+  const float m_n_air = 1.000292f;
 
   vec3 m_center_d0;       //vorderer Scheitelpunkt der Linse
   vec3 m_center_d1;       //Linsendurchmesser vollständig vordere Linsenseite (manchmal auch H1 ?  Hauptpunkt)
@@ -95,7 +93,6 @@ public:
   bool    m_draw_rays = true;
   bool    m_draw_focalpoint = true;
 
-  shared_ptr<State> shrd;
 
   int     m_type_r1;
   int     m_type_r2;

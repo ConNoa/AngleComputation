@@ -1,12 +1,9 @@
 #pragma once
 
 
-
-#include "ofMain.h"
-#include "ofxGui.h"
 #include "ofxDatGui.h"
-
 #include <memory>
+// #include "ofxGui.h"
 
 
 struct State{
@@ -98,6 +95,5 @@ ofParameter<bool> s_store_lens;
 
 
 //------Containers for lenses---------------------------------------
-std::vector<std::shared_ptr<Shape>> m_all_shapes;
 
 };

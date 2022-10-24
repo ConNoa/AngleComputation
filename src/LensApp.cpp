@@ -9,7 +9,7 @@ void LensApp::setup(){
 
     setup_lens();
     load_lens_parameters(shrd->s_select_lens);
-    for(auto it : m_lens_shapes){it->update_path();}
+    for(auto it : m_all_lenses){it->update_path();}
 
     m_mems.setup();
 
@@ -25,14 +25,14 @@ void LensApp::update(){
 
 
 void LensApp::draw(){
-  for(auto it : m_lens_shapes){
+  for(auto it : m_all_lenses){
     //    it->print(std::cout);
       it->update();
       it->draw();
   }
   // m_mems.draw();
 
-  for(auto lens_it : m_lens_shapes){
+  for(auto lens_it : m_all_lenses){
     int counter = 0;
     for(auto ray_it : m_mems.m_mems_rays){
       counter += 1;
@@ -106,12 +106,12 @@ void LensApp::setup_lens(){
   orig_pos.z = shrd->s_orig_z;
 
 
-  std::shared_ptr<Lens_konvex> new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_type_r1, shrd->s_r1, shrd->s_type_r2, shrd->s_r2, shrd->s_n);
+  std::shared_ptr<Lens> new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_type_r1, shrd->s_r1, shrd->s_type_r2, shrd->s_r2, shrd->s_n);
   std::cout<< "This is the new created Lens: [ "<< endl;
   new_Lens->print(std::cout);
   std::cout<< " ]. " <<std::endl;
   new_Lens->update();
-  shrd->m_all_shapes.push_back(new_Lens);
+  m_all_lenses.push_back(new_Lens);
 
 
   return;
@@ -121,58 +121,58 @@ void LensApp::setup_lens(){
 void LensApp::load_lens_parameters(int lens_nmbr){
   cout<<"load parameters of lens "<< lens_nmbr << endl;
 
-    shrd->s_orig_x = m_lens_shapes[shrd->s_select_lens]->m_orig.x;
-    shrd->s_orig_y = m_lens_shapes[shrd->s_select_lens]->m_orig.y;
-    shrd->s_orig_z = m_lens_shapes[shrd->s_select_lens]->m_orig.z;
-    shrd->s_rot_z = m_lens_shapes[shrd->s_select_lens]->m_rot_z;
-    shrd->s_diameter = m_lens_shapes[shrd->s_select_lens]->m_diameter;
-    shrd->s_width = m_lens_shapes[shrd->s_select_lens]->m_width;
-    shrd->s_type_r1 = m_lens_shapes[shrd->s_select_lens]->m_type_r1;
-    shrd->s_r1 = m_lens_shapes[shrd->s_select_lens]->m_r1;
-    shrd->s_type_r2 = m_lens_shapes[shrd->s_select_lens]->m_type_r2;
-    shrd->s_r2 = m_lens_shapes[shrd->s_select_lens]->m_r2;
-    shrd->s_n = m_lens_shapes[shrd->s_select_lens]->m_n;
-    shrd->s_show_constr_lines = m_lens_shapes[shrd->s_select_lens]->m_show_constr_lines;
+    shrd->s_orig_x = m_all_lenses[shrd->s_select_lens]->m_orig.x;
+    shrd->s_orig_y = m_all_lenses[shrd->s_select_lens]->m_orig.y;
+    shrd->s_orig_z = m_all_lenses[shrd->s_select_lens]->m_orig.z;
+    shrd->s_rot_z = m_all_lenses[shrd->s_select_lens]->m_rot_z;
+    shrd->s_diameter = m_all_lenses[shrd->s_select_lens]->m_diameter;
+    shrd->s_width = m_all_lenses[shrd->s_select_lens]->m_width;
+    shrd->s_type_r1 = m_all_lenses[shrd->s_select_lens]->m_type_r1;
+    shrd->s_r1 = m_all_lenses[shrd->s_select_lens]->m_r1;
+    shrd->s_type_r2 = m_all_lenses[shrd->s_select_lens]->m_type_r2;
+    shrd->s_r2 = m_all_lenses[shrd->s_select_lens]->m_r2;
+    shrd->s_n = m_all_lenses[shrd->s_select_lens]->m_n;
+    shrd->s_show_constr_lines = m_all_lenses[shrd->s_select_lens]->m_show_constr_lines;
     return;
 
 }
 
 void LensApp::change_lens_parameters(std::string label_in){
 
-  m_lens_shapes[shrd->s_select_lens]->m_act_manipulated = true;
+  m_all_lenses[shrd->s_select_lens]->m_act_manipulated = true;
 
   if (label_in == "s_orig_x"){
-    m_lens_shapes[shrd->s_select_lens]->m_orig.x = shrd->s_orig_x;
+    m_all_lenses[shrd->s_select_lens]->m_orig.x = shrd->s_orig_x;
   }
   if (label_in == "s_orig_y"){
-    m_lens_shapes[shrd->s_select_lens]->m_orig.y = shrd->s_orig_y;
+    m_all_lenses[shrd->s_select_lens]->m_orig.y = shrd->s_orig_y;
   }
   if (label_in == "s_orig_z"){
-    m_lens_shapes[shrd->s_select_lens]->m_orig.z = shrd->s_orig_z;
+    m_all_lenses[shrd->s_select_lens]->m_orig.z = shrd->s_orig_z;
   }
   if (label_in == "s_rot_z"){
-      m_lens_shapes[shrd->s_select_lens]->m_rot_z = shrd->s_rot_z;
+      m_all_lenses[shrd->s_select_lens]->m_rot_z = shrd->s_rot_z;
   }
   if (label_in == "s_diameter"){
-      m_lens_shapes[shrd->s_select_lens]->m_diameter = shrd->s_diameter;
+      m_all_lenses[shrd->s_select_lens]->m_diameter = shrd->s_diameter;
   }
   if (label_in == "s_width"){
-      m_lens_shapes[shrd->s_select_lens]->m_width = shrd->s_width;
+      m_all_lenses[shrd->s_select_lens]->m_width = shrd->s_width;
   }
   if (label_in == "s_type_r1"){
-      m_lens_shapes[shrd->s_select_lens]->m_type_r1 = shrd->s_type_r1;
+      m_all_lenses[shrd->s_select_lens]->m_type_r1 = shrd->s_type_r1;
   }
   if (label_in == "s_r1"){
-      m_lens_shapes[shrd->s_select_lens]->m_r1 = shrd->s_r1;
+      m_all_lenses[shrd->s_select_lens]->m_r1 = shrd->s_r1;
   }
   if (label_in == "s_type_r2"){
-      m_lens_shapes[shrd->s_select_lens]->m_type_r2 = shrd->s_type_r2;
+      m_all_lenses[shrd->s_select_lens]->m_type_r2 = shrd->s_type_r2;
   }
   if (label_in == "s_r2"){
-      m_lens_shapes[shrd->s_select_lens]->m_r2 = shrd->s_r2;
+      m_all_lenses[shrd->s_select_lens]->m_r2 = shrd->s_r2;
   }
   if (label_in == "s_n"){
-      m_lens_shapes[shrd->s_select_lens]->m_n = shrd->s_n;
+      m_all_lenses[shrd->s_select_lens]->m_n = shrd->s_n;
   }
 
 }
@@ -180,7 +180,7 @@ void LensApp::change_lens_parameters(std::string label_in){
 void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
   cout << e.target->getName() << " : " << e.value << endl;
 
-  if(shrd->s_select_lens < m_lens_shapes.size()){
+  if(shrd->s_select_lens < m_all_lenses.size()){
     if (e.target->getLabel() == "Select Lens"){
       load_lens_parameters((int)e.value);
     }
@@ -194,32 +194,32 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
     cout << e.target->getLabel() << " checked = " << e.checked << endl;
     if (e.target->getLabel() == "Draw Construction Lines"){
       shrd->s_show_constr_lines = e.checked;
-      //m_lens_shapes[shrd->select_lens]
-      for(auto it : m_lens_shapes){
+      //m_all_lenses[shrd->select_lens]
+      for(auto it : m_all_lenses){
         //    it->print(std::cout);
           it->m_show_constr_lines = shrd->s_show_constr_lines;
       }
     }
     if (e.target->getLabel() == "Draw Rays"){
       shrd->s_draw_rays = e.checked;
-      //m_lens_shapes[shrd->select_lens]
-      for(auto it : m_lens_shapes){
+      //m_all_lenses[shrd->select_lens]
+      for(auto it : m_all_lenses){
         //    it->print(std::cout);
           it->m_draw_rays = shrd->s_draw_rays;
       }
     }
     if (e.target->getLabel() == "Draw Normals"){
       shrd->s_draw_normals = e.checked;
-      //m_lens_shapes[shrd->select_lens]
-      for(auto it : m_lens_shapes){
+      //m_all_lenses[shrd->select_lens]
+      for(auto it : m_all_lenses){
         //    it->print(std::cout);
           it->m_draw_normals = shrd->s_draw_normals;
       }
     }
     if (e.target->getLabel() == "Draw Focus etc"){
       shrd->s_show_focus_etc = e.checked;
-      //m_lens_shapes[shrd->select_lens]
-      for(auto it : m_lens_shapes){
+      //m_all_lenses[shrd->select_lens]
+      for(auto it : m_all_lenses){
         //    it->print(std::cout);
           it->m_draw_focalpoint = shrd->s_show_focus_etc;
       }
@@ -231,7 +231,7 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
 void LensApp::onButtonEvent(ofxDatGuiButtonEvent e){
     cout<<"Buttonpressed  !"<<endl;
 
-    for(auto it : m_lens_shapes){
+    for(auto it : m_all_lenses){
       //    it->print(std::cout);
         it->update_path();
     }
@@ -267,7 +267,7 @@ void LensApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void LensApp::mouseReleased(int x, int y, int button){
-  for(auto it : m_lens_shapes){
+  for(auto it : m_all_lenses){
     //    it->print(std::cout);
       it->update_path();
       it->m_act_manipulated = false;

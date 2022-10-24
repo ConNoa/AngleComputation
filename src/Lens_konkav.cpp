@@ -7,39 +7,35 @@
 
 //KONSTRUTOREN----------------------------------------------------------------
 
-  //Default
+  // //Default
   Lens_konkav::Lens_konkav() :
-  Shape {"Lens_konkav",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f} {}
-
-  // Custom 1
-  Lens_konkav::Lens_konkav(vec3 const& min, vec3 const& max) :
-  Shape {"Lens_konkav",{}},
-  m_min {min},
-  m_max {max} {}
-
-  // Constructor for LensSystem
-  Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
-  Shape {"Lens_konkav",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f},
-  m_orig {orig},
-  m_diameter {diameter},
-  m_width {width},
-  m_rot_z {0},
-  m_type_r1 {1},
-  m_r1 {r1},
-  m_type_r2 {1},
-  m_r2 {r2},
-  m_n {n},
-  m_n_air{1.000272f}{}
-
+  Lens {"Lens_konkav",{}}{}
+  //
+  // // Custom 1
+  // Lens_konkav::Lens_konkav(vec3 const& min, vec3 const& max) :
+  // Shape {"Lens_konkav",{}},
+  // m_min {min},
+  // m_max {max} {}
+  //
+  // // Constructor for LensSystem
+  // Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n) :
+  // Shape {"Lens_konkav",{}},
+  // m_min {0.0f, 0.0f, 0.0f},
+  // m_max {1.0f, 1.0f, 1.0f},
+  // m_orig {orig},
+  // m_diameter {diameter},
+  // m_width {width},
+  // m_rot_z {0},
+  // m_type_r1 {1},
+  // m_r1 {r1},
+  // m_type_r2 {1},
+  // m_r2 {r2},
+  // m_n {n},
+  // m_n_air{1.000272f}{}
+  //
   // Constructor for LensSystem
   Lens_konkav::Lens_konkav(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n) :
-  Shape {"Lens_konkav",{}},
-  m_min {0.0f, 0.0f, 0.0f},
-  m_max {1.0f, 1.0f, 1.0f},
+  Lens {"Lens_konkav",{}},
   m_orig {orig},
   m_diameter {diameter},
   m_width {width},
@@ -52,10 +48,8 @@
   m_n_air{1.000272f}{}
 
   // Custom 3
-  Lens_konkav::Lens_konkav(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max) :
-  Shape {name, mat},
-  m_min {min},
-  m_max {max} {}
+  Lens_konkav::Lens_konkav(std::string const& name, std::shared_ptr<Material> mat) :
+  Lens {name, mat}{}
 
   //Destruktor
   Lens_konkav::~Lens_konkav()
@@ -68,15 +62,7 @@
   std::ostream& Lens_konkav::print(std::ostream& os) const{
     Shape::print(os);
 
-    os << "Minimum: (" << m_min.x << ", "
-    << m_min.y << ", "
-    << m_min.z << ")" << "\n"
-
-    << "Maximum: (" << m_max.x << ", "
-    << m_max.y << ", "
-    << m_max.z << ")" << "\n"
-
-    << "Origin: (" << m_orig.x << ", "
+    os<< "Origin: (" << m_orig.x << ", "
     << m_orig.y << ", "
     << m_orig.z << ")" << "\n"
 
@@ -192,7 +178,7 @@
       }
       std::cout<<"i_hit distance  :"<< input_hit.m_distance << std::endl;
       // ray_in.m_distance_hit = input_hit.m_distance;
-      vec3 angle_i1 = compute_angle_sampleray(-ray_in.m_direction, input_hit.m_normal );
+      vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
       float angle_t1_x = snells_law(angle_i1.x, m_n_air, m_n);
       //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
       fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
@@ -203,7 +189,7 @@
       std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
       vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
 
-      vec3 angle_t1 = compute_angle_sampleray(t1_ray, -input_hit.m_normal );
+      vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
 
       Hit t_hit;
 
@@ -251,7 +237,7 @@
         }
 
 
-        vec3 angle_i2 = compute_angle_sampleray(-t1_ray, t_hit.m_normal );
+        vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
         float angle_t1_x = snells_law(angle_i2.x, m_n, m_n_air);
         //float angle_t_z = snells_law(angle_i2.z, m_n_air, m_n);
 
@@ -262,7 +248,7 @@
 
         vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
 
-        vec3 angle_t2 = compute_angle_sampleray(t_hit.m_normal, -t2_ray);
+        vec3 angle_t2 = cacl_angle_ray_normal(t_hit.m_normal, -t2_ray);
         if(m_draw_rays){
         ofBeginShape();
           ofSetLineWidth(1);
@@ -276,54 +262,54 @@
     return input_hit;
   }
 
-  float Lens_konkav::snells_law(float alpha_i, float n_i, float n_t)const {
-    // std::cout<<"--> snells_law() :"<< std::endl;
-    float sin_alph_in = sin(alpha_i);
-    // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
-    // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
-    float n_it = n_i/n_t;
-    // std::cout<<"\n n_i :"<<  n_i << std::endl;
-    // std::cout<<" n_t :"<<  n_t << std::endl;
-    // std::cout<<" n_it :"<<  n_it << std::endl;
-    float alp_n_it = sin_alph_in*n_it;
-    // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
-    float alpha_t = asin(sin(alpha_i)*n_i/n_t);
-    // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
-    // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"\n"<<std::endl;
-    return alpha_t;
-  }
-
-
-  vec3 Lens_konkav::compute_angle_sampleray(vec3 const &ray_in, vec3 const &normal_in ) const{
-
-    vec3 angles;
-    vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
-    vec3 muly_vec = {0,1,1};
-    vec3 mulz_vec = {1,0,1};
-    vec3 sr_x = normalize(ray_in*mulx_vec);
-    vec3 sr_y = normalize(ray_in*muly_vec);
-    vec3 sr_z = normalize(ray_in*mulz_vec);
-    vec3 ray_v_normale = {1,0,0};
-    vec3 rotrefy = {1,0,0};
-    vec3 rotrefx = {0,0,1};
-    vec3 rotrefz = {0,1,0};
-    float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
-    float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
-    float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
-
-    // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
-    // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
-    // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
-    // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
-
-    angles[0] = r_angle_x;
-    angles[1] = r_angle_y;
-    angles[2] = r_angle_z;
-    return  angles;
-  }
-
+  // float Lens_konkav::snells_law(float alpha_i, float n_i, float n_t)const {
+  //   // std::cout<<"--> snells_law() :"<< std::endl;
+  //   float sin_alph_in = sin(alpha_i);
+  //   // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
+  //   // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
+  //   // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
+  //   float n_it = n_i/n_t;
+  //   // std::cout<<"\n n_i :"<<  n_i << std::endl;
+  //   // std::cout<<" n_t :"<<  n_t << std::endl;
+  //   // std::cout<<" n_it :"<<  n_it << std::endl;
+  //   float alp_n_it = sin_alph_in*n_it;
+  //   // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
+  //   float alpha_t = asin(sin(alpha_i)*n_i/n_t);
+  //   // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
+  //   // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
+  //   // std::cout<<"\n"<<std::endl;
+  //   return alpha_t;
+  // }
+  //
+  //
+  // vec3 Lens_konkav::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
+  //
+  //   vec3 angles;
+  //   vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
+  //   vec3 muly_vec = {0,1,1};
+  //   vec3 mulz_vec = {1,0,1};
+  //   vec3 sr_x = normalize(ray_in*mulx_vec);
+  //   vec3 sr_y = normalize(ray_in*muly_vec);
+  //   vec3 sr_z = normalize(ray_in*mulz_vec);
+  //   vec3 ray_v_normale = {1,0,0};
+  //   vec3 rotrefy = {1,0,0};
+  //   vec3 rotrefx = {0,0,1};
+  //   vec3 rotrefz = {0,1,0};
+  //   float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
+  //   float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
+  //   float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
+  //
+  //   // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
+  //   // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
+  //   // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
+  //   // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
+  //
+  //   angles[0] = r_angle_x;
+  //   angles[1] = r_angle_y;
+  //   angles[2] = r_angle_z;
+  //   return  angles;
+  // }
+  //
 
   void Lens_konkav::draw() const{
     lens.draw();
@@ -332,44 +318,44 @@
     return;
   }
 
-  void Lens_konkav::draw_construction() const {
-      ofBeginShape();
-        ofSetColor(0, 0, 255);
-        ofFill();
-        // ofDrawCircle(o_x, o_y, o_z, 3);
-        ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
-        ofDrawLine(m_O_d1, m_O_d2);
+//   void Lens_konkav::draw_construction() const {
+//       ofBeginShape();
+//         ofSetColor(0, 0, 255);
+//         ofFill();
+//         // ofDrawCircle(o_x, o_y, o_z, 3);
+//         ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+//         ofDrawLine(m_O_d1, m_O_d2);
+//
+//         ofSetCircleResolution(720);
+//         ofNoFill();
+//         ofSetColor(0,0, 250);
+//         ofDrawCircle(m_center_r1, 3);
+//         ofDrawCircle(m_center_r1, m_r1);
+//         //ofDrawCircle(f1, r1_);
+//         ofSetColor(255,0,0);
+//         ofDrawCircle(m_center_r2, 3);
+//         ofDrawCircle(m_center_r2, m_r2);
+//
+//         ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
+//         ofSetColor(40,40,40);
+//         ofDrawRectangle(m_orig, m_width, m_diameter);
+//         ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
+//       ofEndShape(false);
+//       return;
+// }
 
-        ofSetCircleResolution(720);
-        ofNoFill();
-        ofSetColor(0,0, 250);
-        ofDrawCircle(m_center_r1, 3);
-        ofDrawCircle(m_center_r1, m_r1);
-        //ofDrawCircle(f1, r1_);
-        ofSetColor(255,0,0);
-        ofDrawCircle(m_center_r2, 3);
-        ofDrawCircle(m_center_r2, m_r2);
-
-        ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-        ofSetColor(40,40,40);
-        ofDrawRectangle(m_orig, m_width, m_diameter);
-        ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-      ofEndShape(false);
-      return;
-}
-
-  void Lens_konkav::draw_focalpoint() const {
-    ofBeginShape();
-      ofSetColor(86, 174, 53);
-      ofFill();
-      // ofDrawCircle(o_x, o_y, o_z, 3);
-      ofDrawCircle(m_center_d0, 3);
-      ofDrawCircle(m_center_d3, 3);
-      ofSetColor(ofColor::white);
-      ofDrawCircle(m_f1, 3);
-      ofDrawCircle(m_f2, 3);
-    ofEndShape();
-  }
+  // void Lens_konkav::draw_focalpoint() const {
+  //   ofBeginShape();
+  //     ofSetColor(86, 174, 53);
+  //     ofFill();
+  //     // ofDrawCircle(o_x, o_y, o_z, 3);
+  //     ofDrawCircle(m_center_d0, 3);
+  //     ofDrawCircle(m_center_d3, 3);
+  //     ofSetColor(ofColor::white);
+  //     ofDrawCircle(m_f1, 3);
+  //     ofDrawCircle(m_f2, 3);
+  //   ofEndShape();
+  // }
 
   void Lens_konkav::update(){
 
@@ -407,9 +393,6 @@
     m_f2.x = m_f2.x + 1/m_D2;
 
     //d_1 = (n_t1-n_i1)/R_1;
-
-
-
     std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
     std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
 
@@ -444,64 +427,26 @@
     lens.setFillColor(ofColor::grey);
     lens.close();
   }
-
-  void Lens_konkav::scale(float faktor){
-    //Skaliere von min ausgehend!
-    // vec3 diff=m_max-m_min;
-    // m_max=m_min+(diff*faktor);
-    //translate(XXX); Damit Zentrum bleibt?
-  }
-
-  void Lens_konkav::translate(vec3 const& vec){
-      m_trans_vec = vec;
-      //update();
-    }
-
-  void Lens_konkav::rotate(float angle,vec3 const& vec){
-    //NOT YET IMPLEMENTED
-  }
-
-  float Lens_konkav::compute_lens_angle(float radius_ , float diameter_lens_){
-    float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
-    vec3 f_ursp = vec3{0,0,0};
-    vec3 l_ursp = f_ursp;
-    l_ursp.x = radius_;
-
-    vec3 l_edge = f_ursp;
-    l_edge.x = lr_x_atd;
-    l_edge.y = diameter_lens_/2;
-    vec3 refx = vec3{1,0,0};
-
-    l_ursp = normalize(l_ursp);
-    l_edge = normalize(l_edge);
-    float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
-    // std::cout << "compute angle"<< std::endl;
-    // std::cout << angle_<< std::endl;
-
-    return angle_;
-  }
-
-
-  //GETTER----------------------------------------------------------------------
-
-  vec3 const& Lens_konkav::max() const
-  {
-    return m_max;
-  }
-
-  vec3 const& Lens_konkav::min() const
-  {
-    return m_min;
-  }
-
-  //SETTER----------------------------------------------------------------------
-
-  void Lens_konkav::max(vec3 const& max)
-  {
-    m_max = max;
-  }
-
-  void Lens_konkav::min(vec3 const& min)
-  {
-    m_min = min;
-  }
+  //
+  //
+  //
+  // float Lens_konkav::compute_lens_angle(float radius_ , float diameter_lens_){
+  //   float lr_x_atd = sqrt((radius_*radius_)-(diameter_lens_/2)*(diameter_lens_/2));
+  //   vec3 f_ursp = vec3{0,0,0};
+  //   vec3 l_ursp = f_ursp;
+  //   l_ursp.x = radius_;
+  //
+  //   vec3 l_edge = f_ursp;
+  //   l_edge.x = lr_x_atd;
+  //   l_edge.y = diameter_lens_/2;
+  //   vec3 refx = vec3{1,0,0};
+  //
+  //   l_ursp = normalize(l_ursp);
+  //   l_edge = normalize(l_edge);
+  //   float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
+  //   // std::cout << "compute angle"<< std::endl;
+  //   // std::cout << angle_<< std::endl;
+  //
+  //   return angle_;
+  // }
+  //

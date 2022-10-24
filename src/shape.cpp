@@ -4,17 +4,20 @@
 //KONSTRUTOREN----------------------------------------------------------------------
 	Shape::Shape() :
 	m_name {"Shape"},
-	m_mat {}
-	{
+	m_material {} {
 		std::cout << "Shape-Construction" << m_name << std::endl;
 	}
 
-	Shape::Shape(std::string const& name, std::shared_ptr<Material> mat) :
+	Shape::Shape(std::string const& name, int mat_id) :
 	m_name {name},
-	m_mat {mat}
-	{
+	m_material {mat_id} {
 		std::cout <<":Shape-Construction: " << m_name << std::endl;
 	}
+
+	// Shape::Shape(std::string const& name, std::shared_ptr<Material> mat) :
+	// m_name {name},
+	// m_mat {mat}{std::cout <<":Shape-Construction: " << m_name << std::endl;}
+
 
 	Shape::~Shape()
 	{
@@ -22,12 +25,14 @@
 	}
 
 //GETTER----------------------------------------------------------------------
-	std::string Shape::name() const
-	{
+	std::string Shape::name() const{
 	  return m_name;
 	}
-	std::shared_ptr<Material> Shape::material() const
-	{
+
+
+	std::shared_ptr<Material> Shape::material() const{
+		std::shared_ptr<Material> m_mat = std::make_shared<Material>(m_material); // overload (1)
+		// m_mat.push_back(m_material);
 	  return m_mat;
 	}
 

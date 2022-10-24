@@ -1,12 +1,5 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
-#include "ofxGui.h"
-#include "ofxCv.h"
-#include <iostream>
-#include "State.hpp"
 #include "Lens.hpp"
 #include "hit.hpp"
 
@@ -17,13 +10,14 @@ class Lens_konkav : public Lens{
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lens_konkav();
-  Lens_konkav(vec3 const& min, vec3 const& max);
-  Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n);
+  // Lens_konkav(vec3 const& min, vec3 const& max);
+  // Lens_konkav(vec3 const& orig, float diameter, float width, float r1, float r2, float n);
   Lens_konkav(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n);
   Lens_konkav(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max);
-  ~Lens_konkav()override;
+  ~Lens_konkav();
 
   //FUNKTIONEN------------------------------------------------------------------
+  std::ostream& print(std::ostream& os) const override;
   Hit intersect(Ray &ray_in, int count_hits) const override;
   void draw() const override;
   void update() override;

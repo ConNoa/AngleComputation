@@ -1,29 +1,22 @@
 #pragma once
 
-#include <glm/glm.hpp>
-#include <glm/vec3.hpp>
-#include <glm/vec4.hpp>
-#include "ofxGui.h"
-#include "ofxCv.h"
-#include <iostream>
-#include "State.hpp"
 #include "Lens.hpp"
 #include "hit.hpp"
 
 using namespace glm;
+using namespace std;
 
 class Lens_konvex : public Lens{
 
 public:
   //KONSTRUTOREN----------------------------------------------------------------
   Lens_konvex();
-  Lens_konvex(vec3 const& min, vec3 const& max);
-  Lens_konvex(vec3 const& orig, float diameter, float width, float r1, float r2, float n);
+  Lens_konvex(std::string const& name, std::shared_ptr<Material> mat);
   Lens_konvex(vec3 const& orig, float diameter, float width, int t_r1, float r1, int t_r2, float r2, float n);
-  Lens_konvex(std::string const& name, std::shared_ptr<Material> mat, vec3 const& min, vec3 const& max);
-  ~Lens_konvex()override;
+  ~Lens_konvex();
 
   //FUNKTIONEN------------------------------------------------------------------
+  std::ostream& print(std::ostream& os) const override;
   Hit intersect(Ray &ray_in, int count_hits) const override;
   void draw() const override;
   void update() override;
@@ -101,7 +94,7 @@ public:
   // bool    m_draw_rays = true;
   // bool    m_draw_focalpoint = true;
   //
-  // shared_ptr<State> shrd;
+  // // shared_ptr<State> shrd;
   //
   // int     m_type_r1;
   // int     m_type_r2;
