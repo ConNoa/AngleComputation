@@ -105,8 +105,6 @@ void Lens_konvex::update(){
 
   Hit Lens_konvex::intersect(Ray &ray_in, int count_hits) const{
     // std::cout << "__________________________________________________________________________"<< std::endl;
-    std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
-    std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
 
     Hit input_hit;
 
@@ -127,35 +125,29 @@ void Lens_konvex::update(){
       input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
         intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
 
-        std::cout<< "         with ray from: [" << ray_in.m_orig << "]"<<std::endl;
-        std::cout<< "At              Pos 1 : ["<< intsctPos1<<"]" << std::endl;
-        std::cout <<"Intersection-normal 1 : ["<< intsctNrml1<<"]" <<std::endl;
-
+        input_hit.m_ray = ray_in;
       if(length(m_orig-intsctPos1)<length(m_orig-intsctPos2)){
         // std::cout << "ifcondition"<<std::endl;
-
         input_hit.m_point = intsctPos1;
         input_hit.m_normal = intsctNrml1;
         input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
       }
       else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
         std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
-
         input_hit.m_point = intsctPos2;
         input_hit.m_normal = intsctNrml2;
         input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
       }
       else{
-        std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
-
+        std::cout << "else condition -----------------------ERROR OCCURS"<<std::endl;
         return input_hit;
       }
-      std::cout<<"i_hit distance  :"<< input_hit.m_distance << std::endl;
-      // ray_in.m_distance_hit = input_hit.m_distance;
+
+      input_hit.Hit_print(count_hits);
+
+      if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
+      if(m_draw_normals){   input_hit.draw_normals();               }
+
       vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
       float angle_t1_x = snells_law(angle_i1.x, m_n_air, m_n);
       //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
@@ -288,6 +280,7 @@ void Lens_konvex::update(){
 }
 
   void Lens_konvex::update_path(){
+    std::cout<< "Lens_konvex:update_path()" << std::endl;
 
     lens.clear();
 

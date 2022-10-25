@@ -321,7 +321,7 @@ void LensApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void LensApp::mouseReleased(int x, int y, int button){
-  std:cout << "re integrate    mouse Released"<< std::endl;
+  std::cout << "re integrate    mouse Released"<< std::endl;
   for(auto it : m_all_lenses){
     //    it->print(std::cout);
     if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {

@@ -391,17 +391,13 @@
     m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
     float r1_a1 = -180  - m_ankat_angle_r1;
     float r1_a2 = -180  + m_ankat_angle_r1;
-
     m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
     float r2_a1 = -0    - m_ankat_angle_r2;
     float r2_a2 = -0    + m_ankat_angle_r2;
-
-
     lens.arc(m_center_r1, m_r1, m_r1 ,r1_a1, r1_a2);
     lens.close();
     lens.arc(m_center_r2, m_r2, m_r2, r2_a1, r2_a2);
     lens.close();
-
     vec3 pos_lrect = NULLPUNKT+m_orig;     //Position des Rechtecks (dicker Glasteil in der Linse)
     pos_lrect.x = pos_lrect.x-m_width/2;
     pos_lrect.y = pos_lrect.y-m_diameter/2;

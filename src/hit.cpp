@@ -48,7 +48,7 @@ void Hit::draw(vec3 const& direction_from) const{
 	ofBeginShape();
 
 	//Drawing horizontal Black Lines
-	ofSetColor(ofColor::yellow);
+	ofSetColor(ofColor::orange);
 		ofSetLineWidth(1);
 		ofDrawLine(m_point, m_point+ direction_to* m_distance);
 	ofEndShape();
@@ -56,7 +56,7 @@ void Hit::draw(vec3 const& direction_from) const{
 
 }
 
-		void Hit::print() const {
+void Hit::print() const {
 			std::cout<< ":-------------------------------------------------------------: "  <<std::endl;
 			std::cout << "Hit: ["<<std::endl;
 			std::cout<< "m_hit   : [ " << m_hit << " ]" <<std::endl;
@@ -66,7 +66,20 @@ void Hit::draw(vec3 const& direction_from) const{
 			// std::cout<< " m_shape  : [ " << m_shape << " ]    ]   -------------------------- \n \n" <<std::endl;
 			std::cout<< ":-------------------------------------------------------------: "  <<std::endl;
 
-		}
+}
+
+void Hit::Hit_print(int hitnmbr) const{
+
+		std::cout<<"\n"<< hitnmbr<< "----------- Hit!  ----------------------------------"<<std::endl;
+		std::cout<< "         with ray from: ["<< m_ray.m_orig << "]"<<std::endl;
+		std::cout<<"    m_ray.m_direction: [" << m_ray.m_direction << "]"<<std::endl;
+		std::cout<< "At              Pos 1 : ["<< m_point<<"]" << std::endl;
+		std::cout<<"Intersection-normal 1 : ["<< m_normal<<"]" <<std::endl;
+		std::cout<<"            Distance  :"<< m_distance << std::endl;
+
+
+
+}
 
 
 		Hit& Hit::operator=(Hit const& tmp_hit){

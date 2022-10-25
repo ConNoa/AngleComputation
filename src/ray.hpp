@@ -24,6 +24,6 @@ public:
 		glm::vec3 m_direction;
 		glm::vec3 m_inv_direction;
 		float m_distance_hit;
-		glm::vec3 m_hitpoint;
+		// glm::vec3 m_hitpoint;
 
 };

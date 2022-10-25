@@ -40,79 +40,36 @@
   }
 
   //FUNKTIONEN------------------------------------------------------------------
-
-
-
-
-
-
-
   std::ostream& Lens::print(std::ostream& os) const{
     Shape::print(os);
-
     os << "Im a Lens Base class."<< "\n" <<"Origin: (" << m_orig.x << ", "
     << m_orig.y << ", "
     << m_orig.z << ")" << "\n"
-
     << "Diameter: (" << m_diameter<< ")" << "\n"
-
     << "Width: (" << m_width<< ")" << "\n"
-
     << "R1: (" << m_r1<< ")" << "\n"
-
     << "R2: (" << m_r2<< ")" << "\n"
-
     << "Brechungsindex ergibt sich aus Material: (" << material() << ")" << std::endl;
-
     return os;
   }
 
-  // void Lens::draw_construction() const {
-  //   // if(mode == 1){
-  //     ofBeginShape();
-  //       ofSetColor(0, 0, 255);
-  //       ofFill();
-  //       // ofDrawCircle(o_x, o_y, o_z, 3);
-  //       ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
-  //       ofDrawLine(m_O_d1, m_O_d2);
-  //
-  //       ofSetCircleResolution(720);
-  //       ofNoFill();
-  //       ofSetColor(0,0, 250);
-  //       ofDrawCircle(m_center_r1, 3);
-  //       ofDrawCircle(m_center_r1, m_r1);
-  //       //ofDrawCircle(f1, r1_);
-  //       ofSetColor(255,0,0);
-  //       ofDrawCircle(m_center_r2, 3);
-  //       ofDrawCircle(m_center_r2, m_r2);
-  //
-  //       ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-  //       ofSetColor(40,40,40);
-  //       ofDrawRectangle(m_orig, m_width, m_diameter);
-  //       ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-  //     ofEndShape(false);
-  //     return;
-  //   }
-
-
-
   float Lens::snells_law(float alpha_i, float n_i, float n_t)const {
-    // std::cout<<"--> snells_law() :"<< std::endl;
-    float sin_alph_in = sin(alpha_i);
-    // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
-    // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
-    float n_it = n_i/n_t;
-    // std::cout<<"\n n_i :"<<  n_i << std::endl;
-    // std::cout<<" n_t :"<<  n_t << std::endl;
-    // std::cout<<" n_it :"<<  n_it << std::endl;
-    float alp_n_it = sin_alph_in*n_it;
-    // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
-    float alpha_t = asin(sin(alpha_i)*n_i/n_t);
-    // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
-    // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
-    // std::cout<<"\n"<<std::endl;
-    return alpha_t;
+      // std::cout<<"--> snells_law() :"<< std::endl;
+      float sin_alph_in = sin(alpha_i);
+      // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
+      // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
+      // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
+      float n_it = n_i/n_t;
+      // std::cout<<"\n n_i :"<<  n_i << std::endl;
+      // std::cout<<" n_t :"<<  n_t << std::endl;
+      // std::cout<<" n_it :"<<  n_it << std::endl;
+      float alp_n_it = sin_alph_in*n_it;
+      // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
+      float alpha_t = asin(sin(alpha_i)*n_i/n_t);
+      // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
+      // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
+      // std::cout<<"\n"<<std::endl;
+      return alpha_t;
   }
 
   vec3 Lens::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
@@ -149,12 +106,10 @@
     vec3 f_ursp = vec3{0,0,0};
     vec3 l_ursp = f_ursp;
     l_ursp.x = radius_;
-
     vec3 l_edge = f_ursp;
     l_edge.x = lr_x_atd;
     l_edge.y = diameter_lens_/2;
     vec3 refx = vec3{1,0,0};
-
     l_ursp = normalize(l_ursp);
     l_edge = normalize(l_edge);
     float  angle_ = orientedAngle(l_ursp, l_edge, refx) * (180.0 / 3.141592653589793238463);
@@ -164,12 +119,8 @@
     return angle_;
   }
 
-
   void Lens::scale(float faktor){
     //Skaliere von min ausgehend!
-    // vec3 diff=m_max-m_min;
-    // m_max=m_min+(diff*faktor);
-    //translate(XXX); Damit Zentrum bleibt?
   }
 
   void Lens::translate(vec3 const& vec){

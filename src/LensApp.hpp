@@ -71,7 +71,7 @@ public:
 
 		std::vector<std::shared_ptr<Shape>> m_all_lenses;
 
-		std::shared_ptr<Shape> lens_inside;
+		// std::shared_ptr<Shape> lens_inside;
 
 	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
 

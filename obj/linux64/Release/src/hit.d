@@ -526,7 +526,8 @@ obj/linux64/Release/src/hit.o: \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/closest_point.inl \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.hpp \
  /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl \
- /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl
+ /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl \
+ /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp
 
 /home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/hit.hpp:
 
@@ -1615,3 +1616,5 @@ obj/linux64/Release/src/hit.o: \
 /home/pixel/OF/libs/glm/include/glm/gtx/../gtx/vector_query.inl:
 
 /home/pixel/OF/libs/glm/include/glm/gtx/intersect.inl:
+
+/home/pixel/Desktop/1_Bachelorarbeit/04_raycasting_beamer_lense/AngleComputation/src/ray.hpp:
