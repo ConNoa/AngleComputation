@@ -15,6 +15,8 @@
 // #include <glm/vec3.hpp> // glm::vec3
 // #include <glm/vec4.hpp> // glm::vec4
 // #include <glm/gtx/intersect.hpp>
+#include <boost/pointer_cast.hpp>
+#include <boost/shared_ptr.hpp>
 #include "shape.hpp"
 #include "State.hpp"
 #include "lensefield.hpp"
@@ -67,7 +69,9 @@ public:
 
 	Mems m_mems;
 
-	std::vector<std::shared_ptr<Shape>> m_all_lenses;
+		std::vector<std::shared_ptr<Shape>> m_all_lenses;
+
+		std::shared_ptr<Shape> lens_inside;
 
 	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
 

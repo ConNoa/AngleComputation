@@ -35,6 +35,8 @@ void Mems::setup(){
   float x_ax = m_dimensions.x / m_amm_mirr.x;
   float y_ax = m_dimensions.y / m_amm_mirr.y;
 
+// Mems update wurde für dynamic_cast test auskommentiert
+
   std::cout << "Mems::update() :  " << std::endl;
   std::cout << "x_ax = " << y_ax << std::endl;
   std::cout << "y_ax = " << y_ax << std::endl;

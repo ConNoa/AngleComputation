@@ -42,7 +42,7 @@
 	{
 	  os << "Name: " << m_name << "\n"
 
-	  << "Material: (" << m_mat<< std::endl;
+	  << "Material: [" << m_material<< "]" <<std::endl;
 	  return os;
 	}
 

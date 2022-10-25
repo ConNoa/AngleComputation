@@ -85,11 +85,11 @@ struct Material
 	//FRIENDA-------------------------------------------------------------------------
 		friend std::ostream& operator<<(std::ostream& os, Material const& mat )
 		{
-			os << "name: " << mat.name << "\n"
+			os << "name: " << mat.name 
 			<<"ID: "<< mat.id
-			<<"refraction: "<< mat.n
+			<<", refraction: "<< mat.n
 			<<", opacity: "<< mat.opac
-			<<", reflection: "<< mat.r<< "\n";
+			<<", reflection: "<< mat.r<< " ";
 			return os;
 		}
 

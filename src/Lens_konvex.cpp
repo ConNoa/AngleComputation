@@ -43,7 +43,7 @@
   std::ostream& Lens_konvex::print(std::ostream& os) const{
     Shape::print(os);
 
-    os << "Origin: (" << m_orig.x << ", "
+    os << "Im a Lens_konvex class."<< "\n"<< "Origin: (" << m_orig.x << ", "
     << m_orig.y << ", "
     << m_orig.z << ")" << "\n"
 
@@ -55,57 +55,12 @@
 
     << "R2: (" << m_r2<< ")" << "\n"
 
-    << "Brechungsindex: (" << m_n << ")" << std::endl;
+    << "Brechungsindex: (" << material()->n << ") ";
 
     return os;
   }
 
-  /*Întersect
-  ######################################
-  Prüft in Hit boxhit.m_hit ob der Strahl
-  die Lens_konvex trifft(bool).
-  In welcher Entfernung, boxhit.m_distance
-  wird geschnitten?
-  Übergabe per Pointer der Lens_konvex in
-  boxhit.m_shape.
-  Der Śchnittpunkt liegt in
-  boxhit.m_point.
 
-  Grund-Verfahren-Source:
-  http://www.scratchapixel.com/
-  lessons/3d-basic-rendering/
-  minimal-ray-tracer-rendering
-  -simple-shapes/ray-box-intersection
-
-  Hit Sphere::intersect(Ray ray) const
-    {
-
-      Hit spherehit;
-
-      spherehit.m_hit = intersectRaySphere
-        (
-          ray.m_orig, ray.m_direction,
-          m_center, m_radius,
-          spherehit.m_point, spherehit.m_normal //Indirekte param.
-        );
-
-      if (spherehit.m_hit) //=true ->extra Info
-      {
-        spherehit.m_distance = distance(ray.m_orig, spherehit.m_point);
-        spherehit.m_shape = this;
-
-
-         if(distance(spherehit.m_point-0.001f*ray.m_direction, m_center) < m_radius)
-        {
-          spherehit.m_normal = -spherehit.m_normal;
-        }
-
-      }
-
-      return spherehit;
-    }
-
-   */
   Hit Lens_konvex::intersect(Ray &ray_in, int count_hits) const{
     // std::cout << "__________________________________________________________________________"<< std::endl;
     std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
@@ -300,48 +255,7 @@
   }
 
 
-  void Lens_konvex::update(){
 
-    //relevant?
-    //Top and BottomPoints von äußerem Linsendiameter
-    m_O_d1 = NULLPUNKT+m_orig;
-    m_O_d1.y = m_O_d1.y+ m_diameter/2;
-
-    m_O_d2 = NULLPUNKT+m_orig;
-    m_O_d2.y = m_O_d2.y- m_diameter/2;
-
-    m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
-    //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
-    m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
-
-    m_center_r1 = NULLPUNKT+m_orig;
-    m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
-    m_center_r2 = NULLPUNKT+m_orig;
-    m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
-    m_center_d1 = m_orig;
-    m_center_d1.x = m_center_d1.x-m_width/2;
-    m_center_d2 = m_orig;
-    m_center_d2.x = m_center_d2.x+m_width/2;
-    m_D1 = (m_n-m_n_air)/m_r1;
-    m_D2 = (m_n_air-m_n)/m_r2;
-    m_center_d0 = m_center_r1;
-    m_center_d0.x = m_center_d0.x-m_r1;
-    m_center_d3 = m_center_r2;
-    m_center_d3.x = m_center_d3.x+m_r2;
-    m_f1 = m_center_d0;
-    m_f1.x -= 1/m_D1;
-    m_f2 = m_center_d3;
-    m_f2.x = m_f2.x + 1/m_D2;
-
-    //d_1 = (n_t1-n_i1)/R_1;
-
-
-
-    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
-
-    return;
-  }
 
   void Lens_konvex::update_path(){
 
