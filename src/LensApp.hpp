@@ -67,7 +67,7 @@ public:
 
 	Mems m_mems;
 
-	std::vector<std::shared_ptr<Lens>> m_all_lenses;
+	std::vector<std::shared_ptr<Shape>> m_all_lenses;
 
 	//std::shared_ptr<Composite> m_composite; 	//All the lenses etc.
 

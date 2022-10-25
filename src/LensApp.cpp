@@ -106,7 +106,10 @@ void LensApp::setup_lens(){
   orig_pos.z = shrd->s_orig_z;
 
 
-  std::shared_ptr<Lens> new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, shrd->s_n);
+  std::shared_ptr<Lens_konvex> new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, shrd->s_n);
+
+
+
   std::cout<< "This is the new created Lens: [ "<< endl;
   new_Lens->print(std::cout);
   std::cout<< " ]. " <<std::endl;
@@ -118,67 +121,105 @@ void LensApp::setup_lens(){
 }
 
 
-void LensApp::load_lens_parameters(int lens_nmbr){
-  cout<<"load parameters of lens "<< lens_nmbr << endl;
 
-    shrd->s_orig_x = m_all_lenses[shrd->s_select_lens]->m_orig.x;
-    shrd->s_orig_y = m_all_lenses[shrd->s_select_lens]->m_orig.y;
-    shrd->s_orig_z = m_all_lenses[shrd->s_select_lens]->m_orig.z;
-    shrd->s_rot_z = m_all_lenses[shrd->s_select_lens]->m_rot_z;
-    shrd->s_diameter = m_all_lenses[shrd->s_select_lens]->m_diameter;
-    shrd->s_width = m_all_lenses[shrd->s_select_lens]->m_width;
-    shrd->s_type_r1 = m_all_lenses[shrd->s_select_lens]->m_type_r1;
-    shrd->s_r1 = m_all_lenses[shrd->s_select_lens]->m_r1;
-    shrd->s_type_r2 = m_all_lenses[shrd->s_select_lens]->m_type_r2;
-    shrd->s_r2 = m_all_lenses[shrd->s_select_lens]->m_r2;
-    shrd->s_n = m_all_lenses[shrd->s_select_lens]->m_n;
-    shrd->s_show_constr_lines = m_all_lenses[shrd->s_select_lens]->m_show_constr_lines;
+
+
+
+
+
+
+void LensApp::load_lens_parameters(int lens_nmbr){
+   std::cout<<"load parameters of lens "<< lens_nmbr << endl;
+    //
+    // shrd->s_orig_x = m_all_lenses[shrd->s_select_lens]->m_orig.x;
+    // shrd->s_orig_y = m_all_lenses[shrd->s_select_lens]->m_orig.y;
+    // shrd->s_orig_z = m_all_lenses[shrd->s_select_lens]->m_orig.z;
+    // shrd->s_rot_z = m_all_lenses[shrd->s_select_lens]->m_rot_z;
+    // shrd->s_diameter = m_all_lenses[shrd->s_select_lens]->m_diameter;
+    // shrd->s_width = m_all_lenses[shrd->s_select_lens]->m_width;
+    // shrd->s_type_r1 = m_all_lenses[shrd->s_select_lens]->m_type_r1;
+    // shrd->s_r1 = m_all_lenses[shrd->s_select_lens]->m_r1;
+    // shrd->s_type_r2 = m_all_lenses[shrd->s_select_lens]->m_type_r2;
+    // shrd->s_r2 = m_all_lenses[shrd->s_select_lens]->m_r2;
+    // shrd->s_n = m_all_lenses[shrd->s_select_lens]->m_n;
+    // shrd->s_show_constr_lines = m_all_lenses[shrd->s_select_lens]->m_show_constr_lines;
+
+
+    if (Lens* p = dynamic_cast<Lens*>(m_all_lenses[shrd->s_select_lens])) {
+      shrd->s_orig_x = p->m_orig.x;
+      shrd->s_orig_y = p->m_orig.y;
+      shrd->s_orig_z = p->m_orig.z;
+      shrd->s_rot_z = p->m_rot_z;
+      shrd->s_diameter = p->m_diameter;
+      shrd->s_width = p->m_width;
+      shrd->s_type_r1 = p->m_type_r1;
+      shrd->s_r1 = p->m_r1;
+      shrd->s_type_r2 = p->m_type_r2;
+      shrd->s_r2 = p->m_r2;
+      shrd->s_n = p->m_n;
+      shrd->s_show_constr_lines = p->m_show_constr_lines;}
+    else {
+      std::cout<<"load parameters of lens .------------error" << endl;
+    }
+
+
+
+
     return;
 
 }
 
 void LensApp::change_lens_parameters(std::string label_in){
 
-  m_all_lenses[shrd->s_select_lens]->m_act_manipulated = true;
 
-  if (label_in == "s_orig_x"){
-    m_all_lenses[shrd->s_select_lens]->m_orig.x = shrd->s_orig_x;
+
+
+  if (Lens_konkav* p = dynamic_cast<Lens_konkav*>(m_all_lenses[shrd->s_select_lens])) {
+
+    p->m_act_manipulated = true;
+
+    if (label_in == "s_orig_x"){
+      p->m_orig.x = shrd->s_orig_x;
+    }
+    if (label_in == "s_orig_y"){
+      p->m_orig.y = shrd->s_orig_y;
+    }
+    if (label_in == "s_orig_z"){
+      p->m_orig.z = shrd->s_orig_z;
+    }
+    if (label_in == "s_rot_z"){
+        p->m_rot_z = shrd->s_rot_z;
+    }
+    if (label_in == "s_diameter"){
+        p->m_diameter = shrd->s_diameter;
+    }
+    if (label_in == "s_width"){
+        p->m_width = shrd->s_width;
+    }
+    if (label_in == "s_type_r1"){
+        p->m_type_r1 = shrd->s_type_r1;
+    }
+    if (label_in == "s_r1"){
+        p->m_r1 = shrd->s_r1;
+    }
+    if (label_in == "s_type_r2"){
+        p->m_type_r2 = shrd->s_type_r2;
+    }
+    if (label_in == "s_r2"){
+        p->m_r2 = shrd->s_r2;
+    }
+    if (label_in == "s_n"){
+        p->m_n = shrd->s_n;
+    }
   }
-  if (label_in == "s_orig_y"){
-    m_all_lenses[shrd->s_select_lens]->m_orig.y = shrd->s_orig_y;
-  }
-  if (label_in == "s_orig_z"){
-    m_all_lenses[shrd->s_select_lens]->m_orig.z = shrd->s_orig_z;
-  }
-  if (label_in == "s_rot_z"){
-      m_all_lenses[shrd->s_select_lens]->m_rot_z = shrd->s_rot_z;
-  }
-  if (label_in == "s_diameter"){
-      m_all_lenses[shrd->s_select_lens]->m_diameter = shrd->s_diameter;
-  }
-  if (label_in == "s_width"){
-      m_all_lenses[shrd->s_select_lens]->m_width = shrd->s_width;
-  }
-  if (label_in == "s_type_r1"){
-      m_all_lenses[shrd->s_select_lens]->m_type_r1 = shrd->s_type_r1;
-  }
-  if (label_in == "s_r1"){
-      m_all_lenses[shrd->s_select_lens]->m_r1 = shrd->s_r1;
-  }
-  if (label_in == "s_type_r2"){
-      m_all_lenses[shrd->s_select_lens]->m_type_r2 = shrd->s_type_r2;
-  }
-  if (label_in == "s_r2"){
-      m_all_lenses[shrd->s_select_lens]->m_r2 = shrd->s_r2;
-  }
-  if (label_in == "s_n"){
-      m_all_lenses[shrd->s_select_lens]->m_n = shrd->s_n;
+  else {
+    std::cout<<"change lens parameters() ------------error" << endl;
   }
 
 }
 
 void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
-  cout << e.target->getName() << " : " << e.value << endl;
+  std::cout << e.target->getName() << " : " << e.value << endl;
 
   if(shrd->s_select_lens < m_all_lenses.size()){
     if (e.target->getLabel() == "Select Lens"){
@@ -191,7 +232,7 @@ void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
 }
 
 void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
-    cout << e.target->getLabel() << " checked = " << e.checked << endl;
+    std::cout << e.target->getLabel() << " checked = " << e.checked << endl;
     if (e.target->getLabel() == "Draw Construction Lines"){
       shrd->s_show_constr_lines = e.checked;
       //m_all_lenses[shrd->select_lens]
@@ -229,7 +270,7 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
 
 
 void LensApp::onButtonEvent(ofxDatGuiButtonEvent e){
-    cout<<"Buttonpressed  !"<<endl;
+    std::cout<<"Buttonpressed  !"<<std::endl;
 
     for(auto it : m_all_lenses){
       //    it->print(std::cout);
@@ -255,13 +296,13 @@ void LensApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void LensApp::mouseDragged(int x, int y, int button){
-  // cout << "mouse-dr   x:" << x << " y:" << y << " button:" << button << endl;
+  // std::cout << "mouse-dr   x:" << x << " y:" << y << " button:" << button << endl;
 
 }
 
 //--------------------------------------------------------------
 void LensApp::mousePressed(int x, int y, int button){
-  // cout << "mouse-pr   x:" << x << " y:" << y << " button:" << button << endl;
+  // std::cout << "mouse-pr   x:" << x << " y:" << y << " button:" << button << endl;
 
 }
 

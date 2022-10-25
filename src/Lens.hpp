@@ -14,7 +14,7 @@ public:
   Lens(std::string const& name, int mat_id);
   Lens(vec3 const& orig, float diameter, float width, float r1, float r2);
   Lens(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id);
-  ~Lens();
+  virtual ~Lens();
 
   //FUNKTIONEN------------------------------------------------------------------
   virtual std::ostream& print(std::ostream& os) const;
