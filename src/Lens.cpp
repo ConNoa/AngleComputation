@@ -44,56 +44,6 @@
 
 
 
-  void Lens::update(){
-
-    //relevant?
-    //Top and BottomPoints von äußerem Linsendiameter
-    m_O_d1 = NULLPUNKT+m_orig;
-    m_O_d1.y = m_O_d1.y+ m_diameter/2;
-
-    m_O_d2 = NULLPUNKT+m_orig;
-    m_O_d2.y = m_O_d2.y- m_diameter/2;
-
-    m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
-    //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
-    m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
-
-    m_center_r1 = NULLPUNKT+m_orig;
-    m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
-    m_center_r2 = NULLPUNKT+m_orig;
-    m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
-    m_center_d1 = m_orig;
-    m_center_d1.x = m_center_d1.x-m_width/2;
-    m_center_d2 = m_orig;
-    m_center_d2.x = m_center_d2.x+m_width/2;
-    m_D1 = (m_n-m_n_air)/m_r1;
-    m_D2 = (m_n_air-m_n)/m_r2;
-    m_center_d0 = m_center_r1;
-    m_center_d0.x = m_center_d0.x-m_r1;
-    m_center_d3 = m_center_r2;
-    m_center_d3.x = m_center_d3.x+m_r2;
-    m_f1 = m_center_d0;
-    m_f1.x -= 1/m_D1;
-    m_f2 = m_center_d3;
-    m_f2.x = m_f2.x + 1/m_D2;
-
-    //d_1 = (n_t1-n_i1)/R_1;
-
-
-
-    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
-
-    return;
-  }
-
-
-
-
-
-
-
-
 
 
 
@@ -117,45 +67,33 @@
     return os;
   }
 
-  void Lens::draw_construction() const {
-    // if(mode == 1){
-      ofBeginShape();
-        ofSetColor(0, 0, 255);
-        ofFill();
-        // ofDrawCircle(o_x, o_y, o_z, 3);
-        ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
-        ofDrawLine(m_O_d1, m_O_d2);
+  // void Lens::draw_construction() const {
+  //   // if(mode == 1){
+  //     ofBeginShape();
+  //       ofSetColor(0, 0, 255);
+  //       ofFill();
+  //       // ofDrawCircle(o_x, o_y, o_z, 3);
+  //       ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+  //       ofDrawLine(m_O_d1, m_O_d2);
+  //
+  //       ofSetCircleResolution(720);
+  //       ofNoFill();
+  //       ofSetColor(0,0, 250);
+  //       ofDrawCircle(m_center_r1, 3);
+  //       ofDrawCircle(m_center_r1, m_r1);
+  //       //ofDrawCircle(f1, r1_);
+  //       ofSetColor(255,0,0);
+  //       ofDrawCircle(m_center_r2, 3);
+  //       ofDrawCircle(m_center_r2, m_r2);
+  //
+  //       ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
+  //       ofSetColor(40,40,40);
+  //       ofDrawRectangle(m_orig, m_width, m_diameter);
+  //       ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
+  //     ofEndShape(false);
+  //     return;
+  //   }
 
-        ofSetCircleResolution(720);
-        ofNoFill();
-        ofSetColor(0,0, 250);
-        ofDrawCircle(m_center_r1, 3);
-        ofDrawCircle(m_center_r1, m_r1);
-        //ofDrawCircle(f1, r1_);
-        ofSetColor(255,0,0);
-        ofDrawCircle(m_center_r2, 3);
-        ofDrawCircle(m_center_r2, m_r2);
-
-        ofSetRectMode(OF_RECTMODE_CENTER); //set rectangle mode to the center
-        ofSetColor(40,40,40);
-        ofDrawRectangle(m_orig, m_width, m_diameter);
-        ofSetRectMode(OF_RECTMODE_CORNER); //set rectangle mode to the center
-      ofEndShape(false);
-      return;
-    }
-
-  void Lens::draw_focalpoint() const {
-    ofBeginShape();
-      ofSetColor(86, 174, 53);
-      ofFill();
-      // ofDrawCircle(o_x, o_y, o_z, 3);
-      ofDrawCircle(m_center_d0, 3);
-      ofDrawCircle(m_center_d3, 3);
-      ofSetColor(ofColor::white);
-      ofDrawCircle(m_f1, 3);
-      ofDrawCircle(m_f2, 3);
-    ofEndShape();
-  }
 
 
   float Lens::snells_law(float alpha_i, float n_i, float n_t)const {
@@ -235,7 +173,6 @@
   }
 
   void Lens::translate(vec3 const& vec){
-      m_trans_vec = vec;
       //update();
     }
 
