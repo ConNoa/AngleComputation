@@ -74,13 +74,13 @@
       vec3 intsctPos2 = vec3{0,0,0};
       vec3 intsctNrml2 = vec3{0,0,0};
 
-      input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_diameter/2,
+      input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d2, m_diameter/2,
                                           intsctPos1, intsctNrml1,
                                           intsctPos2, intsctNrml2);
 
       if(input_hit.m_hit) {
 
-        input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
+        input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r2, m_r2,
           intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
 
           input_hit.m_ray = ray_in;
@@ -91,7 +91,7 @@
           input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
         }
         else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
-          std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
+          std::cout << "else if condition --------konkav------------ERROR OCCURS"<<std::endl;
           input_hit.m_point = intsctPos2;
           input_hit.m_normal = intsctNrml2;
           input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
@@ -107,6 +107,7 @@
         if(m_draw_normals){   input_hit.draw_normals();               }
 
         vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
+
         float angle_t1_x = snells_law(angle_i1.x, m_n_air, material()->n);
         //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
         fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
@@ -115,7 +116,7 @@
         // std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
         fmat3 rot_mat_shrinked = fmat3(rot_mat_i);
         // std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
-        vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
+        vec3 t1_ray = (rot_mat_shrinked*-input_hit.m_normal);
 
         vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
 
@@ -127,14 +128,14 @@
         vec3 intsctPos4 = vec3{0,0,0};
         vec3 intsctNrml4 = vec3{0,0,0};
 
-        t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_diameter/2,
+        t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d1, m_diameter/2,
                                             intsctPos3, intsctNrml3,
                                             intsctPos4, intsctNrml4);
 
         // t_hit.m_ray = ray_in;
         t_hit.m_ray = t_ray;
         if (t_hit.m_hit){
-          t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
+          t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r1, m_r1,
             intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
 
           if(length(m_center_d3-intsctPos3)<length(m_center_d3-intsctPos4)){
@@ -143,7 +144,7 @@
             t_hit.m_point = intsctPos3;
             t_hit.m_normal = intsctNrml3;
             t_hit.m_distance = length(input_hit.m_point - intsctPos3);
-            if(m_draw_rays){      t_hit.draw(-t1_ray); }
+            if(m_draw_rays){      t_hit.draw(t1_ray); }
             if(m_draw_normals){   t_hit.draw_normals();}
           }
           else if(length(m_center_d3-intsctPos3)>length(m_center_d3-intsctPos4)){
@@ -152,7 +153,7 @@
             t_hit.m_point = intsctPos4;
             t_hit.m_normal = intsctNrml4;
             t_hit.m_distance = length(input_hit.m_point - intsctPos4);
-            if(m_draw_rays){      t_hit.draw(-t1_ray); }
+            if(m_draw_rays){      t_hit.draw(t1_ray); }
             if(m_draw_normals){   t_hit.draw_normals();}
           }
           else{
@@ -161,6 +162,7 @@
             return t_hit;
           }
 
+          t_hit.Hit_print(count_hits);
 
           vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
           float angle_t1_x = snells_law(angle_i2.x,  material()->n, m_n_air);
@@ -174,18 +176,19 @@
           vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
 
           vec3 angle_t2 = cacl_angle_ray_normal(t_hit.m_normal, -t2_ray);
+//
           if(m_draw_rays){
           ofBeginShape();
             ofSetLineWidth(1);
-            ofSetColor(t_hit.m_ray.m_color);
-            ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
+            // ofSetColor(ofColor::purple);
+            ofSetColor(input_hit.m_ray.m_color);
+            ofDrawLine(t_hit.m_point, t_hit.m_point+t2_ray*1500);
           ofEndShape();
           }
         }
       }
       return input_hit;
     }
-
 
 
   void Lens_konkav::draw_focalpoint() const {
@@ -242,10 +245,10 @@
 
     //relevant?
     //Top and BottomPoints von äußerem Linsendiameter
-    m_O_d1 = NULLPUNKT+m_orig;
+    m_O_d1 = m_orig;
     m_O_d1.y = m_O_d1.y+ m_diameter/2;
 
-    m_O_d2 = NULLPUNKT+m_orig;
+    m_O_d2 = m_orig;
     m_O_d2.y = m_O_d2.y- m_diameter/2;
 
     m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
@@ -253,9 +256,9 @@
     m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
 
     m_center_r1 = m_orig;
-    m_center_r1.x = m_center_r1.x + m_width/2+m_r1;
-    m_center_r2 = NULLPUNKT+m_orig;
-    m_center_r2.x = m_center_r2.x - m_width/2 - m_r2;
+    m_center_r1.x = m_center_r1.x +m_width/2+m_r1;
+    m_center_r2 = m_orig;
+    m_center_r2.x = m_center_r2.x -m_width/2-m_r2;
     m_center_d1 = m_orig;
     m_center_d1.x = m_center_d1.x-m_width/2;
     m_center_d2 = m_orig;
@@ -284,23 +287,27 @@
   void Lens_konkav::update_path(){
 
     lens.clear();
-
     m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
     float r1_a1 = -180  - m_ankat_angle_r1;
     float r1_a2 = -180  + m_ankat_angle_r1;
     m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
     float r2_a1 = -0    - m_ankat_angle_r2;
     float r2_a2 = -0    + m_ankat_angle_r2;
+    vec3 pos_lrect = m_center_r2;
+    vec3 w_rect = m_center_r1;
+    pos_lrect.x = pos_lrect.x-m_ankat_r2;     //Position des Rechtecks (dicker Glasteil in der Linse)
+    w_rect.x = w_rect.x-m_ankat_r1-pos_lrect.x;     //Position des Rechtecks (dicker Glasteil in der Linse)
+    // pos_lrect.x = pos_lrect.x-m_width/2;
+
+    pos_lrect.y = pos_lrect.y-m_diameter/2;
+    lens.rectangle(pos_lrect.x, pos_lrect.y, w_rect.x, m_diameter);
     lens.arc(m_center_r1, m_r1, m_r1 ,r1_a1, r1_a2);
     lens.close();
     lens.arc(m_center_r2, m_r2, m_r2, r2_a1, r2_a2);
     lens.close();
-    vec3 pos_lrect = NULLPUNKT+m_orig;     //Position des Rechtecks (dicker Glasteil in der Linse)
-    pos_lrect.x = pos_lrect.x-m_width/2;
-    pos_lrect.y = pos_lrect.y-m_diameter/2;
-    lens.rectangle(pos_lrect.x, pos_lrect.y, m_width, m_diameter);
+
     lens.setCircleResolution(720);
-    lens.setStrokeWidth(1);
+    lens.setStrokeWidth(0);
     lens.setStrokeColor(ofColor::black);
     lens.setFillColor(ofColor::grey);
     lens.close();
