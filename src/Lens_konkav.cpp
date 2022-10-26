@@ -177,7 +177,6 @@
           if(m_draw_rays){
           ofBeginShape();
             ofSetLineWidth(1);
-
             ofSetColor(t_hit.m_ray.m_color);
             ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
           ofEndShape();
@@ -209,7 +208,7 @@
         ofSetColor(0, 0, 255);
         ofFill();
         // ofDrawCircle(o_x, o_y, o_z, 3);
-        ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+        ofDrawCircle(m_orig, 3);
         ofDrawLine(m_O_d1, m_O_d2);
 
         ofSetCircleResolution(720);
@@ -253,10 +252,10 @@
     //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
     m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
 
-    m_center_r1 = NULLPUNKT+m_orig;
-    m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
+    m_center_r1 = m_orig;
+    m_center_r1.x = m_center_r1.x + m_width/2+m_r1;
     m_center_r2 = NULLPUNKT+m_orig;
-    m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
+    m_center_r2.x = m_center_r2.x - m_width/2 - m_r2;
     m_center_d1 = m_orig;
     m_center_d1.x = m_center_d1.x-m_width/2;
     m_center_d2 = m_orig;
