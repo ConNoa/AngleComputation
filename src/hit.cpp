@@ -26,7 +26,9 @@
 			m_distance{ tmp_hit.m_distance },
 			m_point{ tmp_hit.m_point },
 			m_normal{ tmp_hit.m_normal },
-			m_shape{ tmp_hit.m_shape } {std::cout<<"Custom 2 Hit constructed\n";}
+			m_shape{ tmp_hit.m_shape } {
+				// std::cout<<"Custom 2 Hit constructed\n";
+			}
 
 //FUNKTIOENNE----------------------------------------------------------------
 void Hit::draw_normals() const{
@@ -71,11 +73,11 @@ void Hit::print() const {
 void Hit::Hit_print(int hitnmbr) const{
 
 		std::cout<<"\n"<< hitnmbr<< "----------- Hit!  ----------------------------------"<<std::endl;
-		std::cout<< "         with ray from: ["<< m_ray.m_orig << "]"<<std::endl;
-		std::cout<<"    m_ray.m_direction: [" << m_ray.m_direction << "]"<<std::endl;
-		std::cout<< "At              Pos 1 : ["<< m_point<<"]" << std::endl;
-		std::cout<<"Intersection-normal 1 : ["<< m_normal<<"]" <<std::endl;
-		std::cout<<"            Distance  :"<< m_distance << std::endl;
+		std::cout<<"      with ray from : ["<< m_ray.m_orig << "]"<<std::endl;
+		std::cout<<"  m_ray.m_direction : [" << m_ray.m_direction << "]"<<std::endl;
+		std::cout<<" At             Pos : ["<< m_point<<"]" << std::endl;
+		std::cout<<"Intersection-normal : ["<< m_normal<<"]" <<std::endl;
+		std::cout<<"           Distance :"<< m_distance << std::endl;
 
 
 

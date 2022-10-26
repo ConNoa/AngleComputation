@@ -40,48 +40,6 @@
 
 //FUNKTIONEN------------------------------------------------------------------
 
-void Lens_konvex::update(){
-
-  //relevant?
-  //Top and BottomPoints von äußerem Linsendiameter
-  m_O_d1 = NULLPUNKT+m_orig;
-  m_O_d1.y = m_O_d1.y+ m_diameter/2;
-
-  m_O_d2 = NULLPUNKT+m_orig;
-  m_O_d2.y = m_O_d2.y- m_diameter/2;
-
-  m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
-  //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
-  m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
-
-  m_center_r1 = NULLPUNKT+m_orig;
-  m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
-  m_center_r2 = NULLPUNKT+m_orig;
-  m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
-  m_center_d1 = m_orig;
-  m_center_d1.x = m_center_d1.x-m_width/2;
-  m_center_d2 = m_orig;
-  m_center_d2.x = m_center_d2.x+m_width/2;
-  m_D1 = (m_n-m_n_air)/m_r1;
-  m_D2 = (m_n_air-m_n)/m_r2;
-  m_center_d0 = m_center_r1;
-  m_center_d0.x = m_center_d0.x-m_r1;
-  m_center_d3 = m_center_r2;
-  m_center_d3.x = m_center_d3.x+m_r2;
-  m_f1 = m_center_d0;
-  m_f1.x -= 1/m_D1;
-  m_f2 = m_center_d3;
-  m_f2.x = m_f2.x + 1/m_D2;
-
-  //d_1 = (n_t1-n_i1)/R_1;
-
-
-
-  std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-  std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
-
-  return;
-}
 
   std::ostream& Lens_konvex::print(std::ostream& os) const{
     Shape::print(os);
@@ -143,20 +101,20 @@ void Lens_konvex::update(){
         return input_hit;
       }
 
-      input_hit.Hit_print(count_hits);
+      // input_hit.Hit_print(count_hits);
 
       if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
       if(m_draw_normals){   input_hit.draw_normals();               }
 
       vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
-      float angle_t1_x = snells_law(angle_i1.x, m_n_air, m_n);
+      float angle_t1_x = snells_law(angle_i1.x, m_n_air, material()->n);
       //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
       fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
       //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
       // rot_mat_i = glm::rotate(rot_mat_i,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
       // std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
       fmat3 rot_mat_shrinked = fmat3(rot_mat_i);
-      std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
+      // std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
       vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
 
       vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
@@ -172,15 +130,10 @@ void Lens_konvex::update(){
                                           intsctPos3, intsctNrml3,
                                           intsctPos4, intsctNrml4);
 
+      t_hit.m_ray = ray_in;
       if (t_hit.m_hit){
         t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
           intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
-
-          std::cout<< "         with ray from: [" << input_hit.m_point << "]"<<std::endl;
-          std::cout<< "At              Pos 3 : ["<< intsctPos3<<"]" << std::endl;
-          std::cout <<"Intersection-normal 3 : ["<< intsctNrml3<<"]" <<std::endl;
-          std::cout<< "At              Pos 4 : ["<< intsctPos4<<"]" << std::endl;
-          std::cout <<"Intersection-normal 4 : ["<< intsctNrml4<<"]" <<std::endl;
 
         if(length(m_center_d3-intsctPos3)<length(m_center_d3-intsctPos4)){
           // std::cout << "ifcondition"<<std::endl;
@@ -208,7 +161,7 @@ void Lens_konvex::update(){
 
 
         vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
-        float angle_t1_x = snells_law(angle_i2.x, m_n, m_n_air);
+        float angle_t1_x = snells_law(angle_i2.x,  material()->n, m_n_air);
         //float angle_t_z = snells_law(angle_i2.z, m_n_air, m_n);
 
         fmat4 rot_mat_t = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
@@ -232,6 +185,79 @@ void Lens_konvex::update(){
     return input_hit;
   }
 
+  void Lens_konvex::update(){
+
+  //relevant?
+  //Top and BottomPoints von äußerem Linsendiameter
+  m_O_d1 = NULLPUNKT+m_orig;
+  m_O_d1.y = m_O_d1.y+ m_diameter/2;
+
+  m_O_d2 = NULLPUNKT+m_orig;
+  m_O_d2.y = m_O_d2.y- m_diameter/2;
+
+  m_ankat_r1 =      sqrt((m_r1*m_r1)-(m_diameter/2)*(m_diameter/2));
+  //m_ankat_r2 bekommt negatives Vorzeichen, da es den Radius der Gegenüberliegenden Linse darstellt
+  m_ankat_r2 = -1*( sqrt((m_r2*m_r2)-(m_diameter/2)*(m_diameter/2)));
+
+  m_center_r1 = NULLPUNKT+m_orig;
+  m_center_r1.x = m_center_r1.x + m_ankat_r1 - m_width/2;
+  m_center_r2 = NULLPUNKT+m_orig;
+  m_center_r2.x = m_center_r2.x + m_ankat_r2 + m_width/2;
+  m_center_d1 = m_orig;
+  m_center_d1.x = m_center_d1.x-m_width/2;
+  m_center_d2 = m_orig;
+  m_center_d2.x = m_center_d2.x+m_width/2;
+  m_D1 = (m_n-m_n_air)/m_r1;
+  m_D2 = (m_n_air-m_n)/m_r2;
+  m_center_d0 = m_center_r1;
+  m_center_d0.x = m_center_d0.x-m_r1;
+  m_center_d3 = m_center_r2;
+  m_center_d3.x = m_center_d3.x+m_r2;
+  m_f1 = m_center_d0;
+  m_f1.x -= 1/m_D1;
+  m_f2 = m_center_d3;
+  m_f2.x = m_f2.x + 1/m_D2;
+
+  //d_1 = (n_t1-n_i1)/R_1;
+
+  // 
+  //
+  // std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
+  // std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
+
+  return;
+}
+
+  void Lens_konvex::update_path(){
+    std::cout<< "Lens_konvex:update_path()" << std::endl;
+
+    lens.clear();
+
+    m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
+    float r1_a1 = -180  - m_ankat_angle_r1;
+    float r1_a2 = -180  + m_ankat_angle_r1;
+
+    m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
+    float r2_a1 = -0    - m_ankat_angle_r2;
+    float r2_a2 = -0    + m_ankat_angle_r2;
+
+
+    lens.arc(m_center_r1, m_r1, m_r1 ,r1_a1, r1_a2);
+    lens.close();
+    lens.arc(m_center_r2, m_r2, m_r2, r2_a1, r2_a2);
+    lens.close();
+
+    vec3 pos_lrect = NULLPUNKT+m_orig;     //Position des Rechtecks (dicker Glasteil in der Linse)
+    pos_lrect.x = pos_lrect.x-m_width/2;
+    pos_lrect.y = pos_lrect.y-m_diameter/2;
+    lens.rectangle(pos_lrect.x, pos_lrect.y, m_width, m_diameter);
+    lens.setCircleResolution(720);
+    lens.setStrokeWidth(1);
+    lens.setStrokeColor(ofColor::black);
+    lens.setFillColor(ofColor::grey);
+    lens.close();
+  }
+
   void Lens_konvex::draw() const{
     lens.draw();
     if(m_show_constr_lines||m_act_manipulated){ draw_construction();}
@@ -245,7 +271,7 @@ void Lens_konvex::update(){
       ofSetColor(0, 0, 255);
       ofFill();
       // ofDrawCircle(o_x, o_y, o_z, 3);
-      ofDrawCircle(NULLPUNKT+m_orig+m_trans_vec, 3);
+      ofDrawCircle(NULLPUNKT+m_orig, 3);
       ofDrawLine(m_O_d1, m_O_d2);
 
       ofSetCircleResolution(720);
@@ -278,33 +304,3 @@ void Lens_konvex::update(){
     ofDrawCircle(m_f2, 3);
   ofEndShape();
 }
-
-  void Lens_konvex::update_path(){
-    std::cout<< "Lens_konvex:update_path()" << std::endl;
-
-    lens.clear();
-
-    m_ankat_angle_r1 = compute_lens_angle(m_r1, m_diameter);
-    float r1_a1 = -180  - m_ankat_angle_r1;
-    float r1_a2 = -180  + m_ankat_angle_r1;
-
-    m_ankat_angle_r2 = compute_lens_angle(m_r2, m_diameter);
-    float r2_a1 = -0    - m_ankat_angle_r2;
-    float r2_a2 = -0    + m_ankat_angle_r2;
-
-
-    lens.arc(m_center_r1, m_r1, m_r1 ,r1_a1, r1_a2);
-    lens.close();
-    lens.arc(m_center_r2, m_r2, m_r2, r2_a1, r2_a2);
-    lens.close();
-
-    vec3 pos_lrect = NULLPUNKT+m_orig;     //Position des Rechtecks (dicker Glasteil in der Linse)
-    pos_lrect.x = pos_lrect.x-m_width/2;
-    pos_lrect.y = pos_lrect.y-m_diameter/2;
-    lens.rectangle(pos_lrect.x, pos_lrect.y, m_width, m_diameter);
-    lens.setCircleResolution(720);
-    lens.setStrokeWidth(1);
-    lens.setStrokeColor(ofColor::black);
-    lens.setFillColor(ofColor::grey);
-    lens.close();
-  }

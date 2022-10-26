@@ -84,14 +84,14 @@ void LensApp::setup_gui(){
 
     shrd->lens_attr_gui->addSlider(shrd-> s_orig_x);
     shrd->lens_attr_gui->addSlider(shrd-> s_orig_y);
-    shrd->lens_attr_gui->addSlider(shrd-> s_orig_z);
-    shrd->lens_attr_gui->addSlider(shrd-> s_rot_z);
+    // shrd->lens_attr_gui->addSlider(shrd-> s_orig_z);
+    // shrd->lens_attr_gui->addSlider(shrd-> s_rot_z);
 
     shrd->lens_attr_gui->addSlider(shrd-> s_diameter);
     shrd->lens_attr_gui->addSlider(shrd-> s_width);
-    shrd->lens_attr_gui->addSlider(shrd-> s_type_r1);
+    // shrd->lens_attr_gui->addSlider(shrd-> s_type_r1);
     shrd->lens_attr_gui->addSlider(shrd-> s_r1);
-    shrd->lens_attr_gui->addSlider(shrd-> s_type_r2);
+    // shrd->lens_attr_gui->addSlider(shrd-> s_type_r2);
     shrd->lens_attr_gui->addSlider(shrd-> s_r2);
     shrd->lens_attr_gui->addSlider(shrd-> s_n);
 
@@ -116,7 +116,7 @@ void LensApp::setup_lens(){
   orig_pos.y = shrd->s_orig_y;
   orig_pos.z = shrd->s_orig_z;
 
-  auto new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, 1);
+  auto new_Lens = std::make_shared<Lens_konkav>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, 1);
 
   std::cout<< "This is the new created Lens: [ "<< endl;
   new_Lens->print(std::cout);
@@ -124,6 +124,7 @@ void LensApp::setup_lens(){
   new_Lens->update();
   m_all_lenses.push_back(new_Lens);
   // lens_inside = new_Lens;
+
 
 
   return;
@@ -171,7 +172,6 @@ void LensApp::load_lens_parameters(int lens_nmbr){
 }
 
 void LensApp::change_lens_parameters(std::string label_in){
-
 
   for(auto it : m_all_lenses)
   {
@@ -284,10 +284,10 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
 
 void LensApp::onButtonEvent(ofxDatGuiButtonEvent e){
     std::cout<<"Buttonpressed  !"<<std::endl;
-
     for(auto it : m_all_lenses){
-      //    it->print(std::cout);
-        it->update_path();
+      if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
+        lens_p->update_path();
+      }
     }
 }
 
@@ -324,7 +324,7 @@ void LensApp::mouseReleased(int x, int y, int button){
   std::cout << "re integrate    mouse Released"<< std::endl;
   for(auto it : m_all_lenses){
     //    it->print(std::cout);
-    if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
+    if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(it)) {
       lens_p->update_path();
       lens_p->m_act_manipulated = false;
     }

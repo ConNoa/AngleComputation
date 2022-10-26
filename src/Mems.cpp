@@ -8,7 +8,7 @@
 Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
-          m_dimensions{0, 400, 0},
+          m_dimensions{0, 100, 0},
           m_amm_mirr{1, 10}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
@@ -38,20 +38,25 @@ void Mems::setup(){
 // Mems update wurde für dynamic_cast test auskommentiert
 
   std::cout << "Mems::update() :  " << std::endl;
-  std::cout << "x_ax = " << y_ax << std::endl;
-  std::cout << "y_ax = " << y_ax << std::endl;
+  // std::cout << "x_ax = " << y_ax << std::endl;
+  // std::cout << "y_ax = " << y_ax << std::endl;
+  std::cout<< "---->all Mirror Positions"<<std::endl;
+
+  // std::cout << "[ " ;
 
   for( int yi=0; yi<= m_amm_mirr.y; yi++){
-    std::cout<< "yi = " << yi<< std::endl;
+     //std::cout<< "yi = " << yi<< " ";
     for(int xi=0; xi< m_amm_mirr.x; xi++){
-      std::cout<<"xi = " <<xi <<std::endl;
+      // std::cout<<"xi = " <<xi <<std::endl;
       vec3 pos = vec3{m_orig.x, yi*y_ax+m_orig.y-m_dimensions.y/2, xi*x_ax-m_dimensions.x/2};
-      std::cout<< "pos = "<< pos << std::endl;
-      std::cout<< "m_orient = " << m_orient<< std::endl;
+      int i = m_mems_rays.size();
+      std::cout<< "[pos"<< i<<" = "<< pos<< "] ";
+      // std::cout<< "m_orient = " << m_orient<< std::endl;
       Ray new_ray{pos, m_orient};
       m_mems_rays.push_back(new_ray);
     }
   }
+  std::cout<< " "<<std::endl;
   return;
 }
 

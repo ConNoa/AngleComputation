@@ -30,10 +30,10 @@ public:
 
   virtual std::ostream& print(std::ostream& os) const;
   virtual Hit intersect(Ray &ray_in, int count_hits) const = 0;
-  virtual void draw() const = 0;
-
   virtual void update() = 0;
   virtual void update_path() = 0;
+  virtual void draw() const = 0;
+
 
   virtual void scale(float faktor) = 0;
   virtual void rotate(float angle,glm::vec3 const& vec) = 0;

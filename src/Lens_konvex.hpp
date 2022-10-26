@@ -20,12 +20,12 @@ public:
   //FUNKTIONEN------------------------------------------------------------------
   std::ostream& print(std::ostream& os) const override;
   Hit intersect(Ray &ray_in, int count_hits) const override;
+  void update_path() override;
+  void update() override;
   void draw() const override;
   void draw_construction() const override;
   void draw_focalpoint() const override;
 
-  void update() override;
-  void update_path() override;
 
   //Hilfsfunktionen-------------------------------------------------------------
 
@@ -96,7 +96,7 @@ public:
     float   m_D2;
 
     bool    m_show_constr_lines = true;
-    bool    m_act_manipulated = false;
+    // bool    m_act_manipulated = false;
     bool    m_draw_normals = true;
     bool    m_draw_rays = true;
     bool    m_draw_focalpoint = true;

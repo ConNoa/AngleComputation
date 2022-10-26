@@ -22,9 +22,8 @@ public:
   virtual void  draw() const = 0;
   virtual void  update() = 0;
   virtual void  update_path() = 0;
-
-  virtual void draw_construction() const = 0;
-  virtual void draw_focalpoint() const = 0;
+  virtual void  draw_construction() const = 0;
+  virtual void  draw_focalpoint() const = 0;
 
   float  snells_law(float alpha_i, float n_i, float n_t)                  const;
   vec3   cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in) const;
@@ -87,7 +86,7 @@ public:
   // float   m_D2;
   //
   // bool    m_show_constr_lines = true;
-  // bool    m_act_manipulated = false;
+  bool    m_act_manipulated = false;
   // bool    m_draw_normals = true;
   // bool    m_draw_rays = true;
   // bool    m_draw_focalpoint = true;

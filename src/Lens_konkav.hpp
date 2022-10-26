@@ -100,7 +100,7 @@ public:
     float   m_D2;
 
     bool    m_show_constr_lines = true;
-    bool    m_act_manipulated = false;
+    // bool    m_act_manipulated = false;
     bool    m_draw_normals = true;
     bool    m_draw_rays = true;
     bool    m_draw_focalpoint = true;

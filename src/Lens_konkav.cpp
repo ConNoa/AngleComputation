@@ -60,236 +60,132 @@
     return os;
   }
 
-  /*Întersect
-  ######################################
-  Prüft in Hit boxhit.m_hit ob der Strahl
-  die Lens_konkav trifft(bool).
-  In welcher Entfernung, boxhit.m_distance
-  wird geschnitten?
-  Übergabe per Pointer der Lens_konkav in
-  boxhit.m_shape.
-  Der Śchnittpunkt liegt in
-  boxhit.m_point.
 
-  Grund-Verfahren-Source:
-  http://www.scratchapixel.com/
-  lessons/3d-basic-rendering/
-  minimal-ray-tracer-rendering
-  -simple-shapes/ray-box-intersection
+    Hit Lens_konkav::intersect(Ray &ray_in, int count_hits) const{
+      // std::cout << "__________________________________________________________________________"<< std::endl;
 
-  Hit Sphere::intersect(Ray ray) const
-    {
+      Hit input_hit;
 
-      Hit spherehit;
+      vec3 point0 = ray_in.m_orig;
+      vec3 point1 = ray_in.m_orig + normalize(ray_in.m_direction)*100000;
 
-      spherehit.m_hit = intersectRaySphere
-        (
-          ray.m_orig, ray.m_direction,
-          m_center, m_radius,
-          spherehit.m_point, spherehit.m_normal //Indirekte param.
-        );
+      vec3 intsctPos1 = vec3{0,0,0};
+      vec3 intsctNrml1 = vec3{0,0,0};
+      vec3 intsctPos2 = vec3{0,0,0};
+      vec3 intsctNrml2 = vec3{0,0,0};
 
-      if (spherehit.m_hit) //=true ->extra Info
-      {
-        spherehit.m_distance = distance(ray.m_orig, spherehit.m_point);
-        spherehit.m_shape = this;
+      input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_diameter/2,
+                                          intsctPos1, intsctNrml1,
+                                          intsctPos2, intsctNrml2);
 
+      if(input_hit.m_hit) {
 
-         if(distance(spherehit.m_point-0.001f*ray.m_direction, m_center) < m_radius)
-        {
-          spherehit.m_normal = -spherehit.m_normal;
-        }
+        input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
+          intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
 
-      }
-
-      return spherehit;
-    }
-
-   */
-  Hit Lens_konkav::intersect(Ray &ray_in, int count_hits) const{
-    // std::cout << "__________________________________________________________________________"<< std::endl;
-    std::cout<<"\n"<< count_hits<< "----------- Hit!  ------------------------------------------------------------------------------------------------------------"<<std::endl;
-    std::cout<<"    ray_in.m_direction: [" << ray_in.m_direction << "]"<<std::endl;
-
-    Hit input_hit;
-
-    vec3 point0 = ray_in.m_orig;
-    vec3 point1 = ray_in.m_orig + normalize(ray_in.m_direction)*100000;
-
-    vec3 intsctPos1 = vec3{0,0,0};
-    vec3 intsctNrml1 = vec3{0,0,0};
-    vec3 intsctPos2 = vec3{0,0,0};
-    vec3 intsctNrml2 = vec3{0,0,0};
-
-    input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_d1, m_diameter/2,
-                                        intsctPos1, intsctNrml1,
-                                        intsctPos2, intsctNrml2);
-
-    if(input_hit.m_hit) {
-
-      input_hit.m_hit = intersectLineSphere(point0, point1,	m_center_r1, m_r1,
-        intsctPos1, intsctNrml1, intsctPos2, intsctNrml2);
-
-        std::cout<< "         with ray from: [" << ray_in.m_orig << "]"<<std::endl;
-        std::cout<< "At              Pos 1 : ["<< intsctPos1<<"]" << std::endl;
-        std::cout <<"Intersection-normal 1 : ["<< intsctNrml1<<"]" <<std::endl;
-
-      if(length(m_orig-intsctPos1)<length(m_orig-intsctPos2)){
-        // std::cout << "ifcondition"<<std::endl;
-
-        input_hit.m_point = intsctPos1;
-        input_hit.m_normal = intsctNrml1;
-        input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
-      }
-      else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
-        std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
-
-        input_hit.m_point = intsctPos2;
-        input_hit.m_normal = intsctNrml2;
-        input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
-        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   input_hit.draw_normals();               }
-      }
-      else{
-        std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
-
-        return input_hit;
-      }
-      std::cout<<"i_hit distance  :"<< input_hit.m_distance << std::endl;
-      // ray_in.m_distance_hit = input_hit.m_distance;
-      vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
-      float angle_t1_x = snells_law(angle_i1.x, m_n_air, m_n);
-      //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
-      fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
-      //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
-      // rot_mat_i = glm::rotate(rot_mat_i,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
-      // std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
-      fmat3 rot_mat_shrinked = fmat3(rot_mat_i);
-      std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
-      vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
-
-      vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
-
-      Hit t_hit;
-
-      vec3 intsctPos3 = vec3{0,0,0};
-      vec3 intsctNrml3 = vec3{0,0,0};
-      vec3 intsctPos4 = vec3{0,0,0};
-      vec3 intsctNrml4 = vec3{0,0,0};
-
-      t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_diameter/2,
-                                          intsctPos3, intsctNrml3,
-                                          intsctPos4, intsctNrml4);
-
-      if (t_hit.m_hit){
-        t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
-          intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
-
-          std::cout<< "         with ray from: [" << input_hit.m_point << "]"<<std::endl;
-          std::cout<< "At              Pos 3 : ["<< intsctPos3<<"]" << std::endl;
-          std::cout <<"Intersection-normal 3 : ["<< intsctNrml3<<"]" <<std::endl;
-          std::cout<< "At              Pos 4 : ["<< intsctPos4<<"]" << std::endl;
-          std::cout <<"Intersection-normal 4 : ["<< intsctNrml4<<"]" <<std::endl;
-
-        if(length(m_center_d3-intsctPos3)<length(m_center_d3-intsctPos4)){
+          input_hit.m_ray = ray_in;
+        if(length(m_orig-intsctPos1)<length(m_orig-intsctPos2)){
           // std::cout << "ifcondition"<<std::endl;
-
-          t_hit.m_point = intsctPos3;
-          t_hit.m_normal = intsctNrml3;
-          t_hit.m_distance = length(input_hit.m_point - intsctPos3);
-          if(m_draw_rays){      t_hit.draw(-t1_ray); }
-          if(m_draw_normals){   t_hit.draw_normals();}
+          input_hit.m_point = intsctPos1;
+          input_hit.m_normal = intsctNrml1;
+          input_hit.m_distance = length(ray_in.m_orig - intsctPos1);
         }
-        else if(length(m_center_d3-intsctPos3)>length(m_center_d3-intsctPos4)){
+        else if(length(m_orig-intsctPos1)>length(m_orig-intsctPos2)){
           std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
-
-          t_hit.m_point = intsctPos4;
-          t_hit.m_normal = intsctNrml4;
-          t_hit.m_distance = length(input_hit.m_point - intsctPos4);
-          if(m_draw_rays){      t_hit.draw(-t1_ray); }
-          if(m_draw_normals){   t_hit.draw_normals();}
+          input_hit.m_point = intsctPos2;
+          input_hit.m_normal = intsctNrml2;
+          input_hit.m_distance = length(ray_in.m_orig - intsctPos2);
         }
         else{
-          std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
-
-          return t_hit;
+          std::cout << "else condition -----------------------ERROR OCCURS"<<std::endl;
+          return input_hit;
         }
 
+        // input_hit.Hit_print(count_hits);
 
-        vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
-        float angle_t1_x = snells_law(angle_i2.x, m_n, m_n_air);
-        //float angle_t_z = snells_law(angle_i2.z, m_n_air, m_n);
+        if(m_draw_rays){      input_hit.draw(ray_in.m_inv_direction); }
+        if(m_draw_normals){   input_hit.draw_normals();               }
 
-        fmat4 rot_mat_t = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
+        vec3 angle_i1 = cacl_angle_ray_normal(-ray_in.m_direction, input_hit.m_normal );
+        float angle_t1_x = snells_law(angle_i1.x, m_n_air, material()->n);
+        //float angle_t_z = snells_law(angle_i1.z, m_n_air, m_n);
+        fmat4 rot_mat_i = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
         //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
+        // rot_mat_i = glm::rotate(rot_mat_i,angle_t_z, fvec3{0.0f, 1.0f, 0.0f});
+        // std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
+        fmat3 rot_mat_shrinked = fmat3(rot_mat_i);
+        // std::cout<< "shrinked  Transform Matrix:  [ "<<rot_mat_shrinked<< " ]."<<std::endl;
+        vec3 t1_ray = (input_hit.m_normal*-rot_mat_shrinked);
 
-        fmat3 rot_mat_t_shrnkd = fmat3(rot_mat_t);
+        vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
 
-        vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
+        Hit t_hit;
 
-        vec3 angle_t2 = cacl_angle_ray_normal(t_hit.m_normal, -t2_ray);
-        if(m_draw_rays){
-        ofBeginShape();
-          ofSetLineWidth(1);
-          //Drawing Normals
-          ofSetColor(227, 227, 80);
-          ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
-        ofEndShape();
+        vec3 intsctPos3 = vec3{0,0,0};
+        vec3 intsctNrml3 = vec3{0,0,0};
+        vec3 intsctPos4 = vec3{0,0,0};
+        vec3 intsctNrml4 = vec3{0,0,0};
+
+        t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_d2, m_diameter/2,
+                                            intsctPos3, intsctNrml3,
+                                            intsctPos4, intsctNrml4);
+
+        t_hit.m_ray = ray_in;
+        if (t_hit.m_hit){
+          t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
+            intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
+
+          if(length(m_center_d3-intsctPos3)<length(m_center_d3-intsctPos4)){
+            // std::cout << "ifcondition"<<std::endl;
+
+            t_hit.m_point = intsctPos3;
+            t_hit.m_normal = intsctNrml3;
+            t_hit.m_distance = length(input_hit.m_point - intsctPos3);
+            if(m_draw_rays){      t_hit.draw(-t1_ray); }
+            if(m_draw_normals){   t_hit.draw_normals();}
+          }
+          else if(length(m_center_d3-intsctPos3)>length(m_center_d3-intsctPos4)){
+            std::cout << "else if condition --------------------ERROR OCCURS"<<std::endl;
+
+            t_hit.m_point = intsctPos4;
+            t_hit.m_normal = intsctNrml4;
+            t_hit.m_distance = length(input_hit.m_point - intsctPos4);
+            if(m_draw_rays){      t_hit.draw(-t1_ray); }
+            if(m_draw_normals){   t_hit.draw_normals();}
+          }
+          else{
+            std::cout << "else condition --------------------ERROR OCCURS"<<std::endl;
+
+            return t_hit;
+          }
+
+
+          vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
+          float angle_t1_x = snells_law(angle_i2.x,  material()->n, m_n_air);
+          //float angle_t_z = snells_law(angle_i2.z, m_n_air, m_n);
+
+          fmat4 rot_mat_t = glm::rotate(angle_t1_x, fvec3{0.0f, 0.0f, 1.0f});
+          //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
+
+          fmat3 rot_mat_t_shrnkd = fmat3(rot_mat_t);
+
+          vec3 t2_ray = (rot_mat_t_shrnkd*-t_hit.m_normal);
+
+          vec3 angle_t2 = cacl_angle_ray_normal(t_hit.m_normal, -t2_ray);
+          if(m_draw_rays){
+          ofBeginShape();
+            ofSetLineWidth(1);
+            //Drawing Normals
+            ofSetColor(227, 227, 80);
+            ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
+          ofEndShape();
+          }
         }
       }
+      return input_hit;
     }
-    return input_hit;
-  }
 
-  // float Lens_konkav::snells_law(float alpha_i, float n_i, float n_t)const {
-  //   // std::cout<<"--> snells_law() :"<< std::endl;
-  //   float sin_alph_in = sin(alpha_i);
-  //   // std::cout<<"alph_in DEG :"<<  alpha_i* 180.0/3.141592653589793238463 << std::endl;
-  //   // std::cout<<"alph_in  RAD :"<<  alpha_i << std::endl;
-  //   // std::cout<<"sin_alph_in  :"<<  sin_alph_in << std::endl;
-  //   float n_it = n_i/n_t;
-  //   // std::cout<<"\n n_i :"<<  n_i << std::endl;
-  //   // std::cout<<" n_t :"<<  n_t << std::endl;
-  //   // std::cout<<" n_it :"<<  n_it << std::endl;
-  //   float alp_n_it = sin_alph_in*n_it;
-  //   // std::cout<<" alp_n_it :"<< alp_n_it << std::endl;
-  //   float alpha_t = asin(sin(alpha_i)*n_i/n_t);
-  //   // std::cout<<" Angle t out is RAD: "<< alpha_t << std::endl;
-  //   // std::cout<<" Angle t out is DEG : "<< alpha_t * 180.0/3.141592653589793238463 << std::endl;
-  //   // std::cout<<"\n"<<std::endl;
-  //   return alpha_t;
-  // }
-  //
-  //
-  // vec3 Lens_konkav::cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in ) const{
-  //
-  //   vec3 angles;
-  //   vec3 mulx_vec = {1,1,0}; //mulx_vec for displaying only one direction of ray
-  //   vec3 muly_vec = {0,1,1};
-  //   vec3 mulz_vec = {1,0,1};
-  //   vec3 sr_x = normalize(ray_in*mulx_vec);
-  //   vec3 sr_y = normalize(ray_in*muly_vec);
-  //   vec3 sr_z = normalize(ray_in*mulz_vec);
-  //   vec3 ray_v_normale = {1,0,0};
-  //   vec3 rotrefy = {1,0,0};
-  //   vec3 rotrefx = {0,0,1};
-  //   vec3 rotrefz = {0,1,0};
-  //   float r_angle_x = orientedAngle(sr_x, normal_in, rotrefx);
-  //   float r_angle_y = orientedAngle(sr_y, normal_in, rotrefy);
-  //   float r_angle_z = orientedAngle(sr_z, normal_in, rotrefz);
-  //
-  //   // angles[0] = r_angle_x* 180.0/3.141592653589793238463;
-  //   // angles[1] = r_angle_y* 180.0/3.141592653589793238463;
-  //   // angles[2] = r_angle_z* 180.0/3.141592653589793238463;
-  //   // std::cout<< " Angle rayNormale  x, y, z["<< angles.x <<"   "<< angles.y <<"  "<< angles.z <<"   ]"  <<std::endl;
-  //
-  //   angles[0] = r_angle_x;
-  //   angles[1] = r_angle_y;
-  //   angles[2] = r_angle_z;
-  //   return  angles;
-  // }
+
 
   void Lens_konkav::draw_focalpoint() const {
     ofBeginShape();
