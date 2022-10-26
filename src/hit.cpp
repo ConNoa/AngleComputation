@@ -50,7 +50,7 @@ void Hit::draw(vec3 const& direction_from) const{
 	ofBeginShape();
 
 	//Drawing horizontal Black Lines
-	ofSetColor(ofColor::orange);
+	ofSetColor(m_ray.m_color);
 		ofSetLineWidth(1);
 		ofDrawLine(m_point, m_point+ direction_to* m_distance);
 	ofEndShape();

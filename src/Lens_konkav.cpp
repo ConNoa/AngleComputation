@@ -61,7 +61,7 @@
   }
 
 
-    Hit Lens_konkav::intersect(Ray &ray_in, int count_hits) const{
+  Hit Lens_konkav::intersect(Ray &ray_in, int count_hits) const{
       // std::cout << "__________________________________________________________________________"<< std::endl;
 
       Hit input_hit;
@@ -119,6 +119,7 @@
 
         vec3 angle_t1 = cacl_angle_ray_normal(t1_ray, -input_hit.m_normal );
 
+        Ray t_ray = Ray{input_hit.m_point, t1_ray, ray_in.m_color};
         Hit t_hit;
 
         vec3 intsctPos3 = vec3{0,0,0};
@@ -130,7 +131,8 @@
                                             intsctPos3, intsctNrml3,
                                             intsctPos4, intsctNrml4);
 
-        t_hit.m_ray = ray_in;
+        // t_hit.m_ray = ray_in;
+        t_hit.m_ray = t_ray;
         if (t_hit.m_hit){
           t_hit.m_hit = intersectLineSphere(input_hit.m_point, input_hit.m_point+t1_ray*1000,	m_center_r2, m_r2,
             intsctPos3, intsctNrml3, intsctPos4, intsctNrml4);
@@ -175,8 +177,8 @@
           if(m_draw_rays){
           ofBeginShape();
             ofSetLineWidth(1);
-            //Drawing Normals
-            ofSetColor(227, 227, 80);
+
+            ofSetColor(t_hit.m_ray.m_color);
             ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
           ofEndShape();
           }
@@ -273,9 +275,9 @@
     //d_1 = (n_t1-n_i1)/R_1;
 
 
-
-    std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
-    std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
+    //
+    // std::cout <<"Die Brechkraft der vorderen Fläche beträgt"<<  m_D1 << std::endl;
+    // std::cout <<"Brennweite der vorderen Fläche: "<<  1/m_D1 <<  std::endl;
 
     return;
   }

@@ -28,6 +28,8 @@ public:
 
     void draw();
 
+    void addRay();
+
     void scale(float faktor);
     void translate(glm::vec3 const& vec);
     void rotate(float angle,glm::vec3 const& vec);

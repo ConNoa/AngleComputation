@@ -12,6 +12,7 @@ public:
 
 		Ray();
 		Ray(glm::vec3 const& orig, glm::vec3 const& dir);
+		Ray(glm::vec3 const& orig, glm::vec3 const& dir, ofColor const & col);
 
 		void draw();
 
@@ -24,6 +25,7 @@ public:
 		glm::vec3 m_direction;
 		glm::vec3 m_inv_direction;
 		float m_distance_hit;
+		ofColor m_color;
 		// glm::vec3 m_hitpoint;
 
 };
