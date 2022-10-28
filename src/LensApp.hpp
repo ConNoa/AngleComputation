@@ -69,7 +69,7 @@ public:
 
 	Mems m_mems;
 
-		std::vector<std::shared_ptr<Shape>> m_all_lenses;
+		std::vector<std::shared_ptr<Shape>> m_all_shapes;
 
 		// std::shared_ptr<Shape> lens_inside;
 

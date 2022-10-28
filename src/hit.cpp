@@ -94,6 +94,7 @@ void Hit::Hit_print(int hitnmbr) const{
 		    m_point = tmp_hit.m_point;
 		    m_normal = tmp_hit.m_normal;
 		    m_shape = tmp_hit.m_shape;
+				m_ray = tmp_hit.m_ray;
 
 		    return *this;
 		}

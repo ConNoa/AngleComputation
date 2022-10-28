@@ -10,7 +10,7 @@ void LensApp::setup(){
     setup_lens();
 
 
-    if(shrd->s_select_lens < m_all_lenses.size()){
+    if(shrd->s_select_lens < m_all_shapes.size()){
       std::cout<< "1:   if_condition_true  load_lens_parameters"<<std::endl;
 
       load_lens_parameters(shrd->s_select_lens);
@@ -18,7 +18,7 @@ void LensApp::setup(){
 
     }
 
-    for(auto it : m_all_lenses)
+    for(auto it : m_all_shapes)
     {
       it->update_path();
     }
@@ -37,21 +37,57 @@ void LensApp::update(){
 
 
 void LensApp::draw(){
-  for(auto it : m_all_lenses){
+  for(auto it : m_all_shapes){
     //    it->print(std::cout);
       it->update();
       it->draw();
   }
   // m_mems.draw();
 
-  for(auto lens_it : m_all_lenses){
+  // for(auto lens_it : m_all_shapes){
+  //   int counter = 0;
+  //   for(auto ray_it : m_mems.m_mems_rays){
+  //     counter += 1;
+  //     Hit temp_hit;
+  //     temp_hit = lens_it->intersect(ray_it, counter);
+  //   }
+  // }
+
+  for(auto ray_it : m_mems.m_mems_rays){
     int counter = 0;
-    for(auto ray_it : m_mems.m_mems_rays){
-      counter += 1;
-      Hit temp_hit;
-      temp_hit = lens_it->intersect(ray_it, counter);
+    Hit temp_hit;
+    Hit nearest_hit;
+    for(auto lens_it : m_all_shapes){
+      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(lens_it)) {
+        //depthtest
+
+        temp_hit = lens_p->depthtest(ray_it);
+        if( temp_hit.m_distance <= nearest_hit.m_distance){
+          nearest_hit = temp_hit;
+          std::cout<< lens_p->name() << "has temphit = "<< temp_hit.m_distance<< std::endl;
+        }
+
+
+
+        if(lens_p == m_all_shapes.back()){
+          temp_hit = lens_p->intersect(nearest_hit.m_ray, counter);
+        }
+      }
     }
   }
+
+  //
+  //
+  // for(auto ray_it : m_mems.m_mems_rays){
+  //   int counter = 0;
+  //   for(auto lens_it : m_all_shapes){
+  //     //depthtest
+  //
+  //
+  //     Hit temp_hit;
+  //     temp_hit = lens_it->intersect(ray_it, counter);
+  //   }
+  // }
   return;
 }
 
@@ -117,17 +153,6 @@ void LensApp::setup_lens(){
   orig_pos.z = shrd->s_orig_z;
 
   // // adding a konvex lens
-  auto new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, 1);
-
-  std::cout<< "This is the new created Lens: [ "<< endl;
-  new_Lens->print(std::cout);
-  std::cout<< " ]. \n" <<std::endl;
-  new_Lens->update();
-  m_all_lenses.push_back(new_Lens);
-
-
-// adding a konkave lens
-  orig_pos.x = orig_pos.x+300;
 
   auto new_Lens2 = std::make_shared<Lens_konkav>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, 1);
 
@@ -135,9 +160,20 @@ void LensApp::setup_lens(){
   new_Lens2->print(std::cout);
   std::cout<< " ]. \n" <<std::endl;
   new_Lens2->update();
-  m_all_lenses.push_back(new_Lens2);
+  m_all_shapes.push_back(new_Lens2);
 
 
+
+// // adding a konkave lens
+  orig_pos.x = orig_pos.x+300;
+
+  auto new_Lens = std::make_shared<Lens_konvex>(orig_pos, shrd->s_diameter, shrd->s_width, shrd->s_r1, shrd->s_r2, 1);
+
+  std::cout<< "This is the new created Lens: [ "<< endl;
+  new_Lens->print(std::cout);
+  std::cout<< " ]. \n" <<std::endl;
+  new_Lens->update();
+  m_all_shapes.push_back(new_Lens);
 
   return;
 }
@@ -146,23 +182,23 @@ void LensApp::setup_lens(){
 void LensApp::load_lens_parameters(int lens_nmbr){
    std::cout<<"load parameters of lens "<< lens_nmbr << endl;
     //
-    // shrd->s_orig_x = m_all_lenses[shrd->s_select_lens]->m_orig.x;
-    // shrd->s_orig_y = m_all_lenses[shrd->s_select_lens]->m_orig.y;
-    // shrd->s_orig_z = m_all_lenses[shrd->s_select_lens]->m_orig.z;
-    // shrd->s_rot_z = m_all_lenses[shrd->s_select_lens]->m_rot_z;
-    // shrd->s_diameter = m_all_lenses[shrd->s_select_lens]->m_diameter;
-    // shrd->s_width = m_all_lenses[shrd->s_select_lens]->m_width;
-    // shrd->s_type_r1 = m_all_lenses[shrd->s_select_lens]->m_type_r1;
-    // shrd->s_r1 = m_all_lenses[shrd->s_select_lens]->m_r1;
-    // shrd->s_type_r2 = m_all_lenses[shrd->s_select_lens]->m_type_r2;
-    // shrd->s_r2 = m_all_lenses[shrd->s_select_lens]->m_r2;
-    // shrd->s_n = m_all_lenses[shrd->s_select_lens]->m_n;
-    // shrd->s_show_constr_lines = m_all_lenses[shrd->s_select_lens]->m_show_constr_lines;
+    // shrd->s_orig_x = m_all_shapes[shrd->s_select_lens]->m_orig.x;
+    // shrd->s_orig_y = m_all_shapes[shrd->s_select_lens]->m_orig.y;
+    // shrd->s_orig_z = m_all_shapes[shrd->s_select_lens]->m_orig.z;
+    // shrd->s_rot_z = m_all_shapes[shrd->s_select_lens]->m_rot_z;
+    // shrd->s_diameter = m_all_shapes[shrd->s_select_lens]->m_diameter;
+    // shrd->s_width = m_all_shapes[shrd->s_select_lens]->m_width;
+    // shrd->s_type_r1 = m_all_shapes[shrd->s_select_lens]->m_type_r1;
+    // shrd->s_r1 = m_all_shapes[shrd->s_select_lens]->m_r1;
+    // shrd->s_type_r2 = m_all_shapes[shrd->s_select_lens]->m_type_r2;
+    // shrd->s_r2 = m_all_shapes[shrd->s_select_lens]->m_r2;
+    // shrd->s_n = m_all_shapes[shrd->s_select_lens]->m_n;
+    // shrd->s_show_constr_lines = m_all_shapes[shrd->s_select_lens]->m_show_constr_lines;
 
     //
     //dynamic cast try --------------------------------
 
-    if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(m_all_lenses[lens_nmbr])) {
+    if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(m_all_shapes[lens_nmbr])) {
 
           std::cout<<" Does it work now? "<< lens_p<< std::endl;
           shrd->s_orig_x = lens_p->m_orig.x;
@@ -179,7 +215,7 @@ void LensApp::load_lens_parameters(int lens_nmbr){
           shrd->s_show_constr_lines = lens_p->m_show_constr_lines;
 
       }
-    else if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(m_all_lenses[lens_nmbr])) {
+    else if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(m_all_shapes[lens_nmbr])) {
 
             std::cout<<" Does it work now? "<< lens_p<< std::endl;
             shrd->s_orig_x = lens_p->m_orig.x;
@@ -204,9 +240,9 @@ void LensApp::load_lens_parameters(int lens_nmbr){
 
 void LensApp::change_lens_parameters(std::string label_in){
 
-  for(auto it : m_all_lenses)
+  for(auto it : m_all_shapes)
   {
-    if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(m_all_lenses[shrd->s_select_lens])){
+    if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(m_all_shapes[shrd->s_select_lens])){
 
     lens_p->m_act_manipulated = true;
 
@@ -244,7 +280,7 @@ void LensApp::change_lens_parameters(std::string label_in){
           lens_p->m_n = shrd->s_n;
       }
     }
-    else if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(m_all_lenses[shrd->s_select_lens])){
+    else if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(m_all_shapes[shrd->s_select_lens])){
 
     lens_p->m_act_manipulated = true;
 
@@ -292,7 +328,7 @@ void LensApp::change_lens_parameters(std::string label_in){
 void LensApp::onSliderEvent(ofxDatGuiSliderEvent e){
   std::cout << e.target->getName() << " : " << e.value << std::endl;
 
-  if(shrd->s_select_lens < m_all_lenses.size()){
+  if(shrd->s_select_lens < m_all_shapes.size()){
     if (e.target->getLabel() == "Select Lens"){
       load_lens_parameters((int)e.value);
     }
@@ -308,41 +344,46 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
     std::cout <<"gui toggle decissions must be integra ted back"<< std::endl;
     if (e.target->getLabel() == "Draw Construction Lines"){
       shrd->s_show_constr_lines = e.checked;
-      //m_all_lenses[shrd->select_lens]
-      for(auto it : m_all_lenses){
-        //    it->print(std::cout);
+      //m_all_shapes[shrd->select_lens]
+      for(auto it : m_all_shapes){
         if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
-
-          lens_p->m_show_constr_lines = shrd->s_show_constr_lines;
-        }
+          lens_p->m_show_constr_lines = shrd->s_show_constr_lines;}
+        if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
+            lens_p->m_show_constr_lines = shrd->s_show_constr_lines;}
       }
     }
     if (e.target->getLabel() == "Draw Rays"){
       shrd->s_draw_rays = e.checked;
-      //m_all_lenses[shrd->select_lens]
-      for(auto it : m_all_lenses){
+      //m_all_shapes[shrd->select_lens]
+      for(auto it : m_all_shapes){
         //    it->print(std::cout);
         if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
-
-          lens_p->m_draw_rays = shrd->s_draw_rays;
-        }
+          lens_p->m_draw_rays = shrd->s_draw_rays;}
+          if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
+            lens_p->m_draw_rays = shrd->s_draw_rays;}
 
       }
     }
     if (e.target->getLabel() == "Draw Normals"){
       shrd->s_draw_normals = e.checked;
-      //m_all_lenses[shrd->select_lens]
-      for(auto it : m_all_lenses){
+      //m_all_shapes[shrd->select_lens]
+      for(auto it : m_all_shapes){
         if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
+          lens_p->m_draw_normals = shrd->s_draw_normals;
+        }
+        if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
           lens_p->m_draw_normals = shrd->s_draw_normals;
         }
       }
     }
     if (e.target->getLabel() == "Draw Focus etc"){
       shrd->s_show_focus_etc = e.checked;
-      //m_all_lenses[shrd->select_lens]
-      for(auto it : m_all_lenses){
+      //m_all_shapes[shrd->select_lens]
+      for(auto it : m_all_shapes){
         if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
+          lens_p->m_draw_focalpoint = shrd->s_show_focus_etc;
+        }
+        if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
           lens_p->m_draw_focalpoint = shrd->s_show_focus_etc;
         }
       }
@@ -353,7 +394,7 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
 
 void LensApp::onButtonEvent(ofxDatGuiButtonEvent e){
     std::cout<<"Buttonpressed  !"<<std::endl;
-    for(auto it : m_all_lenses){
+    for(auto it : m_all_shapes){
       if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
         lens_p->update_path();
       }
@@ -394,7 +435,7 @@ void LensApp::mousePressed(int x, int y, int button){
 //--------------------------------------------------------------
 void LensApp::mouseReleased(int x, int y, int button){
   std::cout << "re integrate    mouse Released"<< std::endl;
-  for(auto it : m_all_lenses){
+  for(auto it : m_all_shapes){
     //    it->print(std::cout);
     if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
       lens_p->update_path();

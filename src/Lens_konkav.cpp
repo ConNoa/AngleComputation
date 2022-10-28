@@ -162,7 +162,7 @@
             return t_hit;
           }
 
-          t_hit.Hit_print(count_hits);
+          // t_hit.Hit_print(count_hits);
 
           vec3 angle_i2 = cacl_angle_ray_normal(-t1_ray, t_hit.m_normal );
           float angle_t1_x = snells_law(angle_i2.x,  material()->n, m_n_air);

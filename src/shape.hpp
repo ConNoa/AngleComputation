@@ -34,7 +34,7 @@ public:
   virtual void update_path() = 0;
   virtual void draw() const = 0;
 
-
+  // virtual Hit depthtest(Ray const & ray_in) const;
   virtual void scale(float faktor) = 0;
   virtual void rotate(float angle,glm::vec3 const& vec) = 0;
   virtual void translate(glm::vec3 const& vec)  = 0;
@@ -45,6 +45,10 @@ private:
   std::shared_ptr<Material> m_mat;
    int mat_id;
   Material m_material;
+
+  // // gehören eigentlich zu Lens
+  // glm::vec3  m_orig;           //Origin -  Mittelpunkt der Linse
+  // float m_diameter;
 
 
 };

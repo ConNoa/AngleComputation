@@ -29,6 +29,8 @@ public:
   vec3   cacl_angle_ray_normal(vec3 const &ray_in, vec3 const &normal_in) const;
   float  compute_lens_angle(float radius_ , float diameter_lens_)         const;
 
+
+  Hit depthtest(Ray const &ray_in)    const;
   void scale(float faktor)                  ;
   void translate(vec3 const& vec)           ;
   void rotate(float angle,vec3 const& vec)  ;
@@ -86,7 +88,7 @@ public:
   // float   m_D2;
   //
   // bool    m_show_constr_lines = true;
-  bool    m_act_manipulated = false;
+     bool    m_act_manipulated = false;
   // bool    m_draw_normals = true;
   // bool    m_draw_rays = true;
   // bool    m_draw_focalpoint = true;
