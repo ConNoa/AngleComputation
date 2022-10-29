@@ -45,13 +45,10 @@ void LensApp::draw(){
 
   int raycounter = 0;
   int roundcounter = 0;
-  // ray_shape_hit(roundcounter, m_mems.m_mems_rays, m_all_shapes);
 
   if(roundcounter < 5){
     for(auto ray_it : m_mems.m_mems_rays){
-      // rayshapehit
       ++raycounter;
-      // std::cout <<"Raycounter :    "<<raycounter <<std::endl;
       ray_shape_hit(roundcounter, ray_it, m_all_shapes);
     }
   }
@@ -71,12 +68,10 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
       Hit temp_hit;
       int next_shape = 9999;
       for(int i=0; i<shapes.size(); i++){
-          if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(shapes[i]))
+          if (std::shared_ptr<Shape> lens_p = boost::dynamic_pointer_cast<Shape>(shapes[i]))
           {
-            // std::cout<< "lens_p iterated name = "<< lens_p->name()<<"   i=  "<< i <<std::endl;
             //depthtest
             temp_hit = lens_p->depthtest(ray);
-            // std::cout<< "temp_hit.m_distance: "<< temp_hit.m_distance << " ,  ShapeHit_closestDist.m_distance: "<< ShapeHit_closestDist.m_distance <<  std::endl;
             if( temp_hit.m_distance < ShapeHit_closestDist.m_distance){
                 ShapeHit_closestDist = temp_hit;
                 next_shape = i;
@@ -87,11 +82,8 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
           }
       }
       if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(shapes[next_shape])) {
-        // temp_hit = lens_p->intersect(ray, counter);
         rayAfterIntersect = lens_p->intersect(ray);
-
       }
-      // out_rays.push_back(ShapeHit_closestDist.m_ray);
       for(int i=0; i<shapes.size(); i++){
         if(i != next_shape){
           left_shapes.push_back(shapes[i]);
@@ -99,18 +91,15 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
      }
      counter = counter+1;
      if(left_shapes.size()> 0){
-            ray_shape_hit(counter, rayAfterIntersect, left_shapes);
-          }
-      else{
-        // std::cout<<"shapesize = 0 ...   return"<<std::endl;
-
-        return;}
+       ray_shape_hit(counter, rayAfterIntersect, left_shapes);
+     }else{
+       return;
+      }
+     }else{
+       std::cout<<"counter bigger than 5"<<std::endl;
+       return;
      }
-  else {
-    std::cout<<"counter bigger than 5"<<std::endl;
     return;
-  }
-  return;
 }
 
 void LensApp::setup_gui(){

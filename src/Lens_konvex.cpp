@@ -190,7 +190,7 @@
     }
     return output_ray;
   }
-
+/*
     Hit Lens_konvex::intersect(Ray &ray_in, int count_hits) const{
       // std::cout << "__________________________________________________________________________"<< std::endl;
 
@@ -314,7 +314,7 @@
       }
       return input_hit;
     }
-
+*/
   Hit Lens_konvex::depthtest(Ray const &ray_in) const{
      Hit input_hit;
 
