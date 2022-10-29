@@ -23,19 +23,18 @@ public:
   // virtual Hit   intersect(Ray &ray_in, int count_hits) const = 0;
   void  draw() const ;
   void  update();
-  // void  update_path();
-  // void  draw_construction() const;
-  // void  draw_focalpoint() const;
-  //
-  // void scale(float faktor)                  ;
-  // void translate(vec3 const& vec)           ;
-  // void rotate(float angle,vec3 const& vec)  ;
+  void  update_path();
 
+
+  void scale(float faktor)                  ;
+  void translate(vec3 const& vec)           ;
+  void rotate(float angle,vec3 const& vec)  ;
+//
   //----------------------------------------------------------------------------
   //MEMEBER-VARIABLEN-----------------------------------------------------------
   //----------------------------------------------------------------------------
   vec3  m_orig;           //Origin -  Mittelpunkt
-  vec3 m_direction;       
+  vec3 m_direction;
   bool m_draw_rays;
 
 private:

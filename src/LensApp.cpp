@@ -186,6 +186,11 @@ void LensApp::setup_lens(){
   new_Lens->update();
   m_all_shapes.push_back(new_Lens);
 
+
+  vec3 plane_orig = vec3{1600,700,0};
+  vec3 plane_dir = vec3{-1, 0, 0};
+  auto new_plane = std::make_shared<Plane>(plane_orig, plane_dir);
+  m_all_shapes.push_back(new_plane);
   return;
 }
 

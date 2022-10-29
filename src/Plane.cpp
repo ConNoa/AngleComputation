@@ -108,7 +108,19 @@
     return;
   }
 
-  // void Plane::update_path(){
-  //   std::cout<< "Plane:update_path()" << std::endl;
-  //
-  // }
+  void Plane::update_path(){
+    std::cout<< "Plane:update_path()" << std::endl;
+
+  }
+
+  void Plane::scale(float faktor){
+    //Skaliere von min ausgehend!
+  }
+
+  void Plane::translate(vec3 const& vec){
+      //update();
+    }
+
+  void Plane::rotate(float angle,vec3 const& vec){
+    //NOT YET IMPLEMENTED
+  }
