@@ -1,0 +1,7 @@
+
+
+# ignore obj folder
+obj
+#ignore executable
+bin/AngleComputation
+bin/libfmod.so
