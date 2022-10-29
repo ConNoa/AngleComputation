@@ -64,7 +64,7 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
       std::vector<Ray> out_rays;
       Ray   rayAfterIntersect;
       std::vector<std::shared_ptr<Shape>> left_shapes;
-      Hit ShapeHit_closestDist;
+      Hit closest_ShapeHit;
       Hit temp_hit;
       int next_shape = 9999;
       for(int i=0; i<shapes.size(); i++){
@@ -72,8 +72,8 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
           {
             //depthtest
             temp_hit = lens_p->depthtest(ray);
-            if( temp_hit.m_distance < ShapeHit_closestDist.m_distance){
-                ShapeHit_closestDist = temp_hit;
+            if( temp_hit.m_distance < closest_ShapeHit.m_distance){
+                closest_ShapeHit = temp_hit;
                 next_shape = i;
               }
           }
