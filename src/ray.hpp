@@ -18,6 +18,8 @@ public:
 
 		void transform(glm::mat4 const &t_mat);
 
+		void print() const;
+
 
 		Ray transformRay(glm::mat4 const& mat, Ray &ray);
 

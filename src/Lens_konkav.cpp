@@ -189,7 +189,30 @@
       }
       return input_hit;
     }
+    Hit Lens_konkav::depthtest(Ray const &ray_in) const{
+         Hit input_hit;
 
+         vec3 point0 = ray_in.m_orig;
+         vec3 point1 = ray_in.m_orig + normalize(ray_in.m_direction)*100000;
+
+         vec3 intsctPos1 = vec3{0,0,0};
+         vec3 intsctNrml1 = vec3{0,0,0};
+         vec3 intsctPos2 = vec3{0,0,0};
+         vec3 intsctNrml2 = vec3{0,0,0};
+
+         std::cout << "you are doing depthtest with "<<name()<<" the m_orig is at "<<m_orig<<std::endl;
+         ray_in.print();
+         input_hit.m_hit = intersectLineSphere(point0, point1,	m_orig, m_diameter/2,
+                                             intsctPos1, intsctNrml1,
+                                             intsctPos2, intsctNrml2);
+
+         input_hit.m_ray = ray_in;
+         input_hit.m_distance  =  distance(m_orig,  ray_in.m_orig);
+
+         return input_hit;
+
+
+       }
 
   void Lens_konkav::draw_focalpoint() const {
     ofBeginShape();

@@ -20,6 +20,7 @@ public:
   //FUNKTIONEN------------------------------------------------------------------
   std::ostream& print(std::ostream& os) const override;
   Hit intersect(Ray &ray_in, int count_hits) const override;
+  Hit depthtest(Ray const &ray_in)    const override;
   void update_path() override;
   void update() override;
   void draw() const override;

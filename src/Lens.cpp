@@ -81,7 +81,7 @@
         vec3 sr_x = normalize(ray_in*mulx_vec);
         vec3 sr_y = normalize(ray_in*muly_vec);
         vec3 sr_z = normalize(ray_in*mulz_vec);
-        vec3 ray_v_normale = {1,0,0};
+        // vec3 ray_v_normale = {1,0,0};
         vec3 rotrefy = {1,0,0};
         vec3 rotrefx = {0,0,1};
         vec3 rotrefz = {0,1,0};

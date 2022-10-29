@@ -30,7 +30,7 @@ public:
   float  compute_lens_angle(float radius_ , float diameter_lens_)         const;
 
 
-  Hit depthtest(Ray const &ray_in)    const;
+  virtual Hit depthtest(Ray const &ray_in) const = 0;
   void scale(float faktor)                  ;
   void translate(vec3 const& vec)           ;
   void rotate(float angle,vec3 const& vec)  ;

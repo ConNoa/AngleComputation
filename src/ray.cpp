@@ -58,6 +58,17 @@
 	}
 
 
+	void Ray::print() const
+	{
+		std::cout << "Ray Informations: [\n"
+		<< "m_orig: [" << m_orig << "]\n"
+		<< "m_direction: [" << m_direction << "]\n"
+		<< "m_inv_direction: [" << m_inv_direction << "]\n"
+		<< "m_distance_hit: [" << m_distance_hit << "]\n"
+	  << "Color: [" << m_color.r<<", "<<m_color.g<<", "<<m_color.b<< "] ]" <<std::endl;
+
+	}
+
 	Ray transformRay(glm::mat4 const& t_mat, Ray &ray){
 		glm::vec4 a{ray.m_orig,1.0f};
 		glm::vec4 b{ray.m_direction,0.0f};

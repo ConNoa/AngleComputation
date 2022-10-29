@@ -30,6 +30,7 @@ public:
 
   virtual std::ostream& print(std::ostream& os) const;
   virtual Hit intersect(Ray &ray_in, int count_hits) const = 0;
+  virtual Hit depthtest(Ray const &ray_in)    const = 0;
   virtual void update() = 0;
   virtual void update_path() = 0;
   virtual void draw() const = 0;
