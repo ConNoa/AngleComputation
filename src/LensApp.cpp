@@ -383,8 +383,10 @@ void LensApp::onToggleEvent(ofxDatGuiToggleEvent e){
         //    it->print(std::cout);
         if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)) {
           lens_p->m_draw_rays = shrd->s_draw_rays;}
-          if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
-            lens_p->m_draw_rays = shrd->s_draw_rays;}
+        if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)) {
+          lens_p->m_draw_rays = shrd->s_draw_rays;}
+        if (std::shared_ptr<Plane> lens_p = boost::dynamic_pointer_cast<Plane>(it)) {
+          lens_p->m_draw_rays = shrd->s_draw_rays;}
 
       }
     }

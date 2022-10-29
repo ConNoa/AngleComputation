@@ -9,7 +9,7 @@ Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
           m_dimensions{0, 30, 15},
-          m_amm_mirr{20, 30}{std::cout << "Mems is being created" << std::endl;}
+          m_amm_mirr{1, 30}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
           m_orig(orig),
