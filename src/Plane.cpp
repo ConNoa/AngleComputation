@@ -71,8 +71,8 @@
         // if(m_draw_normals){   hit_in.draw_normals();               }
 
         // output_ray = Ray{vec3{hit_in.m_point}, vec3{t2_ray}};
-        std::cout<<"RAY out of last lens  on plane: m_orig = ["<<ray_in.m_orig<<" ]  and distance = ["<<ray_in.m_direction<<"]" <<std::endl;
-        std::cout<<"Hitpoint out of last lens  on plane: m_orig = ["<<hit_in.m_point<<" ]  and distance = ["<<inter_Dis<<"]" <<std::endl;
+        // std::cout<<"RAY out of last lens  on plane: m_orig = ["<<ray_in.m_orig<<" ]  and distance = ["<<ray_in.m_direction<<"]" <<std::endl;
+        // std::cout<<"Hitpoint out of last lens  on plane: m_orig = ["<<hit_in.m_point<<" ]  and distance = ["<<inter_Dis<<"]" <<std::endl;
 
         return output_ray;
       }

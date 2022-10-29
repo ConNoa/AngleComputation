@@ -179,7 +179,7 @@
             vec3 angle_t2 = cacl_angle_ray_normal(t_hit.m_normal, -t2_ray);
 
             output_ray = Ray{vec3{t_hit.m_point}, vec3{t2_ray}, ray_in.m_color};
-            std::cout<<"ray out of konkav : m_orig = ["<<t_hit.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
+            // std::cout<<"ray out of konkav : m_orig = ["<<t_hit.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
             // std::cout<<"output_ray of konkav : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
 
 

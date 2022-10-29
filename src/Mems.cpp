@@ -8,14 +8,14 @@
 Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
-          m_dimensions{0, 30, 0},
-          m_amm_mirr{1, 3}{std::cout << "Mems is being created" << std::endl;}
+          m_dimensions{0, 30, 15},
+          m_amm_mirr{20, 30}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
           m_orig(orig),
           m_orient(orient),
           m_dimensions{30, 15, 0},
-          m_amm_mirr{500, 300}{}
+          m_amm_mirr{50, 30}{}
 
 
 Mems::Mems(vec3 const &orig, vec3 const &orient, vec3 const &dimensions, vec2 const &amm_mirr):
@@ -50,7 +50,7 @@ void Mems::setup(){
       // std::cout<<"xi = " <<xi <<std::endl;
       vec3 pos = vec3{m_orig.x, yi*y_ax+m_orig.y-m_dimensions.y/2, xi*x_ax-m_dimensions.x/2};
       int i = m_mems_rays.size();
-      std::cout<< "[pos"<< i<<" = "<< pos<< "] ";
+      // std::cout<< "[pos"<< i<<" = "<< pos<< "] ";
       // std::cout<< "m_orient = " << m_orient<< std::endl;
       Ray new_ray{pos, m_orient};
       m_mems_rays.push_back(new_ray);
