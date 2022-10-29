@@ -3,19 +3,27 @@
 #include <cmath>
 #include <catch.hpp>
 // #include <limits>
+#include <random>
+
 #include <algorithm>
 
 //KONSTRUTOREN----------------------------------------------------------------
 
   //Default
   Lens::Lens() :
-  Shape {"Lens",{}}{}
+  Shape {"Lens",{}},
+  m_id{999999}{
+    m_id = rand();}
 
   Lens::Lens(int mat_id) :
-  Shape {"Lens", mat_id}{}
+  Shape {"Lens", mat_id},
+  m_id{999999}{
+    m_id = rand();}
 
   Lens::Lens(std::string const& name, int mat_id) :
-  Shape {name, mat_id}{}
+  Shape {name, mat_id},
+  m_id{999999}{
+    m_id = rand();}
 
   Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2) :
   Shape {"Lens", 1},
@@ -23,7 +31,9 @@
   m_diameter{diameter},
   m_width{width},
   m_r1{r1},
-  m_r2{r2}{}
+  m_r2{r2},
+  m_id{999999}{
+    m_id = rand();}
 
   Lens::Lens(vec3 const& orig, float diameter, float width, float r1, float r2, int mat_id) :
   Shape {"Lens", mat_id},
@@ -31,7 +41,9 @@
   m_diameter{diameter},
   m_width{width},
   m_r1{r1},
-  m_r2{r2}{}
+  m_r2{r2},
+  m_id{999999}{
+    m_id = rand();}
 
   //Destruktor
   Lens::~Lens()
@@ -49,6 +61,7 @@
     << "Width: (" << m_width<< ")" << "\n"
     << "R1: (" << m_r1<< ")" << "\n"
     << "R2: (" << m_r2<< ")" << "\n"
+    << "m_id: (" << m_id<< ")" << "\n"
     << "Brechungsindex ergibt sich aus Material: (" << material() << ")" << std::endl;
     return os;
   }

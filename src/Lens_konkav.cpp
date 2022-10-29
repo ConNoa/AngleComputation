@@ -54,7 +54,7 @@
     << "R1: (" << m_r1<< ")" << "\n"
 
     << "R2: (" << m_r2<< ")" << "\n"
-
+    << "m_id: (" << m_id<< ")" << "\n"
     << "Brechungsindex: (" << m_n << ")" << std::endl;
 
     return os;

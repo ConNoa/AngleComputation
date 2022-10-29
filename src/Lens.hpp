@@ -44,7 +44,7 @@ public:
   float m_width;          //Breite des Glaskörpers zwischen geschliffenen Linsenseiten
   float m_r1;             //Radius der theoretischen Kugel der vorderen Linsenseite
   float m_r2;             //Radius der theoretischen Kugel der hinteren Linsenseite
-
+  int m_id;
 
 
 
