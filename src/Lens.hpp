@@ -18,6 +18,7 @@ public:
 
   //FUNKTIONEN------------------------------------------------------------------
   virtual std::ostream& print(std::ostream& os) const;
+  virtual Ray   intersect(Ray &ray_in) const = 0;
   virtual Hit   intersect(Ray &ray_in, int count_hits) const = 0;
   virtual void  draw() const = 0;
   virtual void  update() = 0;

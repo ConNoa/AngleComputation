@@ -10,22 +10,29 @@
 		m_distance_hit{0.0f},
 		m_color{255, 255, 0}{}
 
-		Ray::Ray(glm::vec3 const& orig, glm::vec3 const& dir):
-			m_orig{orig},
-			m_direction{dir},
-			m_inv_direction{glm::vec3{-1.0*dir.x, -1.0*dir.y, -1.0*dir.z}},
-			m_distance_hit{100.0f},
-			m_color{255, 255, 0}{}
+	Ray::Ray(glm::vec3 const& orig, glm::vec3 const& dir):
+		m_orig{orig},
+		m_direction{dir},
+		m_inv_direction{glm::vec3{-1.0*dir.x, -1.0*dir.y, -1.0*dir.z}},
+		m_distance_hit{100.0f},
+		m_color{255, 255, 0}{}
 
 
 
-			Ray::Ray(glm::vec3 const& orig, glm::vec3 const& dir, ofColor const& col):
-				m_orig{orig},
-				m_direction{dir},
-				m_inv_direction{glm::vec3{-1.0*dir.x, -1.0*dir.y, -1.0*dir.z}},
-				m_distance_hit{100.0f},
-				m_color{col}{}
+	Ray::Ray(glm::vec3 const& orig, glm::vec3 const& dir, ofColor const& col):
+		m_orig{orig},
+		m_direction{dir},
+		m_inv_direction{glm::vec3{-1.0*dir.x, -1.0*dir.y, -1.0*dir.z}},
+		m_distance_hit{100.0f},
+		m_color{col}{}
 
+
+	Ray::Ray(Ray const& tmp_ray):
+		m_orig{tmp_ray.m_orig},
+		m_direction{tmp_ray.m_direction},
+		m_inv_direction{tmp_ray.m_inv_direction},
+		m_distance_hit{tmp_ray.m_distance_hit},
+		m_color{tmp_ray.m_color}{}
 
 
 

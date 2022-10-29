@@ -13,6 +13,7 @@ public:
 		Ray();
 		Ray(glm::vec3 const& orig, glm::vec3 const& dir);
 		Ray(glm::vec3 const& orig, glm::vec3 const& dir, ofColor const & col);
+		Ray(Ray const & tmp_ray);
 
 		void draw();
 
