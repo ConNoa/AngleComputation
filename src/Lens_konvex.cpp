@@ -176,14 +176,14 @@
 
         output_ray = Ray{vec3{t_hit.m_point}, vec3{t2_ray}};
         std::cout<<"ray out of konvex : m_orig = ["<<t_hit.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
-        std::cout<<"output_ray of konvex : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
+        // std::cout<<"output_ray of konvex : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
 
         // if(m_draw_rays){
         // ofBeginShape();
         //   ofSetLineWidth(1);
         //   //Drawing Normals
         //   ofSetColor(227, 227, 80);
-        //   ofDrawLine(t_hit.m_point, t_hit.m_point-t2_ray*1500);
+        //   ofDrawLine(t_hit.m_point, t_hit.m_point+t2_ray*1500);
         // ofEndShape();
         // }
       }

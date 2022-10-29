@@ -81,7 +81,7 @@ void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<S
             std::cout<< "no shape is a lens"<< std::endl;
           }
       }
-      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(shapes[next_shape])) {
+      if (std::shared_ptr<Shape> lens_p = boost::dynamic_pointer_cast<Shape>(shapes[next_shape])) {
         rayAfterIntersect = lens_p->intersect(ray);
       }
       for(int i=0; i<shapes.size(); i++){
@@ -187,7 +187,7 @@ void LensApp::setup_lens(){
   m_all_shapes.push_back(new_Lens);
 
 
-  vec3 plane_orig = vec3{1600,700,0};
+  vec3 plane_orig = vec3{1589,700,0};
   vec3 plane_dir = vec3{-1, 0, 0};
   auto new_plane = std::make_shared<Plane>(plane_orig, plane_dir);
   m_all_shapes.push_back(new_plane);

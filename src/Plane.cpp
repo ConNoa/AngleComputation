@@ -57,18 +57,22 @@
         float inter_Dis;
 
         hit_in.m_hit = intersectRayPlane(ray_in.m_orig, ray_in.m_direction, m_orig, m_direction, inter_Dis);
+        hit_in.m_point = ray_in.m_orig +ray_in.m_direction*inter_Dis;
+
 
         hit_in.m_ray = ray_in;
         hit_in.m_distance  =  inter_Dis;
-
-
-        if(m_draw_rays){      hit_in.draw(ray_in.m_inv_direction); }
+        // std::cout<<"ray into plane Hit : m_orig = ["<<t_hit.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
+        // std::cout<<"output_ray of konkav : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
+        ray_in.m_direction = -1*ray_in.m_direction;
+       if(m_draw_rays){
+        hit_in.draw(ray_in.m_direction);
+         }
         // if(m_draw_normals){   hit_in.draw_normals();               }
 
-        //
         // output_ray = Ray{vec3{hit_in.m_point}, vec3{t2_ray}};
-        // std::cout<<"ray out of konkav : m_orig = ["<<hit_in.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
-        // std::cout<<"output_ray of konkav : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
+        std::cout<<"RAY out of last lens  on plane: m_orig = ["<<ray_in.m_orig<<" ]  and distance = ["<<ray_in.m_direction<<"]" <<std::endl;
+        std::cout<<"Hitpoint out of last lens  on plane: m_orig = ["<<hit_in.m_point<<" ]  and distance = ["<<inter_Dis<<"]" <<std::endl;
 
         return output_ray;
       }
