@@ -34,8 +34,9 @@ public:
   //----------------------------------------------------------------------------
   //MEMEBER-VARIABLEN-----------------------------------------------------------
   //----------------------------------------------------------------------------
-  vec3  m_orig;           //Origin -  Mittelpunkt der Linse
-  float m_direction;       //Real-Durchmesser der Linse
+  vec3  m_orig;           //Origin -  Mittelpunkt
+  vec3 m_direction;       
+  bool m_draw_rays;
 
 private:
 

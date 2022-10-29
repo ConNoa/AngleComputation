@@ -16,15 +16,17 @@
   Plane::Plane(std::string const& name, int mat_id) :
   Shape {name, mat_id}{}
 
-  Plane::Plane(vec3 const& orig, float direction) :
+  Plane::Plane(vec3 const& orig, vec3 const &direction) :
   Shape {"Plane", 1},
   m_orig{orig},
-  m_direction{direction}{}
+  m_direction{direction},
+  m_draw_rays{true}{}
 
-  Plane::Plane(vec3 const& orig, float direction, int mat_id) :
+  Plane::Plane(vec3 const& orig, vec3 const &direction, int mat_id) :
   Shape {"Plane", mat_id},
   m_orig{orig},
-  m_direction{direction}{}
+  m_direction{direction},
+  m_draw_rays{true}{}
 
   //Destruktor
   Plane::~Plane()
@@ -49,6 +51,7 @@
 
   Ray Plane::intersect(Ray &ray_in) const{
 
+        // Ray dummyray
         Ray output_ray;
         Hit hit_in;
         float inter_Dis;
@@ -60,12 +63,12 @@
 
 
         if(m_draw_rays){      hit_in.draw(ray_in.m_inv_direction); }
-        if(m_draw_normals){   hit_in.draw_normals();               }
+        // if(m_draw_normals){   hit_in.draw_normals();               }
 
-
-        output_ray = Ray{vec3{t_hit.m_point}, vec3{t2_ray}};
-        std::cout<<"ray out of konkav : m_orig = ["<<t_hit.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
-        std::cout<<"output_ray of konkav : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
+        //
+        // output_ray = Ray{vec3{hit_in.m_point}, vec3{t2_ray}};
+        // std::cout<<"ray out of konkav : m_orig = ["<<hit_in.m_point<<" ]  and t2_ray = ["<<t2_ray<<"]" <<std::endl;
+        // std::cout<<"output_ray of konkav : m_orig = ["<<output_ray.m_orig<<" ]  and t2_ray = ["<<output_ray.m_direction<<"]" <<std::endl;
 
         return output_ray;
       }
@@ -84,6 +87,17 @@
 
 
   void Plane::draw() const{
+
+    float x_pos = ofGetWidth()-10;
+    float y_pos = ofGetHeight()-10;
+    vec3 top = vec3{x_pos, 10, 0};
+    vec3 bottom = vec3{x_pos,y_pos, 0};
+
+    ofBeginShape();
+      ofSetColor(255, 255, 255);
+      ofFill();
+      ofDrawLine(top, bottom);
+    ofEndShape(false);
 
     return;
   }
