@@ -57,14 +57,18 @@ void Mems::setup(){
     }
   }
   std::cout<< " "<<std::endl;
-  addRay();
+  addRay({20, 750, 0}, 0.5f);
+  addRay({20, 750, 0}, -0.5f);
+  addRay({20, 750, 0}, 2.0f);
+  addRay({20, 750, 0}, -2.0f);
 
   return;
 }
 
-void Mems::addRay(){
+void Mems::addRay(vec3 const& origin, float angle){
   vec3 direct = vec3{1,0,0};
-  float angle_ursp = 0.5/(180.0/3.141592653589793238463);
+  // float angle_ursp = 0.5/(180.0/3.141592653589793238463);
+  float angle_ursp = angle/(180.0/3.141592653589793238463);
   //angle_ursp = 0.0f;
   fmat4 rot_mat_t = glm::rotate(angle_ursp, fvec3{0.0f, 0.0f, 1.0f});
   //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
@@ -74,7 +78,8 @@ void Mems::addRay(){
   vec3 direct_new = (rot_mat_t_shrnkd*direct);
 
   std::cout<< "direction new of ray: "<< direct_new<< std::endl;
-  Ray redray{{20, 750, 0}, direct_new, {255, 0, 0}};
+  // Ray redray{{20, 750, 0}, direct_new, {255, 0, 0}};
+  Ray redray{origin, direct_new, {255, 0, 0}};
   m_mems_rays.push_back(redray);
 
 

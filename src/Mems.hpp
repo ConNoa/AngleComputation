@@ -28,7 +28,8 @@ public:
 
     void draw();
 
-    void addRay();
+    // void addRay();
+    void addRay(vec3 const& origin, float angle);
 
     void scale(float faktor);
     void translate(glm::vec3 const& vec);
