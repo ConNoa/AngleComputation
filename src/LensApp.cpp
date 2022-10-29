@@ -42,52 +42,95 @@ void LensApp::draw(){
       it->update();
       it->draw();
   }
-  // m_mems.draw();
 
-  // for(auto lens_it : m_all_shapes){
-  //   int counter = 0;
-  //   for(auto ray_it : m_mems.m_mems_rays){
-  //     counter += 1;
-  //     Hit temp_hit;
-  //     temp_hit = lens_it->intersect(ray_it, counter);
-  //   }
-  // }
-
-  for(auto ray_it : m_mems.m_mems_rays){
-    int counter = 0;
-    Hit temp_hit;
-    Hit nearest_hit;
-    for(auto lens_it : m_all_shapes){
-      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(lens_it)) {
-        //depthtest
-
-        temp_hit = lens_p->depthtest(ray_it);
-        if( temp_hit.m_distance <= nearest_hit.m_distance){
-          nearest_hit = temp_hit;
-          std::cout<< lens_p->name() << "has temphit = "<< temp_hit.m_distance<< std::endl;
-        }
-
-
-
-        if(lens_p == m_all_shapes.back()){
-          temp_hit = lens_p->intersect(nearest_hit.m_ray, counter);
-        }
-      }
-    }
-  }
-
-  //
-  //
   // for(auto ray_it : m_mems.m_mems_rays){
   //   int counter = 0;
+  //   Hit temp_hit;
+  //   Hit nearest_hit;
   //   for(auto lens_it : m_all_shapes){
-  //     //depthtest
+  //     if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(lens_it)) {
+  //       //depthtest
+  //
+  //       temp_hit = lens_p->depthtest(ray_it);
+  //       if( temp_hit.m_distance <= nearest_hit.m_distance){
+  //         nearest_hit = temp_hit;
+  //         std::cout<< lens_p->name() << "has temphit = "<< temp_hit.m_distance<< std::endl;
+  //       }
   //
   //
-  //     Hit temp_hit;
-  //     temp_hit = lens_it->intersect(ray_it, counter);
+  //
+  //       if(lens_p == m_all_shapes.back()){
+  //         temp_hit = lens_p->intersect(nearest_hit.m_ray, counter);
+  //       }
+  //     }
   //   }
   // }
+  int raycounter = 0;
+
+  int roundcounter = 0;
+  // ray_shape_hit(roundcounter, m_mems.m_mems_rays, m_all_shapes);
+
+  if(roundcounter < 5){
+    for(auto ray_it : m_mems.m_mems_rays){
+      // rayshapehit
+      ++raycounter;
+      std::cout <<"Raycounter :    "<<raycounter <<std::endl;
+      ray_shape_hit(roundcounter, ray_it, m_all_shapes);
+    }
+  }
+  return;
+}
+
+
+void LensApp::ray_shape_hit(int round, Ray  & ray, std::vector<std::shared_ptr<Shape>> const&  shapes){
+  int counter = round;
+
+  if(counter < 5){
+      std::vector<Ray> out_rays;
+
+      std::vector<std::shared_ptr<Shape>> left_shapes;
+      Hit ShapeHit_closestDist;
+      Hit temp_hit;
+      int next_shape = 9999;
+      for(int i=0; i<shapes.size(); i++){
+          if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(shapes[i]))
+          {
+            std::cout<< "lens_p iterated name = "<< lens_p->name()<<"   i=  "<< i <<std::endl;
+            //depthtest
+            temp_hit = lens_p->depthtest(ray);
+            std::cout<< "temp_hit.m_distance: "<< temp_hit.m_distance
+            << " ,  ShapeHit_closestDist.m_distance: "<< ShapeHit_closestDist.m_distance <<  std::endl;
+            if( temp_hit.m_distance < ShapeHit_closestDist.m_distance){
+                ShapeHit_closestDist = temp_hit;
+                next_shape = i;
+              }
+          }
+          else {
+            std::cout<< "no shape is a lens"<< std::endl;
+          }
+      }
+      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(shapes[next_shape])) {
+        temp_hit = lens_p->intersect(ray, counter);
+      }
+      out_rays.push_back(ShapeHit_closestDist.m_ray);
+      for(int i=0; i<shapes.size(); i++){
+        if(i != next_shape){
+          left_shapes.push_back(shapes[i]);
+        }
+     }
+     counter = counter+1;
+     if(left_shapes.size()> 0){
+            ray_shape_hit(counter, out_rays.front(), left_shapes);
+          }
+      else{
+        std::cout<<"shapesize = 0 ...   return"<<std::endl;
+
+        return;}
+     }
+  else {
+    std::cout<<"counter bigger than 5"<<std::endl;
+    return;
+  }
   return;
 }
 

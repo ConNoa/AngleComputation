@@ -36,6 +36,8 @@ public:
 	void update();
 	void draw();
 
+
+	void ray_shape_hit(int round, Ray & ray, std::vector<std::shared_ptr<Shape>> const& shapes);
 	void setup_gui();
 	void setup_lens();
 
