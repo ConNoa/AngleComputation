@@ -8,7 +8,7 @@
 Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
-          m_dimensions{0, 300, 0},
+          m_dimensions{0, 30, 0},
           m_amm_mirr{1, 3}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
@@ -57,10 +57,10 @@ void Mems::setup(){
     }
   }
   std::cout<< " "<<std::endl;
-  // addRay({20, 750, 0}, 0.5f);
-  // addRay({20, 750, 0}, -0.5f);
-  // addRay({20, 750, 0}, 2.0f);
-  // addRay({20, 750, 0}, -2.0f);
+  addRay({20, 700, 0}, 0.5f);
+  addRay({20, 700, 0}, -0.5f);
+  addRay({20, 700, 0}, 2.0f);
+  addRay({20, 700, 0}, -2.0f);
 
   return;
 }

@@ -284,13 +284,17 @@ void LensApp::change_lens_parameters(std::string label_in){
           lens_p->m_type_r1 = shrd->s_type_r1;
       }
       if (label_in == "s_r1"){
+        if(shrd->s_r1*2 > lens_p->m_diameter){
           lens_p->m_r1 = shrd->s_r1;
+        }
       }
       if (label_in == "s_type_r2"){
           lens_p->m_type_r2 = shrd->s_type_r2;
       }
       if (label_in == "s_r2"){
+        if(shrd->s_r2*2 > lens_p->m_diameter){
           lens_p->m_r2 = shrd->s_r2;
+        }
       }
       if (label_in == "s_n"){
           lens_p->m_n = shrd->s_n;
@@ -322,13 +326,17 @@ void LensApp::change_lens_parameters(std::string label_in){
           lens_p->m_type_r1 = shrd->s_type_r1;
       }
       if (label_in == "s_r1"){
+          if(shrd->s_r1*2 > lens_p->m_diameter){
           lens_p->m_r1 = shrd->s_r1;
+        }
       }
       if (label_in == "s_type_r2"){
           lens_p->m_type_r2 = shrd->s_type_r2;
       }
       if (label_in == "s_r2"){
+        if(shrd->s_r2*2 > lens_p->m_diameter){
           lens_p->m_r2 = shrd->s_r2;
+        }
       }
       if (label_in == "s_n"){
           lens_p->m_n = shrd->s_n;
