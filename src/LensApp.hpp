@@ -26,6 +26,7 @@
 #include "Lens_konkav.hpp"
 #include "Lens_konvex.hpp"
 #include "Plane.hpp"
+#include "LensAdmin.cpp"
 
 
 
@@ -72,7 +73,10 @@ public:
 
 	Mems m_mems;
 
-		std::vector<std::shared_ptr<Shape>> m_all_shapes;
+	std::vector<std::shared_ptr<Shape>> m_all_shapes;
+
+	LensAdmin file;
+
 
 		// std::shared_ptr<Shape> lens_inside;
 

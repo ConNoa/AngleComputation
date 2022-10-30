@@ -4,6 +4,9 @@ void LensApp::setup(){
 
     ofBackground(75, 75, 75);
 
+
+
+
     setup_gui();
 
 
@@ -26,6 +29,13 @@ void LensApp::setup(){
     m_mems.setup();
 
     //run_routine();
+    for(auto it : m_all_shapes)
+    {
+      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(it)){
+        file.write_rpf(lens_p);
+      }
+    }
+
 
 
 }

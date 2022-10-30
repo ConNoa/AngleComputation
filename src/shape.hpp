@@ -26,6 +26,7 @@ public:
   //FUNKTIONEN------------------------------------------------------------------------
   std::string name() const;
   std::shared_ptr<Material> material() const;
+  
 
 
   virtual std::ostream& print(std::ostream& os) const;
