@@ -23,6 +23,7 @@ void LensApp::setup(){
 
     for(auto it : m_all_shapes)
     {
+      it->update();
       it->update_path();
     }
 
@@ -31,10 +32,14 @@ void LensApp::setup(){
     //run_routine();
     for(auto it : m_all_shapes)
     {
-      if (std::shared_ptr<Lens> lens_p = boost::dynamic_pointer_cast<Lens>(it)){
+      if (std::shared_ptr<Lens_konkav> lens_p = boost::dynamic_pointer_cast<Lens_konkav>(it)){
         file.write_rpf(lens_p);
       }
-    }
+      if (std::shared_ptr<Lens_konvex> lens_p = boost::dynamic_pointer_cast<Lens_konvex>(it)){
+        file.write_rpf(lens_p);
+      }
+
+  }
 
 
 

@@ -4,6 +4,10 @@
 
 #include <fstream>
 #include "Lens.hpp"
+#include "Lens_konkav.hpp"
+#include "Lens_konvex.hpp"
+#include <boost/pointer_cast.hpp>
+#include <boost/shared_ptr.hpp>
 
 
 
@@ -16,29 +20,58 @@ class LensAdmin{
 
 
   void write_rpf(std::shared_ptr<Lens> const& l){
-    std::fstream f;
-    f.open("Saved_Lenses.save", std::ios::app);
-    f << "-----------"  << "\n " ;
-    // for(anew_Lenses){
-      f << "m_name: " << l->name()<< ";\n";
-      f << "mat_id: " << l->material()->id<< ";\n";
-      f << "m_id: " << l->m_id<< ";\n";
-      f << "m_orig: " << l->m_orig.x<< " "<<l->m_orig.y<< " "<<l->m_orig.z<< ";\n";
-      // f << "m_direc " << l->m_direc.x<< " "<<l->m_direc.y<< " "<<l->m_direc.z<< ";\n";
-      f << "m_diameter: " << l->m_diameter<< ";\n";
-      f << "m_width: " << l->m_width<< ";\n";
-      f << "m_r1: " << l->m_r1<< ";\n";
-      f << "m_r2: " << l->m_r2<< ";\n";
-    //   f << "dis_sample " << mi->_displayed_sample.id<< " "<< mi->_displayed_sample.x<< " "<< mi->_displayed_sample.y<< " "<< mi->_displayed_sample.dis<< ";\n";
-    //   f << "sample_amount " << mi->_ammount_of_matching_samples<< ";\n";
-    //   for(auto sam = mi->_matching_samples.begin(); sam!=mi->_matching_samples.end(); ++sam){
-    //     f << "s_pos " <<sam->x<< " "<< sam->y<< " "<< sam->dis<< ";\n";
-    //   }
-      // f << "--- " << ";\n";
-    // }
-     f << ".........." << "\n";
+    if (std::shared_ptr<Lens_konkav> lk = boost::dynamic_pointer_cast<Lens_konkav>(l)){
+      std::fstream f;
+      f.open("Saved_Lenses.save", std::ios::app);
+      f << "-----------"  << "\n " ;
+      // for(anew_Lenses){
+        f << "m_name: " << lk->name()<< ";\n";
+        f << "mat_id: " << lk->material()->id<< ";\n";
+        f << "m_id: " << lk->m_id<< ";\n";
+        f << "m_orig: " << lk->m_orig.x<< " "<<lk->m_orig.y<< " "<<lk->m_orig.z<< ";\n";
+        // f << "m_direc " << lk->m_direc.x<< " "<<lk->m_direc.y<< " "<<lk->m_direc.z<< ";\n";
+        f << "m_diameter: " << lk->m_diameter<< ";\n";
+        f << "m_width: " << lk->m_width<< ";\n";
+        f << "m_r1: " << lk->m_r1<< ";\n";
+        f << "m_r2: " << lk->m_r2<< ";\n";
+      //   f << "dis_sample " << mi->_displayed_sample.id<< " "<< mi->_displayed_sample.x<< " "<< mi->_displayed_sample.y<< " "<< mi->_displayed_sample.dis<< ";\n";
+      //   f << "sample_amount " << mi->_ammount_of_matching_samples<< ";\n";
+      //   for(auto sam = mi->_matching_samples.begin(); sam!=mi->_matching_samples.end(); ++sam){
+      //     f << "s_pos " <<sam->x<< " "<< sam->y<< " "<< sam->dis<< ";\n";
+      //   }
+        // f << "--- " << ";\n";
+      // }
+       f << ".........." << "\n";
 
-    f.close();
+      f.close();
+    }
+    if (std::shared_ptr<Lens_konvex> lk = boost::dynamic_pointer_cast<Lens_konvex>(l)){
+      std::fstream f;
+      f.open("Saved_Lenses.save", std::ios::app);
+      f << "-----------"  << "\n " ;
+      // for(anew_Lenses){
+        f << "m_name: " << lk->name()<< ";\n";
+        f << "mat_id: " << lk->material()->id<< ";\n";
+        f << "m_id: " << lk->m_id<< ";\n";
+        f << "m_orig: " << lk->m_orig.x<< " "<<lk->m_orig.y<< " "<<lk->m_orig.z<< ";\n";
+        // f << "m_direc " << lk->m_direc.x<< " "<<lk->m_direc.y<< " "<<lk->m_direc.z<< ";\n";
+        f << "m_diameter: " << lk->m_diameter<< ";\n";
+        f << "m_width: " << lk->m_width<< ";\n";
+        f << "m_r1: " << lk->m_r1<< ";\n";
+        f << "m_r2: " << lk->m_r2<< ";\n";
+      //   f << "dis_sample " << mi->_displayed_sample.id<< " "<< mi->_displayed_sample.x<< " "<< mi->_displayed_sample.y<< " "<< mi->_displayed_sample.dis<< ";\n";
+      //   f << "sample_amount " << mi->_ammount_of_matching_samples<< ";\n";
+      //   for(auto sam = mi->_matching_samples.begin(); sam!=mi->_matching_samples.end(); ++sam){
+      //     f << "s_pos " <<sam->x<< " "<< sam->y<< " "<< sam->dis<< ";\n";
+      //   }
+        // f << "--- " << ";\n";
+      // }
+       f << ".........." << "\n";
+
+      f.close();    }
+
+
+
 
     }
 
