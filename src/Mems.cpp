@@ -9,7 +9,7 @@ Mems::Mems():
           m_orig{20,700,0},
           m_orient{1,0,0},
           m_dimensions{0, 30, 15},
-          m_amm_mirr{1, 30}{std::cout << "Mems is being created" << std::endl;}
+          m_amm_mirr{1, 10}{std::cout << "Mems is being created" << std::endl;}
 
 Mems::Mems(vec3 const &orig, vec3 const &orient):
           m_orig(orig),
@@ -44,6 +44,8 @@ void Mems::setup(){
 
   // std::cout << "[ " ;
 
+  // This is normal ray loop
+  //
   for( int yi=0; yi<= m_amm_mirr.y; yi++){
      //std::cout<< "yi = " << yi<< " ";
     for(int xi=0; xi< m_amm_mirr.x; xi++){
@@ -56,12 +58,34 @@ void Mems::setup(){
       m_mems_rays.push_back(new_ray);
     }
   }
-  std::cout<< " "<<std::endl;
-  addRay({20, 700, 0}, 0.5f);
-  addRay({20, 700, 0}, -0.5f);
-  addRay({20, 700, 0}, 2.0f);
-  addRay({20, 700, 0}, -2.0f);
 
+  //
+
+  std::cout<< " "<<std::endl;
+  addRay({20, 700, 0}, 0.5f ,{255, 0, 0});
+  addRay({20, 700, 0}, -0.5f, {255, 0, 0});
+  addRay({20, 700, 0}, 2.0f, {255, 0, 0});
+  addRay({20, 700, 0}, -2.0f, {255, 0, 0});
+
+  addRay({20, 720, 0}, 0.5f ,{0, 255, 0});
+  addRay({20, 720, 0}, -0.5f, {0, 255, 0});
+  addRay({20, 720, 0}, 2.0f, {0, 255, 0});
+  addRay({20, 720, 0}, -2.0f, {0, 255, 0});
+
+  addRay({20, 680, 0}, 0.5f ,{0, 0, 255});
+  addRay({20, 680, 0}, -0.5f, {0, 0, 255});
+  addRay({20, 680, 0}, 2.0f, {0, 0, 255});
+  addRay({20, 680, 0}, -2.0f, {0, 0, 255});
+
+  // addRay({20, 720, 0}, 0.5f);
+  // addRay({20, 720, 0}, -0.5f);
+  // addRay({20, 720, 0}, 2.0f);
+  // addRay({20, 720, 0}, -2.0f);
+  //
+  // addRay({20, 680, 0}, 0.5f);
+  // addRay({20, 680, 0}, -0.5f);
+  // addRay({20, 680, 0}, 2.0f);
+  // addRay({20, 680, 0}, -2.0f);
   return;
 }
 
@@ -80,6 +104,28 @@ void Mems::addRay(vec3 const& origin, float angle){
   std::cout<< "direction new of ray: "<< direct_new<< std::endl;
   // Ray redray{{20, 750, 0}, direct_new, {255, 0, 0}};
   Ray redray{origin, direct_new, {255, 0, 0}};
+  m_mems_rays.push_back(redray);
+
+
+  return;
+
+}
+
+void Mems::addRay(vec3 const& origin, float angle, ofColor const& col_in){
+  vec3 direct = vec3{1,0,0};
+  // float angle_ursp = 0.5/(180.0/3.141592653589793238463);
+  float angle_ursp = angle/(180.0/3.141592653589793238463);
+  //angle_ursp = 0.0f;
+  fmat4 rot_mat_t = glm::rotate(angle_ursp, fvec3{0.0f, 0.0f, 1.0f});
+  //std::cout<< "Transform Matrix:  [ "<<rot_mat_i<< " ]."<<std::endl;
+
+  fmat3 rot_mat_t_shrnkd = fmat3(rot_mat_t);
+
+  vec3 direct_new = (rot_mat_t_shrnkd*direct);
+
+  std::cout<< "direction new of ray: "<< direct_new<< std::endl;
+  // Ray redray{{20, 750, 0}, direct_new, {255, 0, 0}};
+  Ray redray{origin, direct_new, col_in};
   m_mems_rays.push_back(redray);
 
 

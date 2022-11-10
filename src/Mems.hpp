@@ -30,6 +30,7 @@ public:
 
     // void addRay();
     void addRay(vec3 const& origin, float angle);
+    void addRay(vec3 const& origin, float angle, ofColor const& col_in);
 
     void scale(float faktor);
     void translate(glm::vec3 const& vec);

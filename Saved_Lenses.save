@@ -39,3 +39,223 @@ m_width: 50;
 m_r1: 459.02;
 m_r2: 442.62;
 ..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1649729118;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 577127079;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1551106152;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 163931752;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 666373813;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 1833052257;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1238938168;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 1477638579;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 180978999;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 1801945376;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 940647291;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 391697225;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 223144270;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 2074003636;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 701426634;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 582082218;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1433173287;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 1895474585;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1530231333;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 673937129;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konkav;
+mat_id: 1;
+m_id: 1616707276;
+m_orig: 680 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
+-----------
+ m_name: Lens_konvex;
+mat_id: 1;
+m_id: 1837220511;
+m_orig: 980 700 0;
+m_diameter: 521.44;
+m_width: 50;
+m_r1: 459.02;
+m_r2: 442.62;
+..........
